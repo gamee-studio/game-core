@@ -1,5 +1,48 @@
 {
   "dependencies": {
+    "com.google.external-dependency-manager": {
+      "version": "https://github.com/google-unity/external-dependency-manager.git#1.2.175",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "38e491f898253a5ba719a6f62e5f8160f46971ae"
+    },
+    "com.google.firebase.analytics": {
+      "version": "https://github.com/firebase-unity/firebase-analytics.git#10.3.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.google.firebase.app": "10.3.0"
+      },
+      "hash": "aa3958d692399d6aae983fdd0f5439ec1a8fdca9"
+    },
+    "com.google.firebase.app": {
+      "version": "https://github.com/firebase-unity/firebase-app.git#10.3.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.google.external-dependency-manager": "1.2.175"
+      },
+      "hash": "b71aa93a9f7f8c8c9096bb50edaf7cc04f338574"
+    },
+    "com.google.firebase.messaging": {
+      "version": "https://github.com/firebase-unity/firebase-messaging.git#10.3.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.google.firebase.app": "10.3.0"
+      },
+      "hash": "78a8c3128c2530a56f16cb27493f6b0f2cc46286"
+    },
+    "com.google.firebase.remote-config": {
+      "version": "https://github.com/firebase-unity/firebase-remote-config.git#10.3.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.google.firebase.app": "10.3.0"
+      },
+      "hash": "5be298f34b150f03f02b2ddf589e7ef93367d24a"
+    },
     "com.unity.2d.animation": {
       "version": "7.0.6",
       "depth": 1,
