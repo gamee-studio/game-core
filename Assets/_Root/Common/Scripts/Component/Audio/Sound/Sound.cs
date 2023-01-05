@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class Sound : MonoBehaviour
+public class Sound
 {
     [SerializeField] AudioClip audio;
     [SerializeField, Range(0, 1)] float value = 1;

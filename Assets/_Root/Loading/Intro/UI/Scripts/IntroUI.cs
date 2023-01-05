@@ -1,3 +1,4 @@
+using Gamee.Hiuk.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,14 +18,22 @@ namespace Gamee.Hiuk.Loading.Intro
             btnSkipIntro.gameObject.SetActive(false);
             StartCoroutine(ShowButtonSkip());
             action.Play(actionName);
-
-            actionCompleted?.Invoke();
+            StartCoroutine(WaitTime(action.GetAnimationLenght(actionName), () =>
+            {
+                actionCompleted?.Invoke();
+            }));
         }
 
         IEnumerator ShowButtonSkip()
         {
             yield return new WaitForSeconds(timeShowSkipButton);
             btnSkipIntro.gameObject.SetActive(true);
+        }
+
+        IEnumerator WaitTime(float time, Action actionConpleted)
+        {
+            yield return new WaitForSeconds(time);
+            actionConpleted?.Invoke();
         }
 
         private void OnDisable()
