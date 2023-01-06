@@ -45,7 +45,6 @@ namespace Gamee.Hiuk.Loading
             yield return new WaitForSeconds(timeDelayLoadScene);
             if (isShowIntro && !GameData.IsShowedIntro)
             {
-                GameData.IsShowedIntro = true;
                 ShowIntro();
             }
             else ShowNextScene();
@@ -63,6 +62,7 @@ namespace Gamee.Hiuk.Loading
         }
         private void IntroRunCompleted() 
         {
+            GameData.IsShowedIntro = true;
             ShowNextScene();
         }
         private void LoadNextScene()

@@ -13,17 +13,26 @@ namespace Gamee.Hiuk.Loading.Intro
         [SerializeField] private GameObject btnSkipIntro;
         [SerializeField] private float timeShowSkipButton = 1f;
 
+        Action actionDone;
+        Coroutine coroutine;
         public void Run(Action actionCompleted = null) 
         {
+            this.actionDone = actionCompleted;
+
             btnSkipIntro.gameObject.SetActive(false);
             StartCoroutine(ShowButtonSkip());
             action.Play(actionName);
-            StartCoroutine(WaitTime(action.GetAnimationLenght(actionName), () =>
+            coroutine = StartCoroutine(WaitTime(action.GetAnimationLenght(actionName), () =>
             {
                 actionCompleted?.Invoke();
             }));
         }
 
+        public void Skip() 
+        {
+            this.actionDone?.Invoke();
+            StopCoroutine(coroutine);
+        }
         IEnumerator ShowButtonSkip()
         {
             yield return new WaitForSeconds(timeShowSkipButton);
