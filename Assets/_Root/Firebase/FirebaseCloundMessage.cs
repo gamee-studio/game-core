@@ -24,7 +24,7 @@
 
         void Subscribe()
         {
-            Firebase.Messaging.FirebaseMessaging.SubscribeAsync("/topics/new_update");
+            Firebase.Messaging.FirebaseMessaging.SubscribeAsync("/topics/new_message");
         }
     }
 }

@@ -24,7 +24,6 @@ namespace Gamee.Hiuk.FirebseAnalytic
 
         // paramater
         public const string LEVEL = "level";
-        public const string SKIN = "skin";
 
         public static void LogEvent(string name, string paramater = null, string value = null)
         {

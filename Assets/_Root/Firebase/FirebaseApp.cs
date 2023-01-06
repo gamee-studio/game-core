@@ -19,7 +19,7 @@ public class FirebaseApp : Singleton<FirebaseApp>
                 Debug.Log("[Firebase] init completed!");
 
                 remoteConfig.Init();
-                firebaseCloundMessage.Init();
+                if(isHaveCloundMessage) firebaseCloundMessage.Init();
             }
             else
             {
