@@ -1,5 +1,6 @@
 namespace Gamee.Hiuk.FirebaseRemoteConfig 
 {
+    using Gamee.Hiuk.Ads;
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
@@ -60,6 +61,10 @@ namespace Gamee.Hiuk.FirebaseRemoteConfig
             RemoteConfig.VersionApp = Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue(VERSION_APP).StringValue;
 #endif
             RemoteConfig.DescritptionApp = Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue(DESCRIPTION_APP).StringValue;
+
+            // init ads
+            AdsManager.Config(RemoteConfig.IsAdmob);
+            AdsManager.Init();
         }
     }
 }

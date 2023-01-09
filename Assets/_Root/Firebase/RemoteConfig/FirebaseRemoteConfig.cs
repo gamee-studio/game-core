@@ -7,10 +7,10 @@
 
     public class FirebaseRemoteConfig : MonoBehaviour
     {
-        [SerializeField] RemoteConfigAdapter remoteConfig;
+        [SerializeField] RemoteConfigAdapter remoteConfigAdapter;
         public void Init()
         {
-            remoteConfig.Defaut();
+            remoteConfigAdapter.Defaut();
             FetchDataAsync();
         }
 
@@ -59,7 +59,7 @@
                     break;
             }
 
-            remoteConfig.FetchData();
+            remoteConfigAdapter.FetchData();
             }
         }
     }

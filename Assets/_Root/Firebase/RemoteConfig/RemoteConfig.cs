@@ -6,19 +6,19 @@ namespace Gamee.Hiuk.FirebaseRemoteConfig
 {
     public static class RemoteConfig
     {
-        public static bool IsAdmob;
-        public static bool IsAutoStartGame;
-        public static bool IsAutoShowDailyReward;
-        public static bool IsShowInterAdsBeforeWin;
+        public static bool IsAdmob = false;
+        public static bool IsAutoStartGame = true;
+        public static bool IsAutoShowDailyReward = false;
+        public static bool IsShowInterAdsBeforeWin = true;
 
-        public static bool IsShowInterAdsLose;
-        public static int InterstitialAdShowCount;
-        public static int InterstitialAdFirstShowCount;
-        public static int TimeInterAdShow;
-        public static int TimeInterAdShowLose;
+        public static bool IsShowInterAdsLose = true;
+        public static int InterstitialAdShowCount = 3;
+        public static int InterstitialAdFirstShowCount = 3;
+        public static int TimeInterAdShow = 25;
+        public static int TimeInterAdShowLose = 25;
 
-        public static string VersionApp;
-        public static string DescritptionApp;
+        public static string VersionApp = "1.0";
+        public static string DescritptionApp = "New Update";
     }
 }
 

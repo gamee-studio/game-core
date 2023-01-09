@@ -14,7 +14,6 @@ namespace Gamee.Hiuk.FirebseAnalytic
         public const string LEVEL_START = "level_start";
         public const string LEVEL_FIRST_START = "level_first_start";
 
-        public const string ADS_CLICK = "ad_click";
         public const string ADS_BANNER_IMPRESSION = "ad_banner_impression";
         public const string ADS_BANNER_REQUEST = "ad_banner_request";
         public const string ADS_INTERSTITIAL_IMPRESSION = "ad_interstitial_impression";
@@ -63,10 +62,6 @@ namespace Gamee.Hiuk.FirebseAnalytic
         #endregion
 
         #region log ads
-        public static void LogAdsClick()
-        {
-            LogEvent(ADS_CLICK);
-        }
         public static void LogAdsBannerImpression()
         {
             LogEvent(ADS_BANNER_IMPRESSION);
