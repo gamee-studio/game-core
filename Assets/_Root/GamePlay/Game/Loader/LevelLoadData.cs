@@ -12,12 +12,16 @@ namespace Gamee.Hiuk.Game.Loader
         [SerializeField] string levelName;
         [SerializeField] int levelMax = 100;
         [SerializeField] int levelLoopStart = 1;
+        [SerializeField, Range(1, 5)] float timeDelayWin = 2;
+        [SerializeField, Range(1, 5)] float timeDelayLose = 1;
         [SerializeField, GUID] string id;
 
         public ELevelLoadType Type => type;
         public string PathLevel => pathLevel;
         public string LevelNameCurrent => levelName + "_" + LevelIndex;
         public int LevelIndex => listLevel[Index];
+        public float TimeDelayWin => timeDelayWin;
+        public float TimeDelayLose => timeDelayLose;
         int LevelStartLoop => IsFirstLooped ? (levelLoopStart >= 1 ? levelLoopStart : 1) : 1;
 
         int Index 
