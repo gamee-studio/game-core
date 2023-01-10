@@ -16,12 +16,16 @@ MonoBehaviour:
   - type: 0
     pathLevel: Level_{0}
     levelName: level_normal
-    levelMax: 15
+    levelMax: 3
     levelLoopStart: 1
+    timeDelayWin: 2
+    timeDelayLose: 1
     id: 423c900c-2ad1-46c9-9b61-c93085567034
   - type: 0
     pathLevel: Level_Boss_{0}
     levelName: level_boss
     levelMax: 5
     levelLoopStart: 1
+    timeDelayWin: 2
+    timeDelayLose: 1
     id: 9e368f43-52a8-473f-ba8c-2ffda72f536e

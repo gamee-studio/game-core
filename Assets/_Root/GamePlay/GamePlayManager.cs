@@ -1,3 +1,4 @@
+using Gamee.Hiuk.Ads;
 using Gamee.Hiuk.Game;
 using Gamee.Hiuk.GamePlay.UI;
 using Gamee.Hiuk.Level;
@@ -63,7 +64,10 @@ namespace Gamee.Hiuk.GamePlay
         }
         void OnSkip() 
         {
-            gamemanager.SkipLevel();
+            AdsManager.ShowReard((isWatched) =>
+            {
+                if(isWatched) gamemanager.SkipLevel();
+            });
         }
         #endregion
     }
