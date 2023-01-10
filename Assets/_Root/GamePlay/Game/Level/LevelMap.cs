@@ -1,19 +1,22 @@
 using System;
 using UnityEngine;
-
-public abstract class LevelMap : MonoBehaviour, ILevel
+namespace Gamee.Hiuk.Level 
 {
-    public Action<LevelMap> ActionWin;
-    public Action<LevelMap> ActionLose;
-
-    public abstract void Init();
-    public void Lose()
+    public abstract class LevelMap : MonoBehaviour, ILevel
     {
-        ActionLose?.Invoke(this);
-    }
+        public Action ActionWin;
+        public Action ActionLose;
 
-    public void Win()
-    {
-        ActionWin?.Invoke(this);
+        public abstract void Init();
+        public void Lose()
+        {
+            ActionLose?.Invoke();
+        }
+
+        public void Win()
+        {
+            ActionWin?.Invoke();
+        }
     }
 }
+

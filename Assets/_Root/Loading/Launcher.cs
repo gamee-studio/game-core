@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.AddressableAssets;
+using Gamee.Hiuk.Game.Loader;
 
 public class Launcher : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class Launcher : MonoBehaviour
         DOTween.Init();
         Addressables.InitializeAsync();
 
+        GameLoader.Init();
         firebaseApp.Init();
     }
     public async UniTask LoadFileData()

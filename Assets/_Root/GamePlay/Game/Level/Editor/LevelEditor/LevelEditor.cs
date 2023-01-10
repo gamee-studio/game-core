@@ -8,8 +8,9 @@ using System.IO;
 using System;
 using System.Linq;
 using Gamee.Hiuk.Test;
+using Gamee.Hiuk.Level;
 
-namespace Gamee.HiuK.Editor
+namespace Gamee.HiuK.Level.Editor
 {
     public class LevelEditor : EditorWindow
     {

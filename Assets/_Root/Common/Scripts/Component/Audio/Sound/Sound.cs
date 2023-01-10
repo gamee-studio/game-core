@@ -4,9 +4,9 @@ using UnityEngine;
 public class Sound
 {
     [SerializeField] AudioClip audio;
-    [SerializeField, Range(0, 1)] float value = 1;
+    [SerializeField, Range(0, 1)] float volume = 1;
 
     public AudioClip Audio => audio;
-    public float Value => value;
+    public float Volume => volume;
 }
 

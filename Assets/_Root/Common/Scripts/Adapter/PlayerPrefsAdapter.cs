@@ -5,6 +5,14 @@ namespace Gamee.Hiuk.Adapter
 {
     public static class PlayerPrefsAdapter
     {
+        public static void SetString(string key, string value)
+        {
+            PlayerPrefs.SetString(key, value);
+        }
+        public static string GetString(string key, string valueDefaut = "")
+        {
+            return PlayerPrefs.GetString(key, valueDefaut);
+        }
         public static void SetInt(string key, int value)
         {
             PlayerPrefs.SetInt(key, value);

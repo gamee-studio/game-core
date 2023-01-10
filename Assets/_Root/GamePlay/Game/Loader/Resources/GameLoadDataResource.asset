@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 359b617a9c5c7a24aa2b735b6db46806, type: 3}
+  m_Name: GameLoadDataResource
+  m_EditorClassIdentifier: 
+  listLevelLoadData:
+  - type: 0
+    pathLevel: Level_{0}
+    levelName: level_normal
+    levelMax: 15
+    levelLoopStart: 1
+    id: 423c900c-2ad1-46c9-9b61-c93085567034
+  - type: 0
+    pathLevel: Level_Boss_{0}
+    levelName: level_boss
+    levelMax: 5
+    levelLoopStart: 1
+    id: 9e368f43-52a8-473f-ba8c-2ffda72f536e

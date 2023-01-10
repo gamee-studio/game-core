@@ -1,7 +1,10 @@
 using System;
-
-public interface ILevel
+namespace Gamee.Hiuk.Level 
 {
-    void Win();
-    void Lose();
+    public interface ILevel
+    {
+        void Win();
+        void Lose();
+    }
 }
+

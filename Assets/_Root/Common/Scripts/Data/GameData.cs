@@ -12,12 +12,16 @@ namespace Gamee.Hiuk.Data
             set => PlayerPrefsAdapter.SetInt(key + "level_current", value);
         }
 
+        public static bool IsNewGame
+        {
+            get => PlayerPrefsAdapter.GetBool(key + "is_new_game", false);
+            set => PlayerPrefsAdapter.SetBool(key + "is_new_game", value);
+        }
         public static bool IsShowedIntro
         {
             get => PlayerPrefsAdapter.GetBool(key + "is_showed_intro", false);
             set => PlayerPrefsAdapter.SetBool(key + "is_showed_intro", value);
         }
-
         #region setting
         public static bool IsOnAudio 
         {
