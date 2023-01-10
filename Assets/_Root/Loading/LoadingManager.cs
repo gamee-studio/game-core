@@ -1,4 +1,5 @@
 using Gamee.Hiuk.Data;
+using Gamee.Hiuk.FirebaseRemoteConfig;
 using Gamee.Hiuk.Loading.Intro;
 using Gamee.Hiuk.Loading.UI;
 using System.Collections;
@@ -67,7 +68,7 @@ namespace Gamee.Hiuk.Loading
         }
         private void LoadNextScene()
         {
-            if (true) _loadScene = SceneManager.LoadSceneAsync(2);
+            if (RemoteConfig.IsAutoStartGame) _loadScene = SceneManager.LoadSceneAsync(2);
             else _loadScene = SceneManager.LoadSceneAsync(1);
             _loadScene.allowSceneActivation = false;
         }

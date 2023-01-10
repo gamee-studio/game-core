@@ -1,4 +1,5 @@
 using Gamee.Hiuk.Game;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,10 @@ namespace Gamee.Hiuk.GamePlay.UI
     {
         GamePlayManager gamePlayManager;
         GameManager gameManager;
+
+        public Action ActionBackHome;
+        public Action ActionReplay;
+        public Action ActionSkip;
         public void Init(GamePlayManager gamePlay)
         {
             this.gamePlayManager = gamePlay;
@@ -17,12 +22,18 @@ namespace Gamee.Hiuk.GamePlay.UI
         public void DefautUI() { }
         public void MoveUI() { }
 
-        public void BackHome() { }
+        public void BackHome()
+        {
+            ActionBackHome?.Invoke();
+        }
         public void RePlay() 
         {
-            gameManager.Replay();
+            ActionReplay?.Invoke();
         }
-        public void Skip() { }
+        public void Skip()
+        {
+            ActionSkip?.Invoke();
+        }
     }
 }
 

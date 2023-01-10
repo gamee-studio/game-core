@@ -1,10 +1,12 @@
 using Gamee.Hiuk.Common;
 using Gamee.Hiuk.Component;
 using Gamee.Hiuk.Data;
+using Gamee.Hiuk.FirebseAnalytic;
 using Gamee.Hiuk.Game.Loader;
 using Gamee.Hiuk.GamePlay;
 using Gamee.Hiuk.GamePlay.UI;
 using Gamee.Hiuk.Level;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -25,19 +27,77 @@ namespace Gamee.Hiuk.Game
 
         GamePlayManager gamePlayManager;
         GamePlayUI gamePlayUI;
+
+        public Action<LevelMap> ActionGameWin;
+        public Action<LevelMap> ActionGameLose;
+        public Action ActionGameStart;
         public void Init(GamePlayManager gamePlay)
         {
             this.gamePlayManager = gamePlay;
             this.gamePlayUI = gamePlay.GamePlayUI;
         }
-
-        public void Play() 
+        #region game
+        public void Replay()
         {
-            state = EGameState.GAME_START;
+            FirebaseAnalytic.LogLevelReplay(GameLoader.levelLoadData.LevelNameCurrent + GameData.LevelNameCurrent);
+            GameStart();
+        }
+        public void NextLevel() 
+        {
+            GameData.LevelCurrent++;
+            GameLoader.levelLoadData.Uplevel();
+        }
+        public void SkipLevel()
+        {
+            FirebaseAnalytic.LogLevelSkip(GameLoader.levelLoadData.LevelNameCurrent + GameData.LevelNameCurrent);
+            NextLevel();
+            LoadLevelMap();
+            GameStart();
+        }
+        public void Run()
+        {
             GameLoader.ActionLoadLevelCompleted = OnLoadLevelCompleted;
             LoadLevelMap();
-            ShowLevelMap();
+            GameStart();
         }
+        void GameStart()
+        {
+            FirebaseAnalytic.LogLevelStart(GameLoader.levelLoadData.LevelNameCurrent + GameData.LevelNameCurrent);
+            StartCoroutine(WaitForShowLevelMap());
+            ActionGameStart?.Invoke();
+        }
+        public void GamePlay()
+        {
+            state = EGameState.GAME_PLAYING;
+        }
+        public void GameResume()
+        {
+            if (state != EGameState.GAME_PAUSE) return;
+            GamePlay();
+        }
+        public void GamePause()
+        {
+            state = EGameState.GAME_PAUSE;
+        }
+        public void GameWin()
+        {
+            if (state == EGameState.GAME_WIN) return;
+            state = EGameState.GAME_WIN;
+            FirebaseAnalytic.LogLevelCompleted(GameLoader.levelLoadData.LevelNameCurrent + GameData.LevelNameCurrent);
+            audioGame.PlaySound(soundWin);
+            NextLevel();
+            LoadLevelMap();
+            ActionGameWin?.Invoke(levelMap);
+        }
+        public void GameLose()
+        {
+            if (state == EGameState.GAME_LOSE) return;
+            state = EGameState.GAME_LOSE;
+            FirebaseAnalytic.LogLevelFailed(GameLoader.levelLoadData.LevelNameCurrent + GameData.LevelNameCurrent);
+            audioGame.PlaySound(soundLose);
+            ActionGameLose?.Invoke(levelMap);
+        }
+        #endregion
 
         #region level
         void OnLoadLevelCompleted(GameObject goLoad) 
@@ -51,15 +111,9 @@ namespace Gamee.Hiuk.Game
             state = EGameState.GAME_LOADING;
             GameLoader.LoadLevel(GameData.LevelCurrent);
         }
-        void ShowLevelMap() 
-        {
-            Defaut();
-            StartCoroutine(WaitForShowLevelMap());
-        }
         IEnumerator WaitForShowLevelMap() 
         {
             yield return new WaitUntil(() => state == EGameState.GAME_READY);
-            state = EGameState.GAME_PLAYING;
 
             if (level != null) DestroyLevel();
             level = Instantiate(levelLoad, levelPos.transform);
@@ -67,6 +121,8 @@ namespace Gamee.Hiuk.Game
             levelMap.Init();
             levelMap.ActionLose = GameLose;
             levelMap.ActionWin = GameWin;
+
+            GamePlay();
         }
         void DestroyLevel() 
         {
@@ -75,41 +131,5 @@ namespace Gamee.Hiuk.Game
             level = null;
         }
         #endregion
-
-        #region game
-        public void Replay() 
-        {
-            ShowLevelMap();
-        }
-        public void NextLevel() 
-        {
-            GameData.LevelCurrent++;
-            GameLoader.levelLoadData.Uplevel();
-            ShowLevelMap();
-        }
-
-        public void GameResume() 
-        {
-            if (state != EGameState.GAME_PAUSE) return;
-            state = EGameState.GAME_PLAYING;
-        }
-        public void GamePause() 
-        {
-            state = EGameState.GAME_PAUSE;
-        }
-        public void GameWin() 
-        {
-            audioGame.PlaySound(soundWin);
-        }
-        public void GameLose() 
-        {
-            audioGame.PlaySound(soundLose);
-        }
-        #endregion
-
-        void Defaut() 
-        {
-            gamePlayUI.DefautUI();
-        }
     }
 }

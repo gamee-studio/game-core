@@ -1,8 +1,10 @@
 using Gamee.Hiuk.Game;
 using Gamee.Hiuk.GamePlay.UI;
+using Gamee.Hiuk.Level;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Gamee.Hiuk.GamePlay 
 {
@@ -18,16 +20,52 @@ namespace Gamee.Hiuk.GamePlay
         {
             Init();
         }
+        public void Init()
+        {
+            gamemanager.ActionGameWin = OnGameWin;
+            gamemanager.ActionGameLose = OnGameLose;
+            gamemanager.ActionGameStart = OnGameStart;
+
+            gamePlayUI.ActionBackHome = OnBackHome;
+            gamePlayUI.ActionReplay= OnReplay;
+            gamePlayUI.ActionSkip = OnSkip;
+        }
+
         private void Start()
         {
-            gamemanager.Play();
+            gamemanager.Run();
+        }
+
+        #region game
+        void OnGameWin(LevelMap level) 
+        {
+            gamePlayUI.MoveUI();
+        }
+        void OnGameLose(LevelMap level) 
+        {
+            gamePlayUI.MoveUI();
+        }
+
+        void OnGameStart() 
+        {
             gamePlayUI.DefautUI();
         }
-        public void Init() 
+        #endregion
+
+        #region ui
+        void OnBackHome() 
         {
-            gamemanager.Init(this);
-            gamePlayUI.Init(this);
+            SceneManager.LoadScene(1);
         }
+        void OnReplay() 
+        {
+            gamemanager.Replay();
+        }
+        void OnSkip() 
+        {
+            gamemanager.SkipLevel();
+        }
+        #endregion
     }
 }
 
