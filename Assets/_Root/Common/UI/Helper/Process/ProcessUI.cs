@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Gamee.Hiuk.UI.Other
+namespace Gamee.Hiuk.UI.Helper
 {
     public class ProcessUI : MonoBehaviour
     {

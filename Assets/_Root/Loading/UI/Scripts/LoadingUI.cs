@@ -1,4 +1,4 @@
-using Gamee.Hiuk.UI.Other;
+using Gamee.Hiuk.UI.Helper;
 using System;
 using System.Collections;
 using System.Collections.Generic;

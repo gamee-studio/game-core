@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Gamee.Hiuk.Debug 
 {
-    public static class Debug
+    public static class GameDebug
     {
         private static bool isRemoveInterAds;
         private static bool isRemoveRewardAds;
