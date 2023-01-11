@@ -56,7 +56,6 @@ namespace Gamee.Hiuk.Game
         }
         public void Run()
         {
-            GameLoader.ActionLoadLevelCompleted = OnLoadLevelCompleted;
             LoadLevelMap();
             GameStart();
         }
@@ -100,16 +99,21 @@ namespace Gamee.Hiuk.Game
         #endregion
 
         #region level
-        void OnLoadLevelCompleted(GameObject goLoad) 
-        {
-            this.levelLoad = goLoad;
-            state = EGameState.GAME_READY;
-        }
-
-        void LoadLevelMap() 
+        async void LoadLevelMap() 
         {
             state = EGameState.GAME_LOADING;
-            GameLoader.LoadLevel(GameData.LevelCurrent);
+            if (levelLoad == null && GameDataCache.LevelObjCache != null)
+            {
+                levelLoad = GameDataCache.LevelObjCache;
+                state = EGameState.GAME_READY;
+            }
+            else
+            {
+                var goLoad = await GameLoader.LoadLevel(GameData.LevelCurrent);
+                this.levelLoad = goLoad;
+                GameDataCache.LevelObjCache = goLoad;
+                state = EGameState.GAME_READY;
+            }
         }
         IEnumerator WaitForShowLevelMap() 
         {

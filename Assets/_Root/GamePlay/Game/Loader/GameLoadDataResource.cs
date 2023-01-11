@@ -26,6 +26,18 @@ namespace Gamee.Hiuk.Game.Loader
             }
             return null;
         }
+        public int LevelsCount
+        {
+            get 
+            {
+                var count = 0;
+                foreach (var levelLoadData in listLevelLoadData)
+                {
+                    count = levelLoadData.LevelMax;
+                }
+                return count;
+            }
+        }
 
         #region static api
         public static LevelLoadData GetLevelDataCurrent(ELevelLoadType levelLoadType) 
@@ -36,6 +48,7 @@ namespace Gamee.Hiuk.Game.Loader
         {
             Instance.Init();
         }
+        public static int AllLevelCount => Instance.LevelsCount;
         #endregion
     }
 }

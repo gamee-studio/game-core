@@ -10,7 +10,6 @@ namespace Gamee.Hiuk.Game.Loader
     {
         public static LevelLoadData levelLoadData;
 
-        public static Action<GameObject> ActionLoadLevelCompleted;
         public static void Init()
         {
             GameLoadDataResource.InitData();
@@ -22,13 +21,17 @@ namespace Gamee.Hiuk.Game.Loader
             return await AddressablesAdapter.GetAsset(string.Format(levelPath, index));
         }
 
-        public static async void LoadLevel(int level)
+        public static async UniTask<GameObject> LoadLevel(int level)
         {
             var type = ELevelLoadType.LEVEL_NORMAL;
             levelLoadData = GameLoadDataResource.GetLevelDataCurrent(type);
-
-            var levelObj = await GetLevel(levelLoadData.PathLevel, levelLoadData.LevelIndex);
-            ActionLoadLevelCompleted?.Invoke(levelObj);
+            return await GetLevel(levelLoadData.PathLevel, levelLoadData.LevelIndex);
+        }
+        public static async UniTask<GameObject> LoadLevelSellect(int levelTest) 
+        {
+            var levelNormalData = GameLoadDataResource.GetLevelDataCurrent(ELevelLoadType.LEVEL_NORMAL);
+            levelNormalData.SetIndex(levelTest - 1);
+            return await LoadLevel(levelTest);
         }
     }
 }

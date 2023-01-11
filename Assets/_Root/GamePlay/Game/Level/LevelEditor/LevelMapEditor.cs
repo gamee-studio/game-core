@@ -1,11 +1,10 @@
 #if UNITY_EDITOR
-using Gamee.Hiuk.Level;
 using Gamee.Hiuk.Test;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-namespace Gamee.HiuK.Level.Editor
+namespace Gamee.Hiuk.Level.Editor
 {
     [CustomEditor(typeof(LevelMap), true)]
     public class LevelMapEditor : UnityEditor.Editor

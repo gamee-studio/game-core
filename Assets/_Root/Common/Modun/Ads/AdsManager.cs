@@ -1,7 +1,5 @@
 using Gamee.Hiuk.Pattern;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Gamee.Hiuk.Ads 
@@ -15,6 +13,10 @@ namespace Gamee.Hiuk.Ads
         private Action actionInterAdsClose;
         private Action actionRewardAdsOpen;
         private Action<bool> actionRewardAdsClose;
+        private bool isRemoveRewardAds;
+        private bool isRemoveInterAds;
+        private bool isRemoveBannerAds;
+        private bool isRemoveAppOpenAds;
 
         public IAds ConfigAds(bool isAdmob = false) 
         {
@@ -37,22 +39,39 @@ namespace Gamee.Hiuk.Ads
         }
         public void ShowBannerAds() 
         {
+            if (isRemoveBannerAds) return;
             ads.ShowBannerAds(); 
         }
         public void ShowInterAds(Action actionClose = null) 
         {
-            this.actionInterAdsClose = actionClose;
-            ads.ShowInterAds();
+            if (isRemoveInterAds) 
+            {
+                actionClose?.Invoke();
+            }
+            else 
+            {
+                this.actionInterAdsClose = actionClose;
+                ads.ShowInterAds();
+            }
         }
         public void ShowReardAds(Action<bool> actionClose = null, Action actionOpen = null) 
         {
-            this.actionRewardAdsClose = actionClose;
-            this.actionRewardAdsOpen= actionOpen;
+            if (isRemoveRewardAds) 
+            {
+                actionOpen?.Invoke();
+                actionInterAdsClose?.Invoke();
+            }
+            else 
+            {
+                this.actionRewardAdsClose = actionClose;
+                this.actionRewardAdsOpen = actionOpen;
 
-            ads.ShowRewardAds();
+                ads.ShowRewardAds();
+            }
         }
         public void ShowAppOpenAds() 
         {
+            if (isRemoveAppOpenAds) return;
             ads.ShowAppOpenAds();
         }
         public void HideBannerAds() 
@@ -73,6 +92,10 @@ namespace Gamee.Hiuk.Ads
             actionRewardAdsClose?.Invoke(isWatched);
         }
 
+        public void SetRemoveRewardAds(bool isRemove) { isRemoveRewardAds = isRemove; }
+        public void SetRemoveInterAds(bool isRemove) { isRemoveInterAds = isRemove; }
+        public void SetRemoveAppOpenAds(bool isRemove) { isRemoveAppOpenAds = isRemove; }
+        public void SetRemoveBannerAds(bool isRemove) { isRemoveBannerAds = isRemove; }
         private void OnApplicationPause(bool pause)
         {
 #if !UNITY_EDITOR
@@ -116,6 +139,10 @@ namespace Gamee.Hiuk.Ads
         {
             Instance.HideBannerAds();
         }
+        public static void SetRemoveReward(bool isRemove) { Instance.SetRemoveRewardAds(isRemove); }
+        public static void SetRemoveInter(bool isRemove) { Instance.SetRemoveInterAds(isRemove); }
+        public static void SetRemoveAppOpen(bool isRemove) { Instance.SetRemoveAppOpenAds(isRemove); }
+        public static void SetRemoveBanner(bool isRemove) { Instance.SetRemoveBannerAds(isRemove); }
         #endregion
     }
 }

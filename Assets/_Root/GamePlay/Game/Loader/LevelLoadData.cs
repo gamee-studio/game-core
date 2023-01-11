@@ -22,6 +22,7 @@ namespace Gamee.Hiuk.Game.Loader
         public int LevelIndex => listLevel[Index];
         public float TimeDelayWin => timeDelayWin;
         public float TimeDelayLose => timeDelayLose;
+        public int LevelMax => levelMax - LevelStartLoop + 1;
         int LevelStartLoop => IsFirstLooped ? (levelLoopStart >= 1 ? levelLoopStart : 1) : 1;
 
         int Index 
@@ -45,7 +46,7 @@ namespace Gamee.Hiuk.Game.Loader
         {
             LoadLevelList();
         }
-
+        public void SetIndex(int index) { Index = index; }
         void LoadLevelList() 
         {
             string levelListData = LoadLevelListData();

@@ -11,6 +11,11 @@ namespace Gamee.Hiuk.Data
             get => PlayerPrefsAdapter.GetInt(key + "level_current");
             set => PlayerPrefsAdapter.SetInt(key + "level_current", value);
         }
+        public static int CoinCurrent
+        {
+            get => PlayerPrefsAdapter.GetInt(key + "coin_current");
+            set => PlayerPrefsAdapter.SetInt(key + "coin_current", value);
+        }
         public static string LevelNameCurrent => "level_" + LevelCurrent;
 
         public static bool IsNewGame
