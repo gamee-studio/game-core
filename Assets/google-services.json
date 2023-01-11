@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "110786831321",
+    "project_id": "pin-master-c50dd",
+    "storage_bucket": "pin-master-c50dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:110786831321:android:c0156a238ed2fb8551efc8",
+        "android_client_info": {
+          "package_name": "com.gamee.homepin2.manor.homescape"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "110786831321-m5sm7t9a2ibkr0ul21ptf56ctm7itin9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1LjwgbIsQslc7OCrGEBLOst8cVNfsMh0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "110786831321-m5sm7t9a2ibkr0ul21ptf56ctm7itin9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
