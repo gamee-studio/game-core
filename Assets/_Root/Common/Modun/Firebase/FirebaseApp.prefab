@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7dbb7d822da4ef41ba355918592353f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  remoteConfig: {fileID: 4267335000570008017}
+  remoteConfigAdapter: {fileID: 4267335000570008017}
 --- !u!1 &243712648247110324
 GameObject:
   m_ObjectHideFlags: 0
