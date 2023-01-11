@@ -7,11 +7,12 @@ using UnityEngine;
 
 namespace Gamee.HiuK.Level.Editor
 {
-    [CustomEditor(typeof(LevelMap))]
+    [CustomEditor(typeof(LevelMap), true)]
     public class LevelMapEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
+            string path = "Assets/_Root/Loading/Scene/Loading.unity";
             base.OnInspectorGUI();
             if (!serializedObject.isEditingMultipleObjects)
             {
@@ -21,7 +22,7 @@ namespace Gamee.HiuK.Level.Editor
                 {
                     if (GUILayout.Button("Play"))
                     {
-                        EditorSceneManager.OpenScene("Assets/_Root/Scenes/Loading.unity");
+                        EditorSceneManager.OpenScene(path);
                         GameTest.IsTest = true;
                         GameTest.PathLevelAsset = AssetDatabase.GetAssetPath(level.gameObject);
                         EditorApplication.isPlaying = true;

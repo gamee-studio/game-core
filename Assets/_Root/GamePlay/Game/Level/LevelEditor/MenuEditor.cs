@@ -7,21 +7,21 @@ using UnityEditor.SceneManagement;
 
 public class MenuEditor
 {
-    private const string LOADING_SCENE = "Loading";
+    private const string LOADING_SCENE_PATH = "Assets/_Root/Loading/Scene/Loading.unity";
+    private const string GAME_SCENE_PATH = "Assets/_Root/GamePlay/Scene/GamePlay.unity";
     private const string GAME_SCENE = "GamePlay";
+    private const string LOADING_SCENE = "Loading";
 
-
-    private static void ChangeScene(string name)
+    private static void ChangeScene(string path)
     {
         EditorSceneManager.SaveOpenScenes();
-        EditorSceneManager.OpenScene(Application.dataPath + "/_Root/Scenes/" + name + ".unity");
+        EditorSceneManager.OpenScene(path);
     }
-
 
     [MenuItem("Scenes/Open Loading Scene", false, 33)]
     private static void OpenLoadingScene()
     {
-        ChangeScene(LOADING_SCENE);
+        ChangeScene(LOADING_SCENE_PATH);
     }
 
     [MenuItem("Scenes/Open Loading Scene", true, 33)]
@@ -33,7 +33,7 @@ public class MenuEditor
     [MenuItem("Scenes/Open Game Scene", false, 33)]
     private static void OpenGameScene()
     {
-        ChangeScene(GAME_SCENE);
+        ChangeScene(GAME_SCENE_PATH);
     }
 
     [MenuItem("Scenes/Open Game Scene", true, 33)]
@@ -46,7 +46,7 @@ public class MenuEditor
     private static void PlayLauncherScene()
     {
         EditorSceneManager.SaveOpenScenes();
-        if (EditorSceneManager.GetActiveScene().name != LOADING_SCENE) ChangeScene(LOADING_SCENE);
+        if (EditorSceneManager.GetActiveScene().name != LOADING_SCENE) ChangeScene(LOADING_SCENE_PATH);
         EditorApplication.isPlaying = true;
     }
 
@@ -55,6 +55,5 @@ public class MenuEditor
     {
         return !Application.isPlaying;
     }
-
 }
 #endif

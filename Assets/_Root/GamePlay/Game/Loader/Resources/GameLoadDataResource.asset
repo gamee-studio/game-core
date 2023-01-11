@@ -21,7 +21,7 @@ MonoBehaviour:
     timeDelayWin: 2
     timeDelayLose: 1
     id: 423c900c-2ad1-46c9-9b61-c93085567034
-  - type: 0
+  - type: 1
     pathLevel: Level_Boss_{0}
     levelName: level_boss
     levelMax: 5

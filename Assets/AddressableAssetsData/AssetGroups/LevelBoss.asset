@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: LevelBoss
+  m_EditorClassIdentifier: 
+  m_GroupName: LevelBoss
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 3b8a873c6c682f945a98d7e1b6740432
+  m_SerializeEntries:
+  - m_GUID: b842c54fb48fbbd479260094f6131f87
+    m_Address: Level_Boss_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 3589920b03c735842a5878a524786c38, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: a926e1e55c3e1bd4e88957eca3c27e75, type: 2}
+    - {fileID: 11400000, guid: 3002dadcfd4a6b54195ce74b74dfe2be, type: 2}
