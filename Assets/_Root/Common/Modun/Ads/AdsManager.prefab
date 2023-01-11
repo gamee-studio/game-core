@@ -94,11 +94,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f46eb3b44c86edb4cba2a1483b19d0cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bannerPos: 7
   sdkKey: -feJa9bEGOmZW95XxkyfhE2R_yHQ4poWZofsvPWhIw_es2dT16vUIDRoHKX63m6a9JD7wX1Q0PZ0Qng8EukpFT
-  bannerAdUnitId: 
-  interAdUnitId: 
-  rewardAdUnitId: 
-  appOpenAdUnitId: 
+  bannerAdUnitId: 29ed4e4677c3520c
+  interAdUnitId: 55e8dfb6f836f372
+  rewardAdUnitId: 66c75fcf1bcf296d
+  appOpenAdUnitId: 2458517ef67575c9
 --- !u!1 &484581907573985405
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listDeviceTest: []
-  bannerAdUnitId: 
-  interAdUnitId: 
-  rewardAdUnitId: 
-  appOpenAdUnitId: 
+  bannerPos: 1
+  bannerAdUnitId: ca-app-pub-8566745611252640/4061842748
+  interAdUnitId: ca-app-pub-8566745611252640/8931026047
+  rewardAdUnitId: ca-app-pub-8566745611252640/6304862704
+  appOpenAdUnitId: ca-app-pub-3940256099942544/3419835294
