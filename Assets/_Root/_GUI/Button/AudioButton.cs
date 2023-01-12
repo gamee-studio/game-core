@@ -2,7 +2,7 @@ using Gamee.Hiuk.Component;
 using Gamee.Hiuk.Pattern;
 using UnityEngine;
 
-namespace Gamee.Hiuk.Popup 
+namespace Gamee.Hiuk.Button
 {
     public class AudioButton : Singleton<AudioButton>
     {

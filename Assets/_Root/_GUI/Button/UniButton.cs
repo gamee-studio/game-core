@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Gamee.Hiuk.Popup.Button
+namespace Gamee.Hiuk.Button
 {
     [RequireComponent(typeof(Image))]
     public class UniButton : UnityEngine.UI.Button
