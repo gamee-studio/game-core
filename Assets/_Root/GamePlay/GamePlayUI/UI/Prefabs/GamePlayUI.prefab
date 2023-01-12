@@ -432,6 +432,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Btn-Skip
       objectReference: {fileID: 0}
+    - target: {fileID: 5339012428797595954, guid: 00466178e431a5d4c8f6a8e2f4280012, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339012428797595954, guid: 00466178e431a5d4c8f6a8e2f4280012, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339012428797595954, guid: 00466178e431a5d4c8f6a8e2f4280012, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2782436298622104225}
+    - target: {fileID: 5339012428797595954, guid: 00466178e431a5d4c8f6a8e2f4280012, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339012428797595954, guid: 00466178e431a5d4c8f6a8e2f4280012, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Skip
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339012428797595954, guid: 00466178e431a5d4c8f6a8e2f4280012, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Gamee.Hiuk.GamePlay.UI.GamePlayUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339012428797595954, guid: 00466178e431a5d4c8f6a8e2f4280012, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00466178e431a5d4c8f6a8e2f4280012, type: 3}
 --- !u!224 &2387300834782528825 stripped
@@ -562,6 +590,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5189253553377896611, guid: e203bafcac44d28408e8495c88c82875, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189253553377896611, guid: e203bafcac44d28408e8495c88c82875, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189253553377896611, guid: e203bafcac44d28408e8495c88c82875, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2782436298622104225}
+    - target: {fileID: 5189253553377896611, guid: e203bafcac44d28408e8495c88c82875, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189253553377896611, guid: e203bafcac44d28408e8495c88c82875, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RePlay
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189253553377896611, guid: e203bafcac44d28408e8495c88c82875, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Gamee.Hiuk.GamePlay.UI.GamePlayUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189253553377896611, guid: e203bafcac44d28408e8495c88c82875, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e203bafcac44d28408e8495c88c82875, type: 3}
 --- !u!224 &4788013306011529755 stripped
@@ -576,6 +632,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2534887562365639848}
     m_Modifications:
+    - target: {fileID: 329718195832451239, guid: 536b02a0a2178154499f4b268653a1f6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 329718195832451239, guid: 536b02a0a2178154499f4b268653a1f6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 329718195832451239, guid: 536b02a0a2178154499f4b268653a1f6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2782436298622104225}
+    - target: {fileID: 329718195832451239, guid: 536b02a0a2178154499f4b268653a1f6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 329718195832451239, guid: 536b02a0a2178154499f4b268653a1f6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackHome
+      objectReference: {fileID: 0}
+    - target: {fileID: 329718195832451239, guid: 536b02a0a2178154499f4b268653a1f6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Gamee.Hiuk.GamePlay.UI.GamePlayUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 329718195832451239, guid: 536b02a0a2178154499f4b268653a1f6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8561511895243882900, guid: 536b02a0a2178154499f4b268653a1f6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1

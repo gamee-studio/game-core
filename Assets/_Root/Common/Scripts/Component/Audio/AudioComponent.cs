@@ -8,6 +8,7 @@ namespace Gamee.Hiuk.Component
         [SerializeField] AudioSource audioSource;
         public void PlaySound(Sound sound)
         {
+            if (sound == null) return;
             if (!GameData.IsOnAudio) return;
             audioSource.PlayOneShot(sound.Audio, sound.Volume);
         }
