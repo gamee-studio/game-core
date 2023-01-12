@@ -1,4 +1,5 @@
 using Gamee.Hiuk.Ads;
+using Gamee.Hiuk.Component;
 using Gamee.Hiuk.Game;
 using Gamee.Hiuk.GamePlay.UI;
 using Gamee.Hiuk.Level;
@@ -13,6 +14,9 @@ namespace Gamee.Hiuk.GamePlay
     {
         [SerializeField] GamePlayUI gamePlayUI;
         [SerializeField] GameManager gamemanager;
+
+        [Header("Audio"), SerializeField] AudioComponent audioGamePlay;
+        [SerializeField] Sound soundBg;
 
         public GameManager GameManager => gamemanager;
         public GamePlayUI GamePlayUI => gamePlayUI;
@@ -34,7 +38,12 @@ namespace Gamee.Hiuk.GamePlay
 
         private void Start()
         {
+            PlaySoundBG();
             gamemanager.Run();
+        }
+        void PlaySoundBG() 
+        {
+            audioGamePlay.PlaySoundBackGround(soundBg);
         }
 
         #region game

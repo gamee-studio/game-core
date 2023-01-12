@@ -1,3 +1,4 @@
+using Gamee.Hiuk.Component;
 using Gamee.Hiuk.Data;
 using Gamee.Hiuk.FirebaseRemoteConfig;
 using Gamee.Hiuk.Loading.Intro;
@@ -13,6 +14,8 @@ namespace Gamee.Hiuk.Loading
         [SerializeField] LoadingUI loadingUI;
         [SerializeField] Launcher launcher;
         [SerializeField] float timeDelayLoadScene = 0.5f;
+        [Header("Audio"), SerializeField] AudioComponent audioLoading;
+        [SerializeField] Sound soundBg;
 
         [Header("Intro")] [SerializeField] bool isShowIntro;
         [SerializeField] IntroUI introUI;
@@ -22,11 +25,16 @@ namespace Gamee.Hiuk.Loading
 
         private void Start()
         {
+            PlaySoundBG();
+
             Application.targetFrameRate = 60;
             LoadNextScene();
             Run();
         }
-
+        void PlaySoundBG()
+        {
+            audioLoading.PlaySoundBackGround(soundBg);
+        }
         private async void Run() 
         {
             isLoadingUIRunCompleted = false;
