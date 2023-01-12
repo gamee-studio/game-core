@@ -2,10 +2,10 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Gamee.Hiuk.Popup
+namespace Gamee.Hiuk.Popup.Button
 {
     [RequireComponent(typeof(Image))]
-    public class UniButton : Button
+    public class UniButton : UnityEngine.UI.Button
     {
         [Header("Custom")]
         [SerializeField] internal bool isCustom; 
