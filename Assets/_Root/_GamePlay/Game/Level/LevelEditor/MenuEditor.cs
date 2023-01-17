@@ -7,8 +7,8 @@ using UnityEditor.SceneManagement;
 
 public class MenuEditor
 {
-    private const string LOADING_SCENE_PATH = "Assets/_Root/Loading/Scene/Loading.unity";
-    private const string GAME_SCENE_PATH = "Assets/_Root/GamePlay/Scene/GamePlay.unity";
+    private const string LOADING_SCENE_PATH = "Assets/_Root/_GameLoading/Scene/Loading.unity";
+    private const string GAME_SCENE_PATH = "Assets/_Root/_GamePlay/Scene/GamePlay.unity";
     private const string GAME_SCENE = "GamePlay";
     private const string LOADING_SCENE = "Loading";
 

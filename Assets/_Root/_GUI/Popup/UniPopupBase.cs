@@ -5,7 +5,7 @@ using System.Collections;
 
 namespace Gamee.Hiuk.Popup
 {
-    public class UniPopupBase : MonoBehaviour, IUniPopupHandler
+    public class UniPopupBase  : MonoBehaviour, IPopupHandler
     {
         [SerializeField] private Canvas canvas;
         

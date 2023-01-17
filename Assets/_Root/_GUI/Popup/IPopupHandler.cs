@@ -1,6 +1,6 @@
 ﻿namespace Gamee.Hiuk.Popup
 {
-    public interface IUniPopupHandler
+    public interface IPopupHandler
     {
         /// <summary>
         /// game object

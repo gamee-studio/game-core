@@ -6,11 +6,11 @@ namespace Gamee.Hiuk.Button
 {
     public class AudioButton : Singleton<AudioButton>
     {
-        [SerializeField] AudioComponent audioComponent;
+        [SerializeField] AudioComponent audioButton;
         [SerializeField] Sound soundButton;
         public void PlaySound(Sound sound)
         {
-            audioComponent.PlaySound(sound);
+            audioButton.PlaySound(sound);
         }
         public static void Play() 
         {

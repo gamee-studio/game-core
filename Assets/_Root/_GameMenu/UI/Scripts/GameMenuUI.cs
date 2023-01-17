@@ -1,3 +1,4 @@
+using Gamee.Hiuk.Popup;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,6 +12,10 @@ namespace Gamee.Hiuk.GameMenu.UI
         public void StartGame() 
         {
             ActionStartGame?.Invoke();
+        }
+        public void ShowPopupDebug() 
+        {
+            PopupManager.Instance.ShowPopupDebug(null);
         }
         public void DefautUI() { }
         public void MoveUI() { }

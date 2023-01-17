@@ -59,7 +59,7 @@ namespace Gamee.Hiuk.Ads
             if (isRemoveRewardAds) 
             {
                 actionOpen?.Invoke();
-                actionInterAdsClose?.Invoke();
+                actionClose?.Invoke(true);
             }
             else 
             {

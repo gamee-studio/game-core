@@ -151,9 +151,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4524324615821407651}
-  - component: {fileID: 5008547272427625553}
+  - component: {fileID: 862673810848108734}
   m_Layer: 0
-  m_Name: SoundButton
+  m_Name: SoundPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,7 +175,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5008547272427625553
+--- !u!114 &862673810848108734
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,11 +184,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4524324615821407650}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbd4a0e31c2f91447a7a34fef3b1d234, type: 3}
+  m_Script: {fileID: 11500000, guid: 282694bc185c56047ba11c45a70d8970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroy: 1
-  audioButton: {fileID: 4524324614459164090}
-  soundButton:
-    audio: {fileID: 0}
-    volume: 1
+  audioPopup: {fileID: 4524324614459164090}

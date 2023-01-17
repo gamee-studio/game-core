@@ -94,7 +94,7 @@ namespace Gamee.Hiuk.Level.Editor
 
                     GameTest.IsTest= true;
                     GameTest.PathLevelAsset = AssetDatabase.GetAssetPath(level.gameObject);
-                    EditorSceneManager.OpenScene("Assets/_Root/Scenes/Loading.unity");
+                    EditorSceneManager.OpenScene("Assets/_Root/Scenes/_GameLoading.unity");
                     EditorApplication.isPlaying = true;
                 }
                 GUI.color = Color.white;
