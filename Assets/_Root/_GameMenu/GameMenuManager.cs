@@ -1,4 +1,5 @@
 using Gamee.Hiuk.Component;
+using Gamee.Hiuk.Data;
 using Gamee.Hiuk.GameMenu.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,12 +27,20 @@ namespace Gamee.Hiuk.GameMenu
         {
             gameMenuUI.Init();
             gameMenuUI.ActionStartGame = OnStartGame;
+
+            CheckUpdate();
         }
         void PlaySoundBG()
         {
             audioGameMenu.PlaySoundBackGround(soundBg);
         }
+        void CheckUpdate() 
+        {
+            if (GameData.LevelCurrent >= GameConfig.LevelShowUpdateCount)
+            {
 
+            }
+        }
         void OnStartGame() 
         {
             SceneManager.LoadScene(2);
