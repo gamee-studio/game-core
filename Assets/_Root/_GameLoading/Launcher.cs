@@ -3,6 +3,8 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.AddressableAssets;
 using Gamee.Hiuk.Game.Loader;
+using Gamee.Hiuk.Ads;
+using Gamee.Hiuk.Data;
 
 public class Launcher : MonoBehaviour
 {
@@ -26,6 +28,10 @@ public class Launcher : MonoBehaviour
 
         GameLoader.Init();
         firebaseApp.Init();
+
+        AdsManager.SetRemoveReward(GameData.IsRemoveRewardAds);
+        AdsManager.SetRemoveBanner(GameData.IsRemoveBannerAds);
+        AdsManager.SetRemoveInter(GameData.IsRemoveInterAds);
     }
     public async UniTask LoadFileData()
     {

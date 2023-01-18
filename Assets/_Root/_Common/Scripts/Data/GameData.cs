@@ -8,12 +8,12 @@ namespace Gamee.Hiuk.Data
 
         public static int LevelCurrent
         {
-            get => PlayerPrefsAdapter.GetInt(key + "level_current");
+            get => PlayerPrefsAdapter.GetInt(key + "level_current", 1);
             set => PlayerPrefsAdapter.SetInt(key + "level_current", value);
         }
         public static int CoinCurrent
         {
-            get => PlayerPrefsAdapter.GetInt(key + "coin_current");
+            get => PlayerPrefsAdapter.GetInt(key + "coin_current", 0);
             set => PlayerPrefsAdapter.SetInt(key + "coin_current", value);
         }
         public static string LevelNameCurrent => "level_" + LevelCurrent;
@@ -28,6 +28,28 @@ namespace Gamee.Hiuk.Data
             get => PlayerPrefsAdapter.GetBool(key + "is_showed_intro", false);
             set => PlayerPrefsAdapter.SetBool(key + "is_showed_intro", value);
         }
+        #region iap
+        public static bool IsRemoveInterAds
+        {
+            get => PlayerPrefsAdapter.GetBool(key + "is_remove_inter_ads", false);
+            set => PlayerPrefsAdapter.SetBool(key + "is_remove_inter_ads", value);
+        }
+        public static bool IsRemoveRewardAds
+        {
+            get => PlayerPrefsAdapter.GetBool(key + "is_remove_reward_ads", false);
+            set => PlayerPrefsAdapter.SetBool(key + "is_remove_reward_ads", value);
+        }
+        public static bool IsRemoveBannerAds
+        {
+            get => PlayerPrefsAdapter.GetBool(key + "is_remove_banner_ads", false);
+            set => PlayerPrefsAdapter.SetBool(key + "is_remove_banner_ads", value);
+        }
+        public static int X2CoinValue 
+        {
+            get => PlayerPrefsAdapter.GetInt(key + "x2_coin_value", 1);
+            set => PlayerPrefsAdapter.SetInt(key + "x2_coin_value", value);
+        }
+        #endregion
         #region setting
         public static bool IsOnAudio 
         {

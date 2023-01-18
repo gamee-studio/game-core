@@ -139,6 +139,8 @@ namespace Gamee.Hiuk.Ads
         {
             Instance.HideBannerAds();
         }
+        public static bool IsInterAdsReady => Instance.ads.IsInterReady();
+        public static bool IsRewardAdsReady => Instance.ads.IsRewardReady();
         public static void SetRemoveReward(bool isRemove) { Instance.SetRemoveRewardAds(isRemove); }
         public static void SetRemoveInter(bool isRemove) { Instance.SetRemoveInterAds(isRemove); }
         public static void SetRemoveAppOpen(bool isRemove) { Instance.SetRemoveAppOpenAds(isRemove); }

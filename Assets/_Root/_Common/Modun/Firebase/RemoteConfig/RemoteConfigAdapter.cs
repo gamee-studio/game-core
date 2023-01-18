@@ -50,9 +50,9 @@ namespace Gamee.Hiuk.FirebaseRemoteConfig
             RemoteConfig.IsShowInterAdsBeforeWin = bool.Parse(Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue(IS_SHOW_INTER_ADS_BEFORE_WIN).StringValue);
 
             RemoteConfig.IsShowInterAdsLose = bool.Parse(Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue(IS_INTER_ADS_LOSE).StringValue);
-            RemoteConfig.InterstitialAdShowCount = int.Parse(Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue(INTER_AD_SHOW_COUNT).StringValue);
-            RemoteConfig.InterstitialAdFirstShowCount = int.Parse(Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue(INTER_AD_SHOW_COUNT_IN_NEW_APP).StringValue);
-            RemoteConfig.TimeInterAdShow = int.Parse(Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue(TIME_INTER_AD_SHOW_DELAY).StringValue);
+            RemoteConfig.InterAdShowCount = int.Parse(Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue(INTER_AD_SHOW_COUNT).StringValue);
+            RemoteConfig.InterAdFirstShowCount = int.Parse(Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue(INTER_AD_SHOW_COUNT_IN_NEW_APP).StringValue);
+            RemoteConfig.TimeInterAdShowWin = int.Parse(Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue(TIME_INTER_AD_SHOW_DELAY).StringValue);
             RemoteConfig.TimeInterAdShowLose = int.Parse(Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue(TIME_INTER_AD_SHOW_LOSE_DELAY).StringValue);
 
 #if UNITY_IOS
