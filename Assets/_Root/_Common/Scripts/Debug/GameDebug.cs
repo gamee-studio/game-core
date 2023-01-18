@@ -17,7 +17,7 @@ namespace Gamee.Hiuk.Debug
         #endregion
 
         #region game 
-        public static void AddCoin(int coin) { GameData.CoinCurrent += coin; }
+        public static void AddCoin(int coin) { GameData.AddCoin(coin); }
         public static int AllLevelCount => GameLoadDataResource.AllLevelCount;
         public async static void TestLevel(int level)
         {
