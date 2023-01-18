@@ -12,8 +12,8 @@ namespace Gamee.Hiuk.Game.Loader
         [SerializeField] string levelName;
         [SerializeField] int levelMax = 100;
         [SerializeField] int levelLoopStart = 1;
-        [SerializeField, Range(1, 5)] float timeDelayWin = 2;
-        [SerializeField, Range(1, 5)] float timeDelayLose = 1;
+        [SerializeField, Range(0, 5)] float timeDelayWin = 2;
+        [SerializeField, Range(0, 5)] float timeDelayLose = 1;
         [SerializeField, GUID] string id;
 
         public ELevelLoadType Type => type;

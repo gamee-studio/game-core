@@ -3,6 +3,7 @@ using Gamee.Hiuk.Component;
 using Gamee.Hiuk.Game;
 using Gamee.Hiuk.GamePlay.UI;
 using Gamee.Hiuk.Level;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,9 @@ namespace Gamee.Hiuk.GamePlay
     {
         [SerializeField] GamePlayUI gamePlayUI;
         [SerializeField] GameManager gamemanager;
+        [Header("Time Delay")]
+        [SerializeField, Range(0, 5)] float timeDelayWin = 1;
+        [SerializeField, Range(0, 5)] float timeDelayLose = .5f;
 
         [Header("Audio"), SerializeField] AudioComponent audioGamePlay;
         [SerializeField] Sound soundBg;
@@ -27,6 +31,8 @@ namespace Gamee.Hiuk.GamePlay
         }
         public void Init()
         {
+            gamePlayUI.Init();
+
             gamemanager.ActionGameWin = OnGameWin;
             gamemanager.ActionGameLose = OnGameLose;
             gamemanager.ActionGameStart = OnGameStart;
@@ -45,15 +51,27 @@ namespace Gamee.Hiuk.GamePlay
         {
             audioGamePlay.PlaySoundBackGround(soundBg);
         }
-
+        public IEnumerator DelayTime(float time = 0.5f, Action actionCompleted = null)
+        {
+            yield return new WaitForSeconds(time);
+            actionCompleted?.Invoke();
+        }
         #region game
         void OnGameWin(LevelMap level) 
         {
             gamePlayUI.MoveUI();
+            StartCoroutine(DelayTime(timeDelayWin, () =>
+            {
+                gamePlayUI.ShowPopupWin();
+            }));
         }
         void OnGameLose(LevelMap level) 
         {
             gamePlayUI.MoveUI();
+            StartCoroutine(DelayTime(timeDelayLose, () =>
+            {
+                gamePlayUI.ShowPopupLose();
+            }));
         }
 
         void OnGameStart() 

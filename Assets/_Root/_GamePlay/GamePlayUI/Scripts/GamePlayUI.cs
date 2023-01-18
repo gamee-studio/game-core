@@ -1,4 +1,5 @@
 using Gamee.Hiuk.Game;
+using Gamee.Hiuk.Popup;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace Gamee.Hiuk.GamePlay.UI
     {
         GamePlayManager gamePlayManager;
         GameManager gameManager;
+        PopupManager popupManager;
 
         public Action ActionBackHome;
         public Action ActionReplay;
@@ -19,9 +21,20 @@ namespace Gamee.Hiuk.GamePlay.UI
             this.gamePlayManager = gamePlay;
             this.gameManager = gamePlay.GameManager;
         }
+        public void Init()
+        {
+            popupManager = PopupManager.Instance;
+        }
         public void DefautUI() { }
         public void MoveUI() { }
-
+        public void ShowPopupWin() 
+        {
+            popupManager.ShowPopupWin();
+        }
+        public void ShowPopupLose()
+        {
+            popupManager.ShowPopupLose();
+        }
         public void BackHome()
         {
             ActionBackHome?.Invoke();

@@ -24,6 +24,7 @@ namespace Gamee.Hiuk.GameMenu
         }
         public void Init() 
         {
+            gameMenuUI.Init();
             gameMenuUI.ActionStartGame = OnStartGame;
         }
         void PlaySoundBG()

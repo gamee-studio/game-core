@@ -41,6 +41,8 @@ namespace Gamee.Hiuk.Popup
                 popup.Initialize(actionClose);
             }
         }
+        public void ShowPopupWin() { }
+        public void ShowPopupLose() { }
     }
 }
 
