@@ -42,6 +42,16 @@ namespace Gamee.Hiuk.Level
             yield return new WaitForSeconds(time);
             actionCompleted?.Invoke();
         }
+        #region draw bound screen
+        void OnDrawGizmos()
+        {
+            float verticalHeightSeen = Camera.main.orthographicSize * 2.0f;
+            float verticalWidthSeen = verticalHeightSeen * Camera.main.aspect;
+
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireCube(transform.position, new Vector3(verticalWidthSeen, verticalHeightSeen, 0));
+        }
+        #endregion
     }
 }
 
