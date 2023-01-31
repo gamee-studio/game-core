@@ -4,8 +4,9 @@ using UnityEngine;
 using DG.Tweening;
 using System.Threading.Tasks;
 using Gamee.Hiuk.Component;
+using Gamee.Hiuk.Pattern;
 
-public class CoinGeneration : MonoBehaviour
+public class CoinGeneration : Singleton<CoinGeneration>
 {
     [SerializeField] private GameObject root;
     [SerializeField] private GameObject coinPrefab;
@@ -86,4 +87,11 @@ public class CoinGeneration : MonoBehaviour
     {
         return MoveTo(to.transform.position, coin, durationTarget, easeTarget);
     }
+
+    #region static api
+    public static void Generate(System.Action moveOneCoinDone, System.Action moveAllCoinDone, GameObject from = null, GameObject to = null, int numberCoin = -1)
+    {
+        Instance.GenerateCoin(moveOneCoinDone, moveAllCoinDone, from, to, numberCoin);
+    }
+    #endregion
 }

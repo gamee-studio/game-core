@@ -14,12 +14,10 @@ namespace Gamee.Hiuk.Popup
         public Popup Popup => popup ?? (popup = new Popup());
 
         [SerializeField] PopupDebug popupDebugPrefab;
+        [SerializeField] PopupWin popupWinPrefab;
 
         IPopupHandler popupDebugHandler;
-        public void GenerateCoin(Action moveOneCoinDone, Action moveAllCoinDone, GameObject from = null, GameObject to = null, int numberCoin = -1)
-        {
-            coinGeneration.GenerateCoin(moveOneCoinDone, moveAllCoinDone, from, to, numberCoin);
-        }
+        IPopupHandler popupWinHandler;
         public void ShowPopupDebug(Action actionClose)
         {
             if (popupDebugHandler != null)
@@ -41,7 +39,27 @@ namespace Gamee.Hiuk.Popup
                 popup.Initialize(actionClose);
             }
         }
-        public void ShowPopupWin() { }
+        public void ShowPopupWin(Action actionBackToHome, Action actionNextLevel, Action actionProcessFull)
+        {
+            if (popupWinHandler != null)
+            {
+                if (popupWinHandler.ThisGameObject.activeSelf) return;
+
+                Display();
+                return;
+            }
+
+            popupWinHandler = Instantiate(popupWinPrefab, root.transform, false);
+            Display();
+
+            void Display()
+            {
+                // initialize
+                var popup = (PopupWin)popupWinHandler;
+                Popup.Show(popupWinHandler);
+                popup.Initialize(actionBackToHome, actionNextLevel, actionProcessFull);
+            }
+        }
         public void ShowPopupLose() { }
     }
 }

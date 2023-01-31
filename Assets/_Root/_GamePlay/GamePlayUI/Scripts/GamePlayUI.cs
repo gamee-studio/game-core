@@ -29,11 +29,19 @@ namespace Gamee.Hiuk.GamePlay.UI
         public void MoveUI() { }
         public void ShowPopupWin() 
         {
-            popupManager.ShowPopupWin();
+            popupManager.ShowPopupWin(BackHome, NextLevel, OnFullProcess);
         }
         public void ShowPopupLose()
         {
             popupManager.ShowPopupLose();
+        }
+
+        public void NextLevel() 
+        {
+        }
+        public void OnFullProcess() 
+        {
+            
         }
         public void BackHome()
         {
