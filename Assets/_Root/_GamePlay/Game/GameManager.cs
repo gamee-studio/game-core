@@ -42,15 +42,15 @@ namespace Gamee.Hiuk.Game
             FirebaseAnalytic.LogLevelReplay(GameLoader.levelLoadData.LevelNameCurrent + GameData.LevelNameCurrent);
             GameStart();
         }
-        public void NextLevel() 
+        public void NextLevelData() 
         {
             GameData.LevelCurrent++;
             GameLoader.levelLoadData.Uplevel();
         }
-        public void SkipLevel()
+        public void NextLevel(bool isSkip = false)
         {
-            FirebaseAnalytic.LogLevelSkip(GameLoader.levelLoadData.LevelNameCurrent + GameData.LevelNameCurrent);
-            NextLevel();
+            if(isSkip) FirebaseAnalytic.LogLevelSkip(GameLoader.levelLoadData.LevelNameCurrent + GameData.LevelNameCurrent);
+            NextLevelData();
             LoadLevelMap();
             GameStart();
         }
@@ -84,7 +84,7 @@ namespace Gamee.Hiuk.Game
             state = EGameState.GAME_WIN;
             FirebaseAnalytic.LogLevelCompleted(GameLoader.levelLoadData.LevelNameCurrent + GameData.LevelNameCurrent);
             audioGame.PlaySound(soundWin);
-            NextLevel();
+            NextLevelData();
             LoadLevelMap();
             ActionGameWin?.Invoke(levelMap);
         }

@@ -42,8 +42,8 @@ namespace Gamee.Hiuk.GamePlay
             gamemanager.ActionGameStart = OnGameStart;
 
             gamePlayUI.ActionBackHome = OnBackHome;
-            gamePlayUI.ActionReplay= OnReplay;
-            gamePlayUI.ActionSkip = OnSkip;
+            gamePlayUI.ActionReplay= OnReplayLevel;
+            gamePlayUI.ActionNextLevel = OnNextLevel;
         }
 
         private void Start()
@@ -170,16 +170,13 @@ namespace Gamee.Hiuk.GamePlay
         {
             SceneManager.LoadScene(1);
         }
-        void OnReplay() 
+        void OnReplayLevel() 
         {
             gamemanager.Replay();
         }
-        void OnSkip() 
+        void OnNextLevel(bool isSkip = false) 
         {
-            AdsManager.ShowReard((isWatched) =>
-            {
-                if(isWatched) gamemanager.SkipLevel();
-            });
+            gamemanager.NextLevel(isSkip);
         }
         #endregion
     }

@@ -15,9 +15,11 @@ namespace Gamee.Hiuk.Popup
 
         [SerializeField] PopupDebug popupDebugPrefab;
         [SerializeField] PopupWin popupWinPrefab;
+        [SerializeField] PopupLose popupLosePrefab;
 
         IPopupHandler popupDebugHandler;
         IPopupHandler popupWinHandler;
+        IPopupHandler popupLoseHandler;
         public void ShowPopupDebug(Action actionClose)
         {
             if (popupDebugHandler != null)
@@ -60,7 +62,27 @@ namespace Gamee.Hiuk.Popup
                 popup.Initialize(actionBackToHome, actionNextLevel, actionProcessFull);
             }
         }
-        public void ShowPopupLose() { }
+        public void ShowPopupLose(Action actionBackToHome, Action actionReplayLevel, Action actionSkipLevel)
+        {
+            if (popupLoseHandler != null)
+            {
+                if (popupLoseHandler.ThisGameObject.activeSelf) return;
+
+                Display();
+                return;
+            }
+
+            popupLoseHandler = Instantiate(popupLosePrefab, root.transform, false);
+            Display();
+
+            void Display()
+            {
+                // initialize
+                var popup = (PopupLose)popupLoseHandler;
+                Popup.Show(popupLoseHandler);
+                popup.Initialize(actionBackToHome, actionReplayLevel, actionSkipLevel);
+            }
+        }
     }
 }
 

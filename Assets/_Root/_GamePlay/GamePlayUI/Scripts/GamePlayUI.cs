@@ -15,7 +15,7 @@ namespace Gamee.Hiuk.GamePlay.UI
 
         public Action ActionBackHome;
         public Action ActionReplay;
-        public Action ActionSkip;
+        public Action<bool> ActionNextLevel;
         public void Init(GamePlayManager gamePlay)
         {
             this.gamePlayManager = gamePlay;
@@ -33,11 +33,20 @@ namespace Gamee.Hiuk.GamePlay.UI
         }
         public void ShowPopupLose()
         {
-            popupManager.ShowPopupLose();
+            popupManager.ShowPopupLose(BackHome, ReplayLevel, SkipLevel);
         }
 
         public void NextLevel() 
         {
+            ActionNextLevel?.Invoke(false);
+        }
+        public void ReplayLevel()
+        {
+            ActionReplay?.Invoke();
+        }
+        public void SkipLevel()
+        {
+            ActionNextLevel?.Invoke(true);
         }
         public void OnFullProcess() 
         {
@@ -50,10 +59,6 @@ namespace Gamee.Hiuk.GamePlay.UI
         public void RePlay() 
         {
             ActionReplay?.Invoke();
-        }
-        public void Skip()
-        {
-            ActionSkip?.Invoke();
         }
     }
 }
