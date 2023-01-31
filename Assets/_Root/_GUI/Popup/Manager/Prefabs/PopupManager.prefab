@@ -49,8 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroy: 1
   root: {fileID: 1985456415211628210}
-  coinGeneration: {fileID: 0}
   popupDebugPrefab: {fileID: 1440911017544014973, guid: de9f58f31cc0b8d4db4fc646a7ec9c24, type: 3}
+  popupWinPrefab: {fileID: 8169443199417033971, guid: 474f6901a6e356b43a237dd1118af7b1, type: 3}
+  popupLosePrefab: {fileID: 844579812625016434, guid: 856b63ed7ae169d43a86cd1197b18f29, type: 3}
 --- !u!1 &1985456415211628210
 GameObject:
   m_ObjectHideFlags: 0

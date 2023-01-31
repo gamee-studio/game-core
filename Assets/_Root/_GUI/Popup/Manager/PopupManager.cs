@@ -9,7 +9,6 @@ namespace Gamee.Hiuk.Popup
     public class PopupManager : Singleton<PopupManager>
     {
         [SerializeField] GameObject root;
-        [SerializeField] CoinGeneration coinGeneration;
         private Popup popup;
         public Popup Popup => popup ?? (popup = new Popup());
 
