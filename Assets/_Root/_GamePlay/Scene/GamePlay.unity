@@ -451,6 +451,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamePlayUI: {fileID: 8840744380985522959}
   gamemanager: {fileID: 916773400}
+  timeDelayWin: 1
+  timeDelayLose: 0.5
   audioGamePlay: {fileID: 190890895}
   soundBg:
     audio: {fileID: 0}
@@ -527,6 +529,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 6008532197943587957, guid: 199bea7c100be8e49a98eef71661351f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SkipLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 8840744381455606064, guid: 199bea7c100be8e49a98eef71661351f, type: 3}
       propertyPath: m_Name
       value: GamePlayUI
