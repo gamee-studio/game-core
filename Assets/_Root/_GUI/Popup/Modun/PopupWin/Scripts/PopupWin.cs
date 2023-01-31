@@ -70,6 +70,7 @@ namespace Gamee.Hiuk.Popup
         public void BackToHome() 
         {
             actionBackToHome?.Invoke();
+            Close();
         }
 
         void AddCoin(int coin) 
@@ -81,13 +82,14 @@ namespace Gamee.Hiuk.Popup
             {
                 GameData.AddCoin(coin);
                 actionNextLevel?.Invoke();
+                Close();
             });
         }
         void ProcessRun() 
         {
             processUI.Run(ProcessValueCurrent, processIndex);
             ProcessValueCurrent++;
-            processUI.Run(10, processIndex, .5f);
+            processUI.Run(ProcessValueCurrent, processIndex, .5f);
             processUI.ActionFull = OnProcessFull;
         }
         void OnProcessFull() 
