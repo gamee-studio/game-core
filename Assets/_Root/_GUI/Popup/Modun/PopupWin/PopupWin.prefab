@@ -331,6 +331,8 @@ MonoBehaviour:
   coinValue: 100
   watchVideoValue: 5
   txtCoin: {fileID: 8027905248308126798}
+  btnNextLevel: {fileID: 8297456021102915409}
+  btnWatchVideo: {fileID: 1176131831751041819}
   processUI: {fileID: 7046464464445381444}
   processIndex: 10
 --- !u!1001 &1128585471962522249
@@ -586,6 +588,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6425104503903038472, guid: 0014744375cb5ad44a16f341118f1e12, type: 3}
   m_PrefabInstance: {fileID: 3030063603989660504}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8297456021102915409 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6425104503903038473, guid: 0014744375cb5ad44a16f341118f1e12, type: 3}
+  m_PrefabInstance: {fileID: 3030063603989660504}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3285385807479770664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -722,6 +729,11 @@ PrefabInstance:
 --- !u!224 &1176131831751041818 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4452508995776539954, guid: d52cce77d51d2824cab11ed17087fd03, type: 3}
+  m_PrefabInstance: {fileID: 3285385807479770664}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1176131831751041819 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4452508995776539955, guid: d52cce77d51d2824cab11ed17087fd03, type: 3}
   m_PrefabInstance: {fileID: 3285385807479770664}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4323297687557564771

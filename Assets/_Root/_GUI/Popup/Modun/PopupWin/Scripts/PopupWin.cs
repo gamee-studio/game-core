@@ -14,6 +14,8 @@ namespace Gamee.Hiuk.Popup
         [SerializeField] int coinValue;
         [SerializeField] int watchVideoValue;
         [SerializeField] TextMeshProUGUI txtCoin;
+        [SerializeField] GameObject btnNextLevel;
+        [SerializeField] GameObject btnWatchVideo;
         [Header("Process")]
         [SerializeField] ProcessUI processUI;
         [SerializeField] int processIndex;
@@ -22,6 +24,7 @@ namespace Gamee.Hiuk.Popup
         private Action actionProcessFull;
         private int coin;
         private int coinBonus;
+        private bool isSellected = false;
 
         public int ProcessValueCurrent 
         {
@@ -34,6 +37,8 @@ namespace Gamee.Hiuk.Popup
             this.actionNextLevel = actionNextLevel;
             this.actionProcessFull = actionProcessFull;
 
+            DefautUI();
+
             coin = coinValue + coinBonus;
             txtCoin.text = coin.ToString();
 
@@ -42,16 +47,24 @@ namespace Gamee.Hiuk.Popup
 
         public void NextLevel() 
         {
+            if (isSellected) return;
+            isSellected = true;
             AddCoin(coin);
         }
         public void WatchVideo()
         {
+            if (isSellected) return;
+            isSellected = true;
+
             AdsManager.ShowReard((isWatched) =>
             {
                 if (isWatched) 
                 {
                     AddCoin(coin * watchVideoValue);
                 }
+            }, ()=> 
+            {
+                DefautUI();
             });
         }
         public void BackToHome() 
@@ -61,6 +74,9 @@ namespace Gamee.Hiuk.Popup
 
         void AddCoin(int coin) 
         {
+            btnNextLevel.gameObject.SetActive(false);
+            btnWatchVideo.gameObject.SetActive(false);
+
             CoinGeneration.Generate(null, () =>
             {
                 GameData.AddCoin(coin);
@@ -78,6 +94,12 @@ namespace Gamee.Hiuk.Popup
         {
             actionProcessFull?.Invoke();
             ProcessValueCurrent = 0;
+        }
+        void DefautUI() 
+        {
+            isSellected = false;
+            btnNextLevel.gameObject.SetActive(true);
+            btnWatchVideo.gameObject.SetActive(true);
         }
     }
 }
