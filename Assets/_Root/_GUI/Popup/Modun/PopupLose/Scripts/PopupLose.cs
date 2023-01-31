@@ -24,6 +24,7 @@ namespace Gamee.Hiuk.Popup
         public void BackToHome()
         {
             actionBackToHome?.Invoke();
+            Close();
         }
         public void Skip()
         {
