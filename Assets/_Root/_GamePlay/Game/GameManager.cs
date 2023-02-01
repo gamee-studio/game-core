@@ -40,6 +40,7 @@ namespace Gamee.Hiuk.Game
         public void Replay()
         {
             FirebaseAnalytic.LogLevelReplay(GameLoader.levelLoadData.LevelNameCurrent + GameData.LevelNameCurrent);
+            levelMap.Clear();
             GameStart();
         }
         public void NextLevelData() 

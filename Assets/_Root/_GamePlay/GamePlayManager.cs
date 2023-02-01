@@ -28,6 +28,8 @@ namespace Gamee.Hiuk.GamePlay
         public GamePlayUI GamePlayUI => gamePlayUI;
 
         private bool isPreLevelWin = true;
+        private Coroutine coroutineDelayWin;
+        private Coroutine coroutineDelayLose;
 
         private void Awake()
         {
@@ -68,7 +70,7 @@ namespace Gamee.Hiuk.GamePlay
                 ShowInter();
             }
 
-            StartCoroutine(DelayTime(timeDelayWin, () =>
+            coroutineDelayWin = StartCoroutine(DelayTime(timeDelayWin, () =>
             {
                 gamePlayUI.ShowPopupWin();
             }));
@@ -79,18 +81,39 @@ namespace Gamee.Hiuk.GamePlay
             if(RemoteConfig.IsShowInterAdsLose) GameDataCache.InterAdCountCurrent++;
 
             gamePlayUI.MoveUI();
-            StartCoroutine(DelayTime(timeDelayLose, () =>
+            coroutineDelayLose = StartCoroutine(DelayTime(timeDelayLose, () =>
             {
                 gamePlayUI.ShowPopupLose();
             }));
         }
+        void OnGameStart() 
+        {
+            if (IsShowInter && !RemoteConfig.IsShowInterAdsBeforeWin)
+            {
+                ShowInter();
+            }
+
+            gamePlayUI.DefautUI();
+        }
+        public IEnumerator DelayTime(float time = 0.5f, Action actionCompleted = null)
+        {
+            yield return new WaitForSeconds(time);
+            actionCompleted?.Invoke();
+        }
+        void StopCoroutineDelay()
+        {
+            if(coroutineDelayLose != null) StopCoroutine(coroutineDelayLose);
+            if(coroutineDelayWin != null) StopCoroutine(coroutineDelayWin);
+        }
+        #endregion
+
         #region inter ads show
-        public void ResetInterShowTime() 
+        public void ResetInterShowTime()
         {
             GameDataCache.TimeAtInterShowWin = DateTime.Now;
             GameDataCache.TimeAtInterShowWin = DateTime.Now;
         }
-        public void ShowInter() 
+        public void ShowInter()
         {
             gamemanager.GamePause();
             AdsManager.ShowInter(() =>
@@ -99,11 +122,11 @@ namespace Gamee.Hiuk.GamePlay
                 gamemanager.GamePlay();
             });
         }
-        public bool IsShowInter 
+        public bool IsShowInter
         {
             get
             {
-                if (GameDataCache.IsJustShowRewardAds) 
+                if (GameDataCache.IsJustShowRewardAds)
                 {
                     GameDataCache.IsJustShowRewardAds = false;
                     return false;
@@ -149,21 +172,6 @@ namespace Gamee.Hiuk.GamePlay
             }
         }
         #endregion
-        public IEnumerator DelayTime(float time = 0.5f, Action actionCompleted = null)
-        {
-            yield return new WaitForSeconds(time);
-            actionCompleted?.Invoke();
-        }
-        void OnGameStart() 
-        {
-            if (IsShowInter && !RemoteConfig.IsShowInterAdsBeforeWin)
-            {
-                ShowInter();
-            }
-
-            gamePlayUI.DefautUI();
-        }
-        #endregion
 
         #region ui
         void OnBackHome() 
@@ -172,6 +180,7 @@ namespace Gamee.Hiuk.GamePlay
         }
         void OnReplayLevel() 
         {
+            StopCoroutineDelay();
             gamemanager.Replay();
         }
         void OnNextLevel(bool isSkip = false) 

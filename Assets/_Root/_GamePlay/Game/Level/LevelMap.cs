@@ -36,6 +36,11 @@ namespace Gamee.Hiuk.Level
                 ActionWin?.Invoke();
             }));
         }
+        public virtual void Clear() 
+        {
+            if(coroutineLevelLose != null) StopCoroutine(coroutineLevelLose);
+            if(coroutineLevelWin != null) StopCoroutine(coroutineLevelWin);
+        }
 
         public IEnumerator DelayTime(float time = 0.5f, Action actionCompleted = null) 
         {
