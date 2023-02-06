@@ -11,7 +11,7 @@ namespace Gamee.Hiuk.Level.Editor
     {
         public override void OnInspectorGUI()
         {
-            string path = "Assets/_Root/Loading/Scene/Loading.unity";
+            string path = "Assets/_Root/_GameLoading/Scene/Loading.unity";
             base.OnInspectorGUI();
             if (!serializedObject.isEditingMultipleObjects)
             {
