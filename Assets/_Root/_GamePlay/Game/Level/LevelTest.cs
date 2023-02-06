@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Gamee.Hiuk.Level 
 {
-    public class LevelNormal : LevelMap
+    public class LevelTest : LevelMap
     {
         public override void Init()
         {
