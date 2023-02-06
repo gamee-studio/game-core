@@ -1,4 +1,5 @@
 using Gamee.Hiuk.Game.Loader;
+using Gamee.Hiuk.Level.Player;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -12,7 +13,12 @@ namespace Gamee.Hiuk.Level
 
         protected Coroutine coroutineLevelWin;
         protected Coroutine coroutineLevelLose;
-        public abstract void Init();
+
+        protected  PlayerController Player;
+        public virtual void Init() 
+        {
+            Player = this.GetComponentInChildren<PlayerController>();
+        }
         public virtual void Lose()
         {
             if (state == ELevelState.LEVEL_WIN) return;
