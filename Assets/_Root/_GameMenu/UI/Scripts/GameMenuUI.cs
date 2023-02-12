@@ -25,7 +25,10 @@ namespace Gamee.Hiuk.GameMenu.UI
         {
             popupManager.ShowPopupSetting(null);
         }
-        public void ShowPopupNewUpdate() { }
+        public void ShowPopupNewUpdate(Action<bool> actionClose, string strDescription, string strVersionUpdate)
+        {
+            popupManager.ShowPopupUpdate(actionClose, strDescription, strVersionUpdate);
+        }
         public void DefautUI() { }
         public void MoveUI() { }
     }

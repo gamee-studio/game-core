@@ -5,7 +5,7 @@ namespace Gamee.Hiuk.Data
     public static class GameData
     {
         private const string key = "com.gamee.gamebase";
-
+        #region game
         public static int LevelCurrent
         {
             get => PlayerPrefsAdapter.GetInt(key + "level_current", 1);
@@ -32,7 +32,18 @@ namespace Gamee.Hiuk.Data
             get => PlayerPrefsAdapter.GetBool(key + "is_showed_intro", false);
             set => PlayerPrefsAdapter.SetBool(key + "is_showed_intro", value);
         }
-        #region iap
+        public static bool IsNotShowUpdateAgain
+        {
+            get => PlayerPrefsAdapter.GetBool(key + "is_not_show_update_again", false);
+            set => PlayerPrefsAdapter.SetBool(key + "is_not_show_update_again", value);
+        }
+        public static string VersionShowedUpdate
+        {
+            get => PlayerPrefsAdapter.GetString(key + "version_showed_update", UnityEngine.Application.version);
+            set => PlayerPrefsAdapter.SetString(key + "version_showed_update", value);
+        }
+        #endregion
+            #region iap
         public static bool IsRemoveInterAds
         {
             get => PlayerPrefsAdapter.GetBool(key + "is_remove_inter_ads", false);

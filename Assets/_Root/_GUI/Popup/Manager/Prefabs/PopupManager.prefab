@@ -53,6 +53,7 @@ MonoBehaviour:
   popupWinPrefab: {fileID: 8169443199417033971, guid: 474f6901a6e356b43a237dd1118af7b1, type: 3}
   popupLosePrefab: {fileID: 844579812625016434, guid: 856b63ed7ae169d43a86cd1197b18f29, type: 3}
   popupSettingPrefab: {fileID: 2071683429245162149, guid: 5d7acf7be1a62f6438945b061061234c, type: 3}
+  popupUpdatePrefab: {fileID: 3392125259725620041, guid: fa1a20240cc120047bb74f7af8601340, type: 3}
 --- !u!1 &1985456415211628210
 GameObject:
   m_ObjectHideFlags: 0

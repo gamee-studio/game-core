@@ -7,16 +7,22 @@ namespace Gamee.Hiuk.Popup
 {
     public class PopupUpdate : UniPopup
     {
-        private Action actionclose;
+        [SerializeField] TextMeshProUGUI txtDescription;
+        [SerializeField] TextMeshProUGUI txtVersion;
+        [SerializeField] Toggle toggleNotShowAgain;
+        private Action<bool> actionclose;
 
-        public void Initialize(Action actionClose = null)
+        public void Initialize(Action<bool> actionClose, string strDescription, string strVersionUpdate)
         {
             this.actionclose = actionClose;
+
+            txtDescription.text = strDescription.Replace("\\n", "\n");
+            txtVersion.text = "Version: " + strVersionUpdate;
         }
 
         public void Back() 
         {
-            actionclose?.Invoke();
+            actionclose?.Invoke(toggleNotShowAgain.isOn);
             Close();
         }
     }
