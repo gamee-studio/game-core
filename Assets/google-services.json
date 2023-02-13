@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "110786831321",
-    "project_id": "pin-master-c50dd",
-    "storage_bucket": "pin-master-c50dd.appspot.com"
+    "project_number": "582268576451",
+    "project_id": "game-core-b09d4",
+    "storage_bucket": "game-core-b09d4.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:110786831321:android:c0156a238ed2fb8551efc8",
+        "mobilesdk_app_id": "1:582268576451:android:8e8d5593b5efaf4e41f876",
         "android_client_info": {
-          "package_name": "com.gamee.homepin2.manor.homescape"
+          "package_name": "com.gamee.gamecore"
         }
       },
       "oauth_client": [
         {
-          "client_id": "110786831321-m5sm7t9a2ibkr0ul21ptf56ctm7itin9.apps.googleusercontent.com",
+          "client_id": "582268576451-g4deqjj5d7p75mlre8p307mg7daoh4r1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA1LjwgbIsQslc7OCrGEBLOst8cVNfsMh0"
+          "current_key": "AIzaSyCrBpD7IfIh0qvkbeAxgrpFrGQKtXzyTfs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "110786831321-m5sm7t9a2ibkr0ul21ptf56ctm7itin9.apps.googleusercontent.com",
+              "client_id": "582268576451-g4deqjj5d7p75mlre8p307mg7daoh4r1.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

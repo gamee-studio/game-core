@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id">
-  <string name="gcm_defaultSenderId" translatable="false">110786831321</string>
-  <string name="google_storage_bucket" translatable="false">pin-master-c50dd.appspot.com</string>
-  <string name="project_id" translatable="false">pin-master-c50dd</string>
-  <string name="google_api_key" translatable="false">AIzaSyA1LjwgbIsQslc7OCrGEBLOst8cVNfsMh0</string>
-  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyA1LjwgbIsQslc7OCrGEBLOst8cVNfsMh0</string>
-  <string name="google_app_id" translatable="false">1:110786831321:android:c0156a238ed2fb8551efc8</string>
-  <string name="default_web_client_id" translatable="false">110786831321-m5sm7t9a2ibkr0ul21ptf56ctm7itin9.apps.googleusercontent.com</string>
+  <string name="gcm_defaultSenderId" translatable="false">582268576451</string>
+  <string name="google_storage_bucket" translatable="false">game-core-b09d4.appspot.com</string>
+  <string name="project_id" translatable="false">game-core-b09d4</string>
+  <string name="google_api_key" translatable="false">AIzaSyCrBpD7IfIh0qvkbeAxgrpFrGQKtXzyTfs</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCrBpD7IfIh0qvkbeAxgrpFrGQKtXzyTfs</string>
+  <string name="google_app_id" translatable="false">1:582268576451:android:8e8d5593b5efaf4e41f876</string>
+  <string name="default_web_client_id" translatable="false">582268576451-g4deqjj5d7p75mlre8p307mg7daoh4r1.apps.googleusercontent.com</string>
 </resources>
