@@ -1,0 +1,19 @@
+-keep class com.unity.** { * ;}
+-keep class com.unity.androidnotifications.* { * ;}
+-keepclassmembers class com.unity.androidnotifications.* { * ;}
+-keepnames class com.unity.androidnotifications.* { * ;}
+-keepclassmembernames class com.unity.androidnotifications.* { * ;}
+-keep class com.adjust.sdk.** { *; }
+-keep class com.google.android.gms.common.ConnectionResult {
+    int SUCCESS;
+}
+-keep class com.google.android.gms.ads.identifier.AdvertisingIdClient {
+    com.google.android.gms.ads.identifier.AdvertisingIdClient$Info getAdvertisingIdInfo(android.content.Context);
+}
+-keep class com.google.android.gms.ads.identifier.AdvertisingIdClient$Info {
+    java.lang.String getId();
+    boolean isLimitAdTrackingEnabled();
+}
+-keep public class com.android.installreferrer.** { *; }
+-keep class com.google.android.play.core.** { *; }
+-keep com.google.android.gms.play-** { *; }
