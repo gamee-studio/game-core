@@ -54,6 +54,7 @@ MonoBehaviour:
   popupLosePrefab: {fileID: 844579812625016434, guid: 856b63ed7ae169d43a86cd1197b18f29, type: 3}
   popupSettingPrefab: {fileID: 2071683429245162149, guid: 5d7acf7be1a62f6438945b061061234c, type: 3}
   popupUpdatePrefab: {fileID: 3392125259725620041, guid: fa1a20240cc120047bb74f7af8601340, type: 3}
+  popupRatePrefab: {fileID: 4619152485703456413, guid: 34ae8a0cf4942774cad65993dfc26e67, type: 3}
 --- !u!1 &1985456415211628210
 GameObject:
   m_ObjectHideFlags: 0

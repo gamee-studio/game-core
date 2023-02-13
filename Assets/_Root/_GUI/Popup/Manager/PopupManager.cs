@@ -17,12 +17,14 @@ namespace Gamee.Hiuk.Popup
         [SerializeField] PopupLose popupLosePrefab;
         [SerializeField] PopupSetting popupSettingPrefab;
         [SerializeField] PopupUpdate popupUpdatePrefab;
+        [SerializeField] PopupRate popupRatePrefab;
 
         IPopupHandler popupDebugHandler;
         IPopupHandler popupWinHandler;
         IPopupHandler popupLoseHandler;
         IPopupHandler popupSettingHandler;
         IPopupHandler popupUpdateHandler;
+        IPopupHandler popupRateHandler;
         public void ShowPopupDebug(Action actionClose)
         {
             if (popupDebugHandler != null)
@@ -44,7 +46,7 @@ namespace Gamee.Hiuk.Popup
                 popup.Initialize(actionClose);
             }
         }
-        public void ShowPopupWin(Action actionBackToHome, Action actionNextLevel, Action actionProcessFull)
+        public void ShowPopupWin(Action actionBackToHome, Action actionNextLevel, Action<bool> actionProcessFull)
         {
             if (popupWinHandler != null)
             {
@@ -126,6 +128,27 @@ namespace Gamee.Hiuk.Popup
                 var popup = (PopupUpdate)popupUpdateHandler;
                 Popup.Show(popupUpdateHandler);
                 popup.Initialize(actionClose, strDescription, strVersionUpdate);
+            }
+        }
+        public void ShowPopupRate(Action actionClose)
+        {
+            if (popupRateHandler != null)
+            {
+                if (popupRateHandler.ThisGameObject.activeSelf) return;
+
+                Display();
+                return;
+            }
+
+            popupRateHandler = Instantiate(popupRatePrefab, root.transform, false);
+            Display();
+
+            void Display()
+            {
+                // initialize
+                var popup = (PopupRate)popupRateHandler;
+                Popup.Show(popupRateHandler);
+                popup.Initialize(actionClose);
             }
         }
     }

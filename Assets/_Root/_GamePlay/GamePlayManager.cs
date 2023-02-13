@@ -46,6 +46,7 @@ namespace Gamee.Hiuk.GamePlay
             gamePlayUI.ActionBackHome = OnBackHome;
             gamePlayUI.ActionReplay= OnReplayLevel;
             gamePlayUI.ActionNextLevel = OnNextLevel;
+            gamePlayUI.ActionProcessFull = OnProcessFull;
         }
 
         private void Start()
@@ -186,6 +187,29 @@ namespace Gamee.Hiuk.GamePlay
         void OnNextLevel(bool isSkip = false) 
         {
             gamemanager.NextLevel(isSkip);
+        }  
+        void OnProcessFull(bool isFull) 
+        {
+            if (isFull) { }
+            else 
+            {
+                if(IsShowRate()) gamePlayUI.ShowPopupRate();
+            }
+        }
+        bool IsShowRate() 
+        {
+            if (GameData.IsShowedRate) return false;
+
+            if(GameData.LevelCurrent >= GameConfig.LevelShowRateCount) 
+            {
+                if (GameData.LevelShowedRateCount < GameConfig.LevelShowRateCount) GameData.LevelShowedRateCount = GameConfig.LevelShowRateCount;
+                if(GameData.LevelCurrent >= GameData.LevelShowedRateCount) 
+                {
+                    GameData.LevelShowedRateCount += GameConfig.LevelShowRateNextValue;
+                    return true;
+                }
+            }
+            return false;
         }
         #endregion
     }

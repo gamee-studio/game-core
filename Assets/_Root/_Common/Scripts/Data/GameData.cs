@@ -42,8 +42,18 @@ namespace Gamee.Hiuk.Data
             get => PlayerPrefsAdapter.GetString(key + "version_showed_update", UnityEngine.Application.version);
             set => PlayerPrefsAdapter.SetString(key + "version_showed_update", value);
         }
+        public static int LevelShowedRateCount
+        {
+            get => PlayerPrefsAdapter.GetInt(key + "level_showed_rate_count", 0);
+            set => PlayerPrefsAdapter.SetInt(key + "level_showed_rate_count", value);
+        }
+        public static bool IsShowedRate
+        {
+            get => PlayerPrefsAdapter.GetBool(key + "is_showed_rate", false);
+            set => PlayerPrefsAdapter.SetBool(key + "is_showed_rate", value);
+        }
         #endregion
-            #region iap
+        #region iap
         public static bool IsRemoveInterAds
         {
             get => PlayerPrefsAdapter.GetBool(key + "is_remove_inter_ads", false);

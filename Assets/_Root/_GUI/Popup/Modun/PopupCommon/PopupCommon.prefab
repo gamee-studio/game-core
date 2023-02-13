@@ -422,7 +422,7 @@ PrefabInstance:
     - target: {fileID: 5095870081608219501, guid: a986d8e89b588a64f86212dd94952532, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4691674842354843416}
     - target: {fileID: 5095870081608219501, guid: a986d8e89b588a64f86212dd94952532, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -433,7 +433,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5095870081608219501, guid: a986d8e89b588a64f86212dd94952532, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Gamee.Hiuk.Popup.PopupSetting, Assembly-CSharp
+      value: Gamee.Hiuk.Popup.PopupCommon, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5095870081608219501, guid: a986d8e89b588a64f86212dd94952532, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
