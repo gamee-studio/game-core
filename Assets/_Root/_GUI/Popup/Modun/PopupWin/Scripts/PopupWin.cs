@@ -21,7 +21,7 @@ namespace Gamee.Hiuk.Popup
         [SerializeField] int processIndex;
         private Action actionBackToHome;
         private Action actionNextLevel;
-        private Action actionProcessFull;
+        private Action<bool> actionProcessFull;
         private int coin;
         private int coinBonus;
         private bool isSellected = false;
@@ -31,7 +31,7 @@ namespace Gamee.Hiuk.Popup
             get => PlayerPrefsAdapter.GetInt("popup_win_process_value", 0);
             set => PlayerPrefsAdapter.SetInt("popup_win_process_value", value);
         }
-        public void Initialize(Action actionBackToHome, Action actionNextLevel, Action actionProcessFull)
+        public void Initialize(Action actionBackToHome, Action actionNextLevel, Action<bool> actionProcessFull)
         {
             this.actionBackToHome = actionBackToHome;
             this.actionNextLevel = actionNextLevel;
@@ -92,10 +92,14 @@ namespace Gamee.Hiuk.Popup
             processUI.Run(ProcessValueCurrent, processIndex, .5f);
             processUI.ActionFull = OnProcessFull;
         }
-        void OnProcessFull() 
+        void OnProcessFull(bool isFull) 
         {
-            actionProcessFull?.Invoke();
-            ProcessValueCurrent = 0;
+            if (isFull)
+            {
+                actionProcessFull?.Invoke(true);
+                ProcessValueCurrent = 0;
+            }
+            else actionProcessFull?.Invoke(false);
         }
         void DefautUI() 
         {
