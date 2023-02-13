@@ -19,7 +19,7 @@ namespace Gamee.Hiuk.UI.Helper
         float valueCache = 0;
         public Action ActionCompleted;
         public Action ActionUpdate;
-        public Action ActionFull;
+        public Action<bool> ActionFull;
         public float ValueCurrent => valueCurrent;
         public void Run(float valueUpdate, float valueMax, float time = 0f)
         {
@@ -31,8 +31,9 @@ namespace Gamee.Hiuk.UI.Helper
                 if (valueCurrent >= valueMax)
                 {
                     valueCurrent = valueMax;
-                    ActionFull?.Invoke();
+                    ActionFull?.Invoke(true);
                 }
+                else ActionFull?.Invoke(false);
                 ActionCompleted?.Invoke();
             });
 
