@@ -16,11 +16,14 @@ public class Launcher : MonoBehaviour
     {
         isRunCompleted = false;
         LoadData();
+
+        GameDataCache.LevelObjCache = await GameLoader.LoadLevel(GameData.LevelCurrent);
         await LoadFileData();
+
         isRunCompleted = true;
     }
 
-    public void LoadData() 
+    public void LoadData()
     {
         Vibration.Init();
         DOTween.Init();

@@ -335,6 +335,8 @@ MonoBehaviour:
   loadingUI: {fileID: 1344372063}
   launcher: {fileID: 1900542337}
   timeDelayLoadScene: 0.5
+  sceneGamemenuName: GameMenu
+  sceneGameplayName: GamePlay
   audioLoading: {fileID: 6013605}
   soundBg:
     audio: {fileID: 0}

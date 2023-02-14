@@ -7,13 +7,15 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Gamee.Hiuk.Loading 
+namespace Gamee.Hiuk.Loading
 {
     public class LoadingManager : MonoBehaviour
     {
         [SerializeField] LoadingUI loadingUI;
         [SerializeField] Launcher launcher;
         [SerializeField] float timeDelayLoadScene = 0.5f;
+        [SerializeField, SceneProperty] string sceneGamemenuName;
+        [SerializeField, SceneProperty] string sceneGameplayName;
         [Header("Audio"), SerializeField] AudioComponent audioLoading;
         [SerializeField] Sound soundBg;
 
@@ -35,7 +37,7 @@ namespace Gamee.Hiuk.Loading
         {
             audioLoading.PlaySoundBackGround(soundBg);
         }
-        private async void Run() 
+        private async void Run()
         {
             isLoadingUIRunCompleted = false;
             loadingUI.Run(() =>
@@ -59,7 +61,7 @@ namespace Gamee.Hiuk.Loading
             else ShowNextScene();
         }
 
-        private void ShowIntro() 
+        private void ShowIntro()
         {
             loadingUI.gameObject.SetActive(false);
             introUI.gameObject.SetActive(true);
@@ -69,15 +71,15 @@ namespace Gamee.Hiuk.Loading
                 IntroRunCompleted();
             });
         }
-        private void IntroRunCompleted() 
+        private void IntroRunCompleted()
         {
             GameData.IsShowedIntro = true;
             ShowNextScene();
         }
         private void LoadNextScene()
         {
-            if (RemoteConfig.IsAutoStartGame) _loadScene = SceneManager.LoadSceneAsync(2);
-            else _loadScene = SceneManager.LoadSceneAsync(1);
+            if (RemoteConfig.IsAutoStartGame) _loadScene = SceneManager.LoadSceneAsync(sceneGameplayName);
+            else _loadScene = SceneManager.LoadSceneAsync(sceneGamemenuName);
             _loadScene.allowSceneActivation = false;
         }
 
