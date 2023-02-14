@@ -526,6 +526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamePlayUI: {fileID: 8840744380985522959}
   gamemanager: {fileID: 916773400}
+  sceneHomeName: GameMenu
   timeDelayWin: 1
   timeDelayLose: 0.5
   audioGamePlay: {fileID: 190890895}

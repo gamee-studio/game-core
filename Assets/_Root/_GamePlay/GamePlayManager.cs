@@ -11,12 +11,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Gamee.Hiuk.GamePlay 
+namespace Gamee.Hiuk.GamePlay
 {
     public class GamePlayManager : MonoBehaviour
     {
         [SerializeField] GamePlayUI gamePlayUI;
         [SerializeField] GameManager gamemanager;
+        [SerializeField, SceneProperty] string sceneHomeName;
         [Header("Time Delay")]
         [SerializeField, Range(0, 5)] float timeDelayWin = 1;
         [SerializeField, Range(0, 5)] float timeDelayLose = .5f;
@@ -44,7 +45,7 @@ namespace Gamee.Hiuk.GamePlay
             gamemanager.ActionGameStart = OnGameStart;
 
             gamePlayUI.ActionBackHome = OnBackHome;
-            gamePlayUI.ActionReplay= OnReplayLevel;
+            gamePlayUI.ActionReplay = OnReplayLevel;
             gamePlayUI.ActionNextLevel = OnNextLevel;
             gamePlayUI.ActionProcessFull = OnProcessFull;
         }
@@ -54,19 +55,19 @@ namespace Gamee.Hiuk.GamePlay
             PlaySoundBG();
             gamemanager.Run();
         }
-        void PlaySoundBG() 
+        void PlaySoundBG()
         {
             audioGamePlay.PlaySoundBackGround(soundBg);
         }
 
         #region game
-        void OnGameWin(LevelMap level) 
+        void OnGameWin(LevelMap level)
         {
             isPreLevelWin = true;
             GameDataCache.InterAdCountCurrent++;
 
             gamePlayUI.MoveUI();
-            if (RemoteConfig.IsShowInterAdsBeforeWin) 
+            if (RemoteConfig.IsShowInterAdsBeforeWin)
             {
                 ShowInter();
             }
@@ -76,10 +77,10 @@ namespace Gamee.Hiuk.GamePlay
                 gamePlayUI.ShowPopupWin();
             }));
         }
-        void OnGameLose(LevelMap level) 
+        void OnGameLose(LevelMap level)
         {
             isPreLevelWin = false;
-            if(RemoteConfig.IsShowInterAdsLose) GameDataCache.InterAdCountCurrent++;
+            if (RemoteConfig.IsShowInterAdsLose) GameDataCache.InterAdCountCurrent++;
 
             gamePlayUI.MoveUI();
             coroutineDelayLose = StartCoroutine(DelayTime(timeDelayLose, () =>
@@ -87,7 +88,7 @@ namespace Gamee.Hiuk.GamePlay
                 gamePlayUI.ShowPopupLose();
             }));
         }
-        void OnGameStart() 
+        void OnGameStart()
         {
             if (IsShowInter && !RemoteConfig.IsShowInterAdsBeforeWin)
             {
@@ -103,8 +104,8 @@ namespace Gamee.Hiuk.GamePlay
         }
         void StopCoroutineDelay()
         {
-            if(coroutineDelayLose != null) StopCoroutine(coroutineDelayLose);
-            if(coroutineDelayWin != null) StopCoroutine(coroutineDelayWin);
+            if (coroutineDelayLose != null) StopCoroutine(coroutineDelayLose);
+            if (coroutineDelayWin != null) StopCoroutine(coroutineDelayWin);
         }
         #endregion
 
@@ -112,7 +113,25 @@ namespace Gamee.Hiuk.GamePlay
         public void ResetInterShowTime()
         {
             GameDataCache.TimeAtInterShowWin = DateTime.Now;
-            GameDataCache.TimeAtInterShowWin = DateTime.Now;
+            GameDataCache.TimeAtInterShowLose = DateTime.Now;
+        }
+        public bool CheckTimeWin()
+        {
+            if ((DateTime.Now - GameDataCache.TimeAtInterShowWin).TotalSeconds >= RemoteConfig.TimeInterAdShowWin)
+            {
+                GameDataCache.InterAdCountCurrent = 0;
+                return true;
+            }
+            return false;
+        }
+        public bool CheckTimeLose()
+        {
+            if ((DateTime.Now - GameDataCache.TimeAtInterShowLose).TotalSeconds >= RemoteConfig.TimeInterAdShowLose)
+            {
+                GameDataCache.InterAdCountCurrent = 0;
+                return true;
+            }
+            return false;
         }
         public void ShowInter()
         {
@@ -133,77 +152,55 @@ namespace Gamee.Hiuk.GamePlay
                     return false;
                 }
                 if (!AdsManager.IsInterAdsReady) return false;
+                if (RemoteConfig.InterAdFirstShowCount > GameData.LevelCurrent) return false;
+                if (GameDataCache.InterAdCountCurrent < RemoteConfig.InterAdShowCount) return false;
 
-                bool isShowInter = false;
-                if (RemoteConfig.InterAdFirstShowCount <= GameData.LevelCurrent)
+                if (RemoteConfig.IsShowInterAdsLose)
                 {
-                    if (GameDataCache.InterAdCountCurrent >= RemoteConfig.InterAdShowCount)
+                    if (isPreLevelWin)
                     {
-                        if (RemoteConfig.IsShowInterAdsLose)
-                        {
-                            if (isPreLevelWin)
-                            {
-                                if ((DateTime.Now - GameDataCache.TimeAtInterShowWin).TotalSeconds >= RemoteConfig.TimeInterAdShowWin)
-                                {
-                                    GameDataCache.InterAdCountCurrent = 0;
-                                    isShowInter = true;
-                                }
-                            }
-                            else
-                            {
-                                if ((DateTime.Now - GameDataCache.TimeAtInterShowLose).TotalSeconds >= RemoteConfig.TimeInterAdShowLose)
-                                {
-                                    GameDataCache.InterAdCountCurrent = 0;
-                                    isShowInter = true;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            if ((DateTime.Now - GameDataCache.TimeAtInterShowWin).TotalSeconds >= RemoteConfig.TimeInterAdShowWin)
-                            {
-                                GameDataCache.InterAdCountCurrent = 0;
-                                GameDataCache.TimeAtInterShowWin = DateTime.Now;
-                                isShowInter = true;
-                            }
-                        }
+                        return CheckTimeWin();
+                    }
+                    else
+                    {
+                        return CheckTimeLose();
                     }
                 }
-                return isShowInter;
+                else return CheckTimeWin();
             }
         }
         #endregion
 
         #region ui
-        void OnBackHome() 
+        void OnBackHome()
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(sceneHomeName);
         }
-        void OnReplayLevel() 
+        void OnReplayLevel()
         {
             StopCoroutineDelay();
             gamemanager.Replay();
         }
-        void OnNextLevel(bool isSkip = false) 
+        void OnNextLevel(bool isSkip = false)
         {
             gamemanager.NextLevel(isSkip);
-        }  
-        void OnProcessFull(bool isFull) 
+        }
+        void OnProcessFull(bool isFull)
         {
             if (isFull) { }
-            else 
+            else
             {
-                if(IsShowRate()) gamePlayUI.ShowPopupRate();
+                if (IsShowRate()) gamePlayUI.ShowPopupRate();
             }
         }
-        bool IsShowRate() 
+        bool IsShowRate()
         {
             if (GameData.IsShowedRate) return false;
 
-            if(GameData.LevelCurrent >= GameConfig.LevelShowRateCount) 
+            if (GameData.LevelCurrent >= GameConfig.LevelShowRateCount)
             {
                 if (GameData.LevelShowedRateCount < GameConfig.LevelShowRateCount) GameData.LevelShowedRateCount = GameConfig.LevelShowRateCount;
-                if(GameData.LevelCurrent >= GameData.LevelShowedRateCount) 
+                if (GameData.LevelCurrent >= GameData.LevelShowedRateCount)
                 {
                     GameData.LevelShowedRateCount += GameConfig.LevelShowRateNextValue;
                     return true;
