@@ -13,6 +13,7 @@ namespace Gamee.Hiuk.GameMenu
     public class GameMenuManager : MonoBehaviour
     {
         [SerializeField] GameMenuUI gameMenuUI;
+        [SerializeField, SceneProperty] string sceneGameplayName;
 
         [Header("Audio"), SerializeField] AudioComponent audioGameMenu;
         [SerializeField] Sound soundBg;
@@ -56,7 +57,7 @@ namespace Gamee.Hiuk.GameMenu
         }
         void OnStartGame() 
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(sceneGameplayName);
         }
     }
 }
