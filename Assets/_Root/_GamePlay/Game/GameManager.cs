@@ -3,14 +3,12 @@ using Gamee.Hiuk.Component;
 using Gamee.Hiuk.Data;
 using Gamee.Hiuk.FirebseAnalytic;
 using Gamee.Hiuk.Game.Loader;
-using Gamee.Hiuk.GamePlay;
-using Gamee.Hiuk.GamePlay.UI;
 using Gamee.Hiuk.Level;
 using System;
 using System.Collections;
 using UnityEngine;
 
-namespace Gamee.Hiuk.Game 
+namespace Gamee.Hiuk.Game
 {
     public class GameManager : MonoBehaviour
     {
@@ -25,17 +23,10 @@ namespace Gamee.Hiuk.Game
         GameObject level;
         GameObject levelLoad;
 
-        GamePlayManager gamePlayManager;
-        GamePlayUI gamePlayUI;
-
         public Action<LevelMap> ActionGameWin;
         public Action<LevelMap> ActionGameLose;
         public Action ActionGameStart;
-        public void Init(GamePlayManager gamePlay)
-        {
-            this.gamePlayManager = gamePlay;
-            this.gamePlayUI = gamePlay.GamePlayUI;
-        }
+
         #region game
         public void Replay()
         {
@@ -43,14 +34,14 @@ namespace Gamee.Hiuk.Game
             levelMap.Clear();
             GameStart();
         }
-        public void NextLevelData() 
+        public void NextLevelData()
         {
             GameData.LevelCurrent++;
             GameLoader.levelLoadData.Uplevel();
         }
         public void NextLevel(bool isSkip = false)
         {
-            if(isSkip) FirebaseAnalytic.LogLevelSkip(GameLoader.levelLoadData.LevelNameCurrent + GameData.LevelNameCurrent);
+            if (isSkip) FirebaseAnalytic.LogLevelSkip(GameLoader.levelLoadData.LevelNameCurrent + GameData.LevelNameCurrent);
             NextLevelData();
             LoadLevelMap();
             GameStart();
@@ -100,7 +91,7 @@ namespace Gamee.Hiuk.Game
         #endregion
 
         #region level
-        async void LoadLevelMap() 
+        async void LoadLevelMap()
         {
             state = EGameState.GAME_LOADING;
             if (levelLoad == null && GameDataCache.LevelObjCache != null)
@@ -116,7 +107,7 @@ namespace Gamee.Hiuk.Game
                 state = EGameState.GAME_READY;
             }
         }
-        IEnumerator WaitForShowLevelMap() 
+        IEnumerator WaitForShowLevelMap()
         {
             yield return new WaitUntil(() => state == EGameState.GAME_READY);
 
@@ -129,7 +120,7 @@ namespace Gamee.Hiuk.Game
 
             GamePlay();
         }
-        void DestroyLevel() 
+        void DestroyLevel()
         {
             Destroy(level);
             levelPos.Clear();
