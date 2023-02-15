@@ -23,6 +23,10 @@ namespace Gamee.Hiuk.Game.Input
             if (trail == null) trail = Instantiate(trailPrefab);
             trail.gameObject.SetActive(false);
         }
+        public void Start()
+        {
+            Defaut();
+        }
         public void Run(bool isRun)
         {
             this.isRun = isRun;
@@ -43,16 +47,11 @@ namespace Gamee.Hiuk.Game.Input
                 if (IsPointerOverUIObject()) return;
                 if (isTouched) return;
                 isTouched = true;
-                touch.TouchBegan(PosMouseOnScreen);
             }
             if (Input.GetMouseButtonUp(0))
             {
                 isTouched = false;
-                if (touch != null)
-                {
-                    touch.TouchEnded(PosMouseOnScreen);
-                    touch = null;
-                }
+                touch = null;
                 trail.gameObject.SetActive(false);
             }
 
@@ -67,7 +66,7 @@ namespace Gamee.Hiuk.Game.Input
                 {
                     touch = hit.collider.gameObject.GetComponentInParent<ITouch>();
                     if (touch == null) return;
-                    touch.TouchMoved(PosMouseOnScreen);
+                    touch.Touch(PosMouseOnScreen);
                 }
             }
         }
