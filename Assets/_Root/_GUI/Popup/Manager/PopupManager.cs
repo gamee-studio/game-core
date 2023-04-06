@@ -1,8 +1,6 @@
-using Gamee.Hiuk.Component;
+using Gamee.Hiuk.Data.Skin;
 using Gamee.Hiuk.Pattern;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 namespace Gamee.Hiuk.Popup
 {
@@ -18,6 +16,7 @@ namespace Gamee.Hiuk.Popup
         [SerializeField] PopupSetting popupSettingPrefab;
         [SerializeField] PopupUpdate popupUpdatePrefab;
         [SerializeField] PopupRate popupRatePrefab;
+        [SerializeField] PopupDaily popupDailyPrefab;
 
         IPopupHandler popupDebugHandler;
         IPopupHandler popupWinHandler;
@@ -25,7 +24,9 @@ namespace Gamee.Hiuk.Popup
         IPopupHandler popupSettingHandler;
         IPopupHandler popupUpdateHandler;
         IPopupHandler popupRateHandler;
-        public void ShowPopupDebug(Action actionClose)
+        IPopupHandler popupDailyHandler;
+
+        public void ShowPopupDebug(Action actionClose, Action actionUnlockAllPuzzle)
         {
             if (popupDebugHandler != null)
             {
@@ -43,7 +44,7 @@ namespace Gamee.Hiuk.Popup
                 // initialize
                 var popup = (PopupDebug)popupDebugHandler;
                 Popup.Show(popupDebugHandler);
-                popup.Initialize(actionClose);
+                popup.Initialize(actionClose, actionUnlockAllPuzzle);
             }
         }
         public void ShowPopupWin(Action actionBackToHome, Action actionNextLevel, Action<bool> actionProcessFull)
@@ -67,6 +68,7 @@ namespace Gamee.Hiuk.Popup
                 popup.Initialize(actionBackToHome, actionNextLevel, actionProcessFull);
             }
         }
+
         public void ShowPopupLose(Action actionBackToHome, Action actionReplayLevel, Action actionSkipLevel)
         {
             if (popupLoseHandler != null)
@@ -88,7 +90,7 @@ namespace Gamee.Hiuk.Popup
                 popup.Initialize(actionBackToHome, actionReplayLevel, actionSkipLevel);
             }
         }
-        public void ShowPopupSetting(Action actionClose)
+        public void ShowPopupSetting(Action<bool> actionUpdateMusi, Action actionClose)
         {
             if (popupSettingHandler != null)
             {
@@ -106,7 +108,7 @@ namespace Gamee.Hiuk.Popup
                 // initialize
                 var popup = (PopupSetting)popupSettingHandler;
                 Popup.Show(popupSettingHandler);
-                popup.Initialize(actionClose);
+                popup.Initialize(actionUpdateMusi, actionClose);
             }
         }
         public void ShowPopupUpdate(Action<bool> actionClose, string strDescription, string strVersionUpdate)
@@ -150,6 +152,38 @@ namespace Gamee.Hiuk.Popup
                 Popup.Show(popupRateHandler);
                 popup.Initialize(actionClose);
             }
+        }
+        public void ShowPopupDaily(Action actionClose)
+        {
+            if (popupDailyHandler != null)
+            {
+                if (popupDailyHandler.ThisGameObject.activeSelf) return;
+
+                Display();
+                return;
+            }
+
+            popupDailyHandler = Instantiate(popupDailyPrefab, root.transform, false);
+            Display();
+
+            void Display()
+            {
+                // initialize
+                var popup = (PopupDaily)popupDailyHandler;
+                Popup.Show(popupDailyHandler);
+                popup.Initialize(actionClose);
+            }
+        }
+
+        public void HideAll() { Popup.HideAll(); }
+        public UniPopup Get<T>()
+        {
+            var popups = this.GetComponentsInChildren<UniPopup>();
+            foreach (var popup in popups)
+            {
+                if (popup is T) return popup;
+            }
+            return null;
         }
     }
 }

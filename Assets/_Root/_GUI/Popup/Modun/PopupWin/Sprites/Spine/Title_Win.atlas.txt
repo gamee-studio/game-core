@@ -1,0 +1,48 @@
+
+Title_Win.png
+size: 472,268
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Layer 36 copy 2
+  rotate: false
+  xy: 339, 40
+  size: 104, 115
+  orig: 104, 115
+  offset: 0, 0
+  index: -1
+Layer 36 copy 3
+  rotate: true
+  xy: 2, 2
+  size: 153, 113
+  orig: 153, 113
+  offset: 0, 0
+  index: -1
+Layer 36 copy 4
+  rotate: false
+  xy: 232, 39
+  size: 105, 116
+  orig: 105, 116
+  offset: 0, 0
+  index: -1
+Layer 36 copy 5
+  rotate: true
+  xy: 117, 2
+  size: 153, 113
+  orig: 153, 113
+  offset: 0, 0
+  index: -1
+Layer 90
+  rotate: false
+  xy: 2, 157
+  size: 465, 109
+  orig: 465, 109
+  offset: 0, 0
+  index: -1
+Layer 91
+  rotate: false
+  xy: 232, 4
+  size: 154, 33
+  orig: 154, 33
+  offset: 0, 0
+  index: -1

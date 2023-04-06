@@ -190,5 +190,5 @@ MonoBehaviour:
   dontDestroy: 1
   audioButton: {fileID: 4524324614459164090}
   soundButton:
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: 08d6d5e472499c2459b33d1e7094a536, type: 3}
     volume: 1

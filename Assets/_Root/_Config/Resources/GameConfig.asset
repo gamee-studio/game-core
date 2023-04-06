@@ -12,4 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebb40d40d95e6ae40adc19f06cb91fb0, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
+  isShowDebug: 1
   levelShowUpdateCount: 0
+  levelShowRateCount: 20
+  levelShowRateNextValue: 20
+  winPercent: 75
+  watchVideoValue: 5
+  linkFB: https://www.facebook.com/groups/homepin2
+  levelShowBtnSkip: 4
+  levelShowCutSceneCount: 5

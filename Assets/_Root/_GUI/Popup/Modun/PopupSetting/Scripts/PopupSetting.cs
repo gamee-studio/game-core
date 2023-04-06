@@ -9,14 +9,17 @@ namespace Gamee.Hiuk.Popup
 {
     public class PopupSetting : UniPopup
     {
+        [SerializeField] TextMeshProUGUI txtVersion;
         [SerializeField] SettingItem audioItem;
         [SerializeField] SettingItem musicItem;
         [SerializeField] SettingItem vibrateItem;
-        private Action actionclose;
+        private Action<bool> actionUpdateMusic;
+        private Action actionClose;
 
-        public void Initialize(Action actionClose = null)
+        public void Initialize(Action<bool> actionUpdateMusic, Action actionClose)
         {
-            this.actionclose = actionClose;
+            this.actionClose = actionClose;
+            this.actionUpdateMusic = actionUpdateMusic;
 
             audioItem.Sellect(GameData.IsOnAudio);
             musicItem.Sellect(GameData.IsOnMusic);
@@ -25,6 +28,7 @@ namespace Gamee.Hiuk.Popup
             audioItem.ActionSellectItem = OnSellectAudioItem;
             musicItem.ActionSellectItem = OnSellectMusicItem;
             vibrateItem.ActionSellectItem = OnSellectVibrateItem;
+            txtVersion.text = "Version " + Application.version;
         }
 
         void OnSellectAudioItem(bool isOn)
@@ -33,7 +37,9 @@ namespace Gamee.Hiuk.Popup
         }
         void OnSellectMusicItem(bool isOn)
         {
+            if (GameData.IsOnMusic == isOn) return;
             GameData.IsOnMusic = isOn;
+            actionUpdateMusic?.Invoke(isOn);
         }
         void OnSellectVibrateItem(bool isOn)
         {
@@ -41,7 +47,7 @@ namespace Gamee.Hiuk.Popup
         }
         public void Back() 
         {
-            actionclose?.Invoke();
+            actionClose?.Invoke();
             Close();
         }
     }

@@ -6,8 +6,9 @@ using Gamee.Hiuk.Loading.UI;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Scripting;
 
-namespace Gamee.Hiuk.Loading
+namespace Gamee.Hiuk.Loading 
 {
     public class LoadingManager : MonoBehaviour
     {
@@ -30,14 +31,14 @@ namespace Gamee.Hiuk.Loading
             PlaySoundBG();
 
             Application.targetFrameRate = 60;
-            LoadNextScene();
+            //LoadNextScene();
             Run();
         }
         void PlaySoundBG()
         {
             audioLoading.PlaySoundBackGround(soundBg);
         }
-        private async void Run()
+        private async void Run() 
         {
             isLoadingUIRunCompleted = false;
             loadingUI.Run(() =>
@@ -61,7 +62,7 @@ namespace Gamee.Hiuk.Loading
             else ShowNextScene();
         }
 
-        private void ShowIntro()
+        private void ShowIntro() 
         {
             loadingUI.gameObject.SetActive(false);
             introUI.gameObject.SetActive(true);
@@ -71,7 +72,7 @@ namespace Gamee.Hiuk.Loading
                 IntroRunCompleted();
             });
         }
-        private void IntroRunCompleted()
+        private void IntroRunCompleted() 
         {
             GameData.IsShowedIntro = true;
             ShowNextScene();
@@ -88,7 +89,9 @@ namespace Gamee.Hiuk.Loading
 #if (!UNITY_EDITOR)
             GarbageCollector.GCMode = GarbageCollector.Mode.Disabled;
 #endif
-            _loadScene.allowSceneActivation = true;
+            //_loadScene.allowSceneActivation = true;
+            if (RemoteConfig.IsAutoStartGame) SceneManager.LoadScene(sceneGameplayName);
+            else SceneManager.LoadScene(sceneGamemenuName);
         }
     }
 }

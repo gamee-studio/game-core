@@ -6,20 +6,13 @@ namespace Gamee.Hiuk.Level.Player
 {
     public abstract class PlayerController : MonoBehaviour, IPlayer
     {
-        [SerializeField] EPlayerState state = EPlayerState.PLAYER_NONE;
-
+        [SerializeField] protected EPlayerState state = EPlayerState.PLAYER_NONE;
+        public EPlayerState State => state;
         public abstract void Init();
-        public virtual void Idle() 
-        {
-            state = EPlayerState.PLAYER_IDLE;
-        }
-        public virtual void Lose() 
-        {
-            state = EPlayerState.PLAYER_LOSE;
-        }
-        public virtual void Win() 
-        {
-            state = EPlayerState.PLAYER_WIN;
-        }
+        public abstract void Idle();
+        public abstract void Lose();
+        public abstract void Win();
+        public abstract void Defaut();
+        public abstract void UpdateSkin();
     }
 }

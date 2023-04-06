@@ -26,12 +26,15 @@ namespace Gamee.Hiuk.Game
         public Action<LevelMap> ActionGameWin;
         public Action<LevelMap> ActionGameLose;
         public Action ActionGameStart;
+        public Action<LevelMap> ActionGameLoadLevelComplete;
+        public LevelMap LevelMap => levelMap;
 
         #region game
         public void Replay()
         {
             FirebaseAnalytic.LogLevelReplay(GameLoader.levelLoadData.LevelNameCurrent + GameData.LevelNameCurrent);
-            levelMap.Clear();
+            Clear();
+            LoadLevelMap();
             GameStart();
         }
         public void NextLevelData()
@@ -39,10 +42,27 @@ namespace Gamee.Hiuk.Game
             GameData.LevelCurrent++;
             GameLoader.levelLoadData.Uplevel();
         }
+        public void BackLevelData() 
+        {
+            if (GameData.LevelCurrent == 1) return;
+            GameData.LevelCurrent--;
+            GameLoader.levelLoadData.DownLevel();
+        }
         public void NextLevel(bool isSkip = false)
         {
-            if (isSkip) FirebaseAnalytic.LogLevelSkip(GameLoader.levelLoadData.LevelNameCurrent + GameData.LevelNameCurrent);
-            NextLevelData();
+            if (isSkip)
+            {
+                FirebaseAnalytic.LogLevelSkip(GameLoader.levelLoadData.LevelNameCurrent + GameData.LevelNameCurrent);
+                NextLevelData();
+            }
+            LoadLevelMap();
+            GameStart();
+        }
+        public async void BackLevel() 
+        {
+            //BackLevelData();
+            GameData.LevelCurrent--;
+            GameDataCache.LevelObjCache = await GameLoader.LoadLevelSellect(GameData.LevelCurrent);
             LoadLevelMap();
             GameStart();
         }
@@ -118,6 +138,7 @@ namespace Gamee.Hiuk.Game
             levelMap.ActionLose = GameLose;
             levelMap.ActionWin = GameWin;
 
+            ActionGameLoadLevelComplete?.Invoke(levelMap);
             GamePlay();
         }
         void DestroyLevel()
@@ -125,6 +146,10 @@ namespace Gamee.Hiuk.Game
             Destroy(level);
             levelPos.Clear();
             level = null;
+        }
+        public void Clear()
+        {
+            levelMap.Clear();
         }
         #endregion
     }

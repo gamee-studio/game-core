@@ -73,15 +73,17 @@ namespace Gamee.Hiuk.AppLink
 #if UNITY_EDITOR
             OpenApp();
 #elif UNITY_ANDROID
-        StartCoroutine(Submit());
+            if (IsRequestReviewCompleted) StartCoroutine(Submit());
+            else OpenApp();
 #elif UNITY_IOS
-        OpenApp();
+            OpenApp();
 #endif
         }
 
 #if UNITY_ANDROID
         private ReviewManager _reviewManager;
         private PlayReviewInfo _playReviewInfo;
+        private bool IsRequestReviewCompleted => _playReviewInfo != null;
 
         IEnumerator InitReview()
         {

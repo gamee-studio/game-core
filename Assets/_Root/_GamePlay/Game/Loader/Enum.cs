@@ -8,6 +8,8 @@ namespace Gamee.Hiuk.Game.Loader
     {
         LEVEL_NORMAL,
         LEVEL_BOSS,
+        LEVEL_GP2,
+        LEVEL_PUZZLE,
     }
 }
 

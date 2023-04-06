@@ -2,6 +2,7 @@ using Gamee.Hiuk.Component;
 using Gamee.Hiuk.Data;
 using Gamee.Hiuk.FirebaseRemoteConfig;
 using Gamee.Hiuk.GameMenu.UI;
+using Gamee.Hiuk.IAP;
 using Gamee.Hiuk.Popup.Update;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace Gamee.Hiuk.GameMenu
     public class GameMenuManager : MonoBehaviour
     {
         [SerializeField] GameMenuUI gameMenuUI;
-        [SerializeField, SceneProperty] string sceneGameplayName;
+        [SerializeField, SceneProperty] string sceneGamePlayName;
 
         [Header("Audio"), SerializeField] AudioComponent audioGameMenu;
         [SerializeField] Sound soundBg;
@@ -31,6 +32,10 @@ namespace Gamee.Hiuk.GameMenu
         {
             gameMenuUI.Init();
             gameMenuUI.ActionStartGame = OnStartGame;
+            gameMenuUI.ActionUpdateMusic = OnUpdateMusic;
+            gameMenuUI.ActionRemoveAds = OnRemoveAds;
+
+            UpdateButtonRemoveAds();
         }
         void PlaySoundBG()
         {
@@ -55,9 +60,25 @@ namespace Gamee.Hiuk.GameMenu
                 }
             }
         }
+        void UpdateButtonRemoveAds() 
+        {
+            gameMenuUI.UpdateButtonRemoveAds(!GameData.IsRemoveAds);
+        }
         void OnStartGame() 
         {
-            SceneManager.LoadScene(sceneGameplayName);
+            SceneManager.LoadScene(sceneGamePlayName);
+        }
+        void OnUpdateMusic(bool isOnMusic) 
+        {
+            if (!isOnMusic) audioGameMenu.Pause();
+            else PlaySoundBG();
+        }
+        void OnRemoveAds() 
+        {
+            IAPManager.BuyIAPRemoveAds(() =>
+            {
+                UpdateButtonRemoveAds();
+            });
         }
     }
 }

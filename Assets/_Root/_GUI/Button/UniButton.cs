@@ -48,6 +48,7 @@ namespace Gamee.Hiuk.Button
             {
                 EditorGUILayout.PropertyField(sound);
             }
+            serializedObject.ApplyModifiedProperties();
         }
     }
 #endif

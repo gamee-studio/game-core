@@ -34,18 +34,6 @@ namespace Gamee.Hiuk.Level.Editor
                 }
             }
         }
-
-        static LevelMapEditor() { EditorApplication.playModeStateChanged += ModeChanged; }
-
-        private static void ModeChanged(PlayModeStateChange obj)
-        {
-            if (obj == PlayModeStateChange.ExitingPlayMode)
-            {
-                GameTest.IsTest = false;
-                GameTest.PathLevelAsset = "";
-                GameTest.levelPrefab = null;
-            }
-        }
     }
 }
 #endif

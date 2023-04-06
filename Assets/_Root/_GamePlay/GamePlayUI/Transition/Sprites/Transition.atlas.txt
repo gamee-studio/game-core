@@ -1,0 +1,27 @@
+
+Transition.png
+size: 1744,1744
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+BG2
+  rotate: true
+  xy: 2, 2
+  size: 1220, 1681
+  orig: 1220, 1681
+  offset: 0, 0
+  index: -1
+Back
+  rotate: false
+  xy: 318, 1224
+  size: 525, 518
+  orig: 525, 518
+  offset: 0, 0
+  index: -1
+loading_logo
+  rotate: false
+  xy: 2, 1459
+  size: 314, 283
+  orig: 314, 283
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,48 @@
+
+Title_Lose.png
+size: 592,192
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Layer 1
+  rotate: false
+  xy: 312, 44
+  size: 139, 34
+  orig: 139, 34
+  offset: 0, 0
+  index: -1
+Layer 36 copy 3
+  rotate: false
+  xy: 2, 2
+  size: 153, 76
+  orig: 153, 76
+  offset: 0, 0
+  index: -1
+Layer 36 copy 4
+  rotate: false
+  xy: 157, 2
+  size: 153, 76
+  orig: 153, 76
+  offset: 0, 0
+  index: -1
+Layer 36 copy 5
+  rotate: false
+  xy: 469, 17
+  size: 118, 85
+  orig: 118, 85
+  offset: 0, 0
+  index: -1
+Layer 36 copy 6
+  rotate: false
+  xy: 469, 104
+  size: 119, 85
+  orig: 119, 85
+  offset: 0, 0
+  index: -1
+Layer 90 copy
+  rotate: false
+  xy: 2, 80
+  size: 465, 109
+  orig: 465, 109
+  offset: 0, 0
+  index: -1

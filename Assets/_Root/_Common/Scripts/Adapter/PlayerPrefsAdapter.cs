@@ -44,7 +44,7 @@ namespace Gamee.Hiuk.Adapter
 
         public static void SetDateTime(string key, DateTime value)
         {
-            PlayerPrefs.GetString(key, value.ToString());
+            PlayerPrefs.SetString(key, value.ToString());
         }
 
         public static DateTime GetDateTime(string key, string valueDefaut = "01/01/0001 00:00:00")

@@ -28,6 +28,7 @@ namespace Gamee.Hiuk.Popup
         }
         public void Skip()
         {
+            if (!AdsManager.IsInterAdsReady) return;
             if (isSellected) return;
             isSellected = true;
 

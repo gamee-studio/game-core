@@ -18,6 +18,7 @@ namespace Gamee.Hiuk.Popup
         public void Rate() 
         {
             ApplinkManager.Rate();
+            Back();
         }
         public void Back() 
         {

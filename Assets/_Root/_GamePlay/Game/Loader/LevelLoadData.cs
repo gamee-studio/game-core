@@ -14,6 +14,7 @@ namespace Gamee.Hiuk.Game.Loader
         [SerializeField] int levelLoopStart = 1;
         [SerializeField, Range(0, 5)] float timeDelayWin = 2;
         [SerializeField, Range(0, 5)] float timeDelayLose = 1;
+        [SerializeField, Range(1, 10)] float cameraRoomSize = 5f;
         [SerializeField, GUID] string id;
 
         public ELevelLoadType Type => type;
@@ -24,8 +25,9 @@ namespace Gamee.Hiuk.Game.Loader
         public float TimeDelayLose => timeDelayLose;
         public int LevelMax => levelMax - LevelStartLoop + 1;
         int LevelStartLoop => IsFirstLooped ? (levelLoopStart >= 1 ? levelLoopStart : 1) : 1;
+        public float CameraRoomSize => cameraRoomSize;
 
-        int Index 
+        public int Index 
         {
             set => PlayerPrefsAdapter.SetInt(id + "index", value);
             get => PlayerPrefsAdapter.GetInt(id + "index", 0);
@@ -35,12 +37,12 @@ namespace Gamee.Hiuk.Game.Loader
             set => PlayerPrefsAdapter.SetInt(id + "level_max_old", value);
             get => PlayerPrefsAdapter.GetInt(id + "level_max_old", 0);
         }
-        bool IsFirstLooped 
+        public bool IsFirstLooped 
         {
             set => PlayerPrefsAdapter.SetBool(id + "is_first_loop", value);
             get => PlayerPrefsAdapter.GetBool(id + "is_first_loop", false);
         }
-        List<int> listLevel;
+        List<int> listLevel = new List<int>();
 
         public void Init() 
         {
@@ -61,6 +63,7 @@ namespace Gamee.Hiuk.Game.Loader
         }
         void LoadLevelListDefaut()
         {
+            listLevel = new List<int>();
             LevelMaxOld = levelMax;
             for (int i = LevelStartLoop; i <= levelMax; i++)
             {

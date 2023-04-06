@@ -1,0 +1,178 @@
+{
+"skeleton": {
+	"hash": "huK4RgnQCc6xcIGAn2sPYPZfU/c",
+	"spine": "3.8.79",
+	"x": -344.62,
+	"y": -10.05,
+	"width": 670,
+	"height": 244,
+	"images": "./images/",
+	"audio": "E:/GAMEE/Rescue Hero 2/Lose"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "All", "parent": "root" },
+	{ "name": "Defeat", "parent": "All", "x": 2.16, "y": 92.87 },
+	{ "name": "Text", "parent": "Defeat", "x": -23.89, "y": 3.19 },
+	{
+		"name": "R_Trumpet",
+		"parent": "Defeat",
+		"length": 158.28,
+		"rotation": 27.41,
+		"x": 82.42,
+		"y": 32.38,
+		"transform": "noScale"
+	},
+	{
+		"name": "R_Trumpet1",
+		"parent": "Defeat",
+		"length": 203.81,
+		"rotation": 12.72,
+		"x": 113.9,
+		"y": 17.81,
+		"transform": "noScale"
+	},
+	{
+		"name": "L_Trumpet",
+		"parent": "Defeat",
+		"length": 161.65,
+		"rotation": 152.97,
+		"x": -105.82,
+		"y": 31.21,
+		"transform": "noScale"
+	},
+	{
+		"name": "L_Trumpet1",
+		"parent": "Defeat",
+		"length": 207.61,
+		"rotation": 167.02,
+		"x": -136.13,
+		"y": 17.81,
+		"transform": "noScale"
+	}
+],
+"slots": [
+	{ "name": "Layer 36 copy 5", "bone": "L_Trumpet", "attachment": "Layer 36 copy 5" },
+	{ "name": "Layer 36 copy 4", "bone": "L_Trumpet1", "attachment": "Layer 36 copy 4" },
+	{ "name": "Layer 36 copy 6", "bone": "R_Trumpet", "attachment": "Layer 36 copy 6" },
+	{ "name": "Layer 36 copy 3", "bone": "R_Trumpet1", "attachment": "Layer 36 copy 3" },
+	{ "name": "Layer 90 copy", "bone": "Defeat", "attachment": "Layer 90 copy" },
+	{ "name": "Layer 1", "bone": "Text", "attachment": "Layer 1" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"Layer 1": {
+				"Layer 1": { "x": 8.11, "y": -4.11, "width": 198, "height": 48 }
+			},
+			"Layer 36 copy 3": {
+				"Layer 36 copy 3": { "x": 106.13, "y": 16.81, "rotation": -12.72, "width": 219, "height": 109 }
+			},
+			"Layer 36 copy 4": {
+				"Layer 36 copy 4": { "x": 107.5, "y": -16.03, "rotation": -167.02, "width": 219, "height": 109 }
+			},
+			"Layer 36 copy 5": {
+				"Layer 36 copy 5": { "x": 88.31, "y": -9.25, "rotation": -152.97, "width": 169, "height": 121 }
+			},
+			"Layer 36 copy 6": {
+				"Layer 36 copy 6": { "x": 87.47, "y": 8.36, "rotation": -27.41, "width": 170, "height": 122 }
+			},
+			"Layer 90 copy": {
+				"Layer 90 copy": { "x": -12.78, "y": -24.92, "width": 664, "height": 156 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"bones": {
+			"Defeat": {
+				"translate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.6, "y": -5.06, "curve": 0.25, "c3": 0.75 },
+					{ "time": 3.2 }
+				],
+				"scale": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.6, "x": 1.01, "y": 0.99, "curve": 0.25, "c3": 0.75 },
+					{ "time": 3.2 }
+				]
+			},
+			"Text": {
+				"scale": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.6, "x": 1.029, "y": 0.957, "curve": 0.25, "c3": 0.75 },
+					{ "time": 3.2 }
+				]
+			},
+			"R_Trumpet": {
+				"translate": [
+					{ "x": 2.63, "y": 1.36, "curve": 0.366, "c2": 0.46, "c3": 0.754 },
+					{ "time": 0.5 },
+					{ "time": 1.1667, "x": 4.37, "y": 2.27, "curve": 0.25, "c3": 0.75 },
+					{ "time": 2.1, "curve": 0.744, "c3": 0.351 },
+					{ "time": 2.8333, "x": 4.37, "y": 2.27, "curve": 0.256, "c3": 0.62, "c4": 0.46 },
+					{ "time": 3.2, "x": 2.63, "y": 1.36 }
+				],
+				"scale": [
+					{ "x": 1.04, "y": 0.96, "curve": 0.366, "c2": 0.46, "c3": 0.754 },
+					{ "time": 0.5, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.1667, "x": 1.066, "y": 0.933, "curve": 0.25, "c3": 0.75 },
+					{ "time": 2.1, "curve": 0.642, "c3": 0.358 },
+					{ "time": 2.8333, "x": 1.066, "y": 0.933, "curve": 0.256, "c3": 0.62, "c4": 0.46 },
+					{ "time": 3.2, "x": 1.04, "y": 0.96 }
+				]
+			},
+			"R_Trumpet1": {
+				"translate": [
+					{ "x": 0.08, "y": 0.02, "curve": 0.355, "c2": 0.65, "c3": 0.689 },
+					{ "time": 0.0667 },
+					{ "time": 0.7333, "x": 3.22, "y": 0.73, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.6667, "curve": 0.585, "c3": 0.358 },
+					{ "time": 2.4, "x": 3.22, "y": 0.73, "curve": 0.246, "c3": 0.719, "c4": 0.87 },
+					{ "time": 3.2, "x": 0.08, "y": 0.02 }
+				],
+				"scale": [
+					{ "x": 1.003, "y": 0.999, "curve": 0.355, "c2": 0.65, "c3": 0.689 },
+					{ "time": 0.0667, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.7333, "x": 1.102, "y": 0.948, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.6667, "curve": 0.585, "c3": 0.358 },
+					{ "time": 2.4, "x": 1.102, "y": 0.948, "curve": 0.246, "c3": 0.719, "c4": 0.87 },
+					{ "time": 3.2, "x": 1.003, "y": 0.999 }
+				]
+			},
+			"L_Trumpet": {
+				"translate": [
+					{ "time": 0.5667, "curve": 0.256, "c3": 0.619, "c4": 0.46 },
+					{ "time": 1.2333, "x": -1.47, "y": 0.75, "curve": 0.25, "c3": 0.75 },
+					{ "time": 2.1667 }
+				],
+				"scale": [
+					{ "x": 1.085, "y": 0.935, "curve": 0.329, "c2": 0.32, "c3": 0.663, "c4": 0.66 },
+					{ "time": 0.0667, "x": 1.073, "y": 0.944, "curve": 0.366, "c2": 0.46, "c3": 0.754 },
+					{ "time": 0.5667, "curve": 0.611, "c3": 0.389 },
+					{ "time": 1.2333, "x": 1.121, "y": 0.908, "curve": 0.25, "c3": 0.75 },
+					{ "time": 2.1667, "curve": 0.25, "c3": 0.75 },
+					{ "time": 2.9, "x": 1.121, "y": 0.908, "curve": 0.263, "c3": 0.618, "c4": 0.43 },
+					{ "time": 3.2, "x": 1.085, "y": 0.935 }
+				]
+			},
+			"L_Trumpet1": {
+				"translate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6667, "x": -1.96, "y": 0.45, "curve": 0.25, "c3": 0.75 },
+					{ "time": 3.2 }
+				],
+				"scale": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6667, "x": 1.133, "y": 0.861, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.6, "curve": 0.25, "c3": 0.75 },
+					{ "time": 2.3333, "x": 1.133, "y": 0.861, "curve": 0.25, "c3": 0.75 },
+					{ "time": 3.2 }
+				]
+			}
+		}
+	}
+}
+}

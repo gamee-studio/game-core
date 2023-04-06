@@ -4,6 +4,7 @@ namespace Gamee.Hiuk.FirebaseRemoteConfig
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
+    using DG.Tweening;
     public class RemoteConfigAdapter : MonoBehaviour
     {
         private const string IS_ADMOB = "IS_ADMOB";
@@ -21,6 +22,8 @@ namespace Gamee.Hiuk.FirebaseRemoteConfig
         private const string VERSION_APP_IOS = "VERSION_APP_IOS";
         private const string DESCRIPTION_APP = "DESCRIPTION_APP";
 
+        private const string IS_SHOW_LEVEL_DESCRIPTION = "IS_SHOW_LEVEL_DESCRIPTION";
+
         private readonly Dictionary<string, object> defaults = new Dictionary<string, object>();
 
         public void Defaut() 
@@ -35,14 +38,15 @@ namespace Gamee.Hiuk.FirebaseRemoteConfig
             defaults.Add(VERSION_APP, "1.0");
             defaults.Add(VERSION_APP_IOS, "1.0");
             defaults.Add(DESCRIPTION_APP, "New Update");
-            defaults.Add(IS_AUTO_START_GAME, "false");
+            defaults.Add(IS_AUTO_START_GAME, "true");
             defaults.Add(IS_SHOW_DAILY_REWARD, "false");
             defaults.Add(IS_SHOW_INTER_ADS_BEFORE_WIN, "false");
+            defaults.Add(IS_SHOW_LEVEL_DESCRIPTION, "true");
 
             Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.SetDefaultsAsync(defaults);
         }
 
-        public void FetchData() 
+        public void FetchData()
         {
             RemoteConfig.IsAdmob = bool.Parse(Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue(IS_ADMOB).StringValue);
             RemoteConfig.IsAutoStartGame = bool.Parse(Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue(IS_AUTO_START_GAME).StringValue);
@@ -61,10 +65,13 @@ namespace Gamee.Hiuk.FirebaseRemoteConfig
             RemoteConfig.VersionApp = Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue(VERSION_APP).StringValue;
 #endif
             RemoteConfig.DescritptionApp = Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue(DESCRIPTION_APP).StringValue;
-
+            RemoteConfig.IsShowLevelDescription = bool.Parse(Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.GetValue(IS_SHOW_LEVEL_DESCRIPTION).StringValue);
             // init ads
-            AdsManager.Config(RemoteConfig.IsAdmob);
-            AdsManager.Init();
+            DOTween.Sequence().SetDelay(.15f).OnComplete(() =>
+            {
+                AdsManager.Config(RemoteConfig.IsAdmob);
+                AdsManager.Init();
+            });
         }
     }
 }

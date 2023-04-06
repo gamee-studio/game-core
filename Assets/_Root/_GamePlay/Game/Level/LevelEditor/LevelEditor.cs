@@ -11,6 +11,7 @@ using Gamee.Hiuk.Test;
 
 namespace Gamee.Hiuk.Level.Editor
 {
+    [InitializeOnLoad]
     public class LevelEditor : EditorWindow
     {
         string FolderPath => System.IO.Path.Combine(Application.dataPath, "_Root/Prefabs/Game");

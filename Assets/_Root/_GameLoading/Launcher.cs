@@ -23,7 +23,7 @@ public class Launcher : MonoBehaviour
         isRunCompleted = true;
     }
 
-    public void LoadData()
+    public void LoadData() 
     {
         Vibration.Init();
         DOTween.Init();
@@ -35,6 +35,8 @@ public class Launcher : MonoBehaviour
         AdsManager.SetRemoveReward(GameData.IsRemoveRewardAds);
         AdsManager.SetRemoveBanner(GameData.IsRemoveBannerAds);
         AdsManager.SetRemoveInter(GameData.IsRemoveInterAds);
+
+        GameTimeLocal.CheckNewDay();
     }
     public async UniTask LoadFileData()
     {

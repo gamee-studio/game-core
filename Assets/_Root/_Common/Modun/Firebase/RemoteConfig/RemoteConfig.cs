@@ -19,6 +19,8 @@ namespace Gamee.Hiuk.FirebaseRemoteConfig
 
         public static string VersionApp = "1.0.0";
         public static string DescritptionApp = "New Update";
+
+        public static bool IsShowLevelDescription = true;
     }
 }
 

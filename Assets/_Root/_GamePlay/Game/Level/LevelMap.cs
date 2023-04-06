@@ -14,32 +14,38 @@ namespace Gamee.Hiuk.Level
         protected Coroutine coroutineLevelWin;
         protected Coroutine coroutineLevelLose;
 
-        protected  PlayerController Player;
+        protected  PlayerController player;
+        protected LevelLoadData levelData;
+        public PlayerController Player => player;
+        public LevelLoadData LevelData => levelData;
         public virtual void Init() 
         {
-            Player = this.GetComponentInChildren<PlayerController>();
+            player = this.GetComponentInChildren<PlayerController>();
+            levelData = GameLoader.levelLoadData;
         }
-        public virtual void Lose()
+        public virtual void Lose(Action actionCompleted = null)
         {
             if (state == ELevelState.LEVEL_WIN) return;
             state = ELevelState.LEVEL_LOSING;
             if(coroutineLevelWin != null) StopCoroutine(coroutineLevelWin);
-            coroutineLevelLose = StartCoroutine(DelayTime(GameLoader.levelLoadData.TimeDelayLose, () =>
+            coroutineLevelLose = StartCoroutine(DelayTime(levelData.TimeDelayLose, () =>
             {
                 state = ELevelState.LEVEL_LOSE;
                 ActionLose?.Invoke();
+                actionCompleted?.Invoke();
             }));
         }
 
-        public virtual void Win()
+        public virtual void Win(Action actionCompleted = null)
         {
             if (state == ELevelState.LEVEL_LOSING) return;
             state = ELevelState.LEVEL_WINNING;
-            coroutineLevelWin = StartCoroutine(DelayTime(GameLoader.levelLoadData.TimeDelayWin, () =>
+            coroutineLevelWin = StartCoroutine(DelayTime(levelData.TimeDelayWin, () =>
             {
                 state = ELevelState.LEVEL_WIN;
                 if (coroutineLevelLose != null) StopCoroutine(coroutineLevelLose);
                 ActionWin?.Invoke();
+                actionCompleted?.Invoke();
             }));
         }
         public virtual void Clear() 

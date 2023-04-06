@@ -12,7 +12,8 @@ namespace Gamee.Hiuk.Game
         GAME_PLAYING,
         GAME_PAUSE,
         GAME_WIN,
-        GAME_LOSE
+        GAME_LOSE,
+        GAME_WAITING,
     }
 }
 

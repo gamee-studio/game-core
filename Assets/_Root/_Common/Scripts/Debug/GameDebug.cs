@@ -18,13 +18,14 @@ namespace Gamee.Hiuk.Debug
 
         #region game 
         public static void AddCoin(int coin) { GameData.AddCoin(coin); }
-        public static int AllLevelCount => GameLoadDataResource.AllLevelCount;
+        public static int LevelCountMax => GameLoadDataResource.LevelCount;
         public async static void TestLevel(int level)
         {
-            if (level > AllLevelCount || level < 0) return;
+            if (level > LevelCountMax || level < 0) return;
             GameData.LevelCurrent = level;
             GameDataCache.LevelObjCache = await GameLoader.LoadLevelSellect(level);
         }
+        public static bool IsDebug = false;
         #endregion
     }
 }

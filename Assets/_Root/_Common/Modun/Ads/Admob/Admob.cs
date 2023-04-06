@@ -1,7 +1,5 @@
 namespace Gamee.Hiuk.Ads
 {
-    using com.adjust.sdk;
-    using Gamee.Hiuk.FirebseAnalytic;
     using GoogleMobileAds.Api;
     using System;
     using System.Collections;
@@ -74,7 +72,6 @@ namespace Gamee.Hiuk.Ads
         }
         public void LoadBannerAds()
         {
-            FirebaseAnalytic.LogAdsBannerRequest();
             AdRequest request = new AdRequest.Builder().Build();
             this.bannerViewAd.LoadAd(request);
         }
@@ -86,7 +83,6 @@ namespace Gamee.Hiuk.Ads
         public void ShowBannerAds()
         {
             this.bannerViewAd.Show();
-            FirebaseAnalytic.LogAdsBannerImpression();
         }
 
         // Handle
@@ -111,7 +107,6 @@ namespace Gamee.Hiuk.Ads
         }
         public void LoadInterAds()
         {
-            FirebaseAnalytic.LogAdsInterRequest();
             AdRequest request = new AdRequest.Builder().Build();
             this.interstitialAd.LoadAd(request);
         }
@@ -137,7 +132,6 @@ namespace Gamee.Hiuk.Ads
         {
             ActionCloseInterstitialAd?.Invoke();
             this.LoadInterAds();
-            FirebaseAnalytic.LogAdsInterImpression();
         }
         #endregion
 
@@ -163,7 +157,6 @@ namespace Gamee.Hiuk.Ads
         public void LoadRewardAds()
         {
             isWatched = false;
-            FirebaseAnalytic.LogAdsRewardRequest();
             AdRequest request = new AdRequest.Builder().Build();
             this.rewardedAd.LoadAd(request);
         }
@@ -201,7 +194,6 @@ namespace Gamee.Hiuk.Ads
         public void HandleOnUserEarnedReward(object sender, Reward args)
         {
             isWatched = true;
-            FirebaseAnalytic.LogAdsRewardImpression();
         }
 
         IEnumerator DelayTime(float time = 0.5f, Action actionCompleted = null)
@@ -295,20 +287,6 @@ namespace Gamee.Hiuk.Ads
             var adValue = e.AdValue;
 
             // Log an event with ad value parameters
-            Firebase.Analytics.Parameter[] LTVParameters =
-            {
-               // Log ad value in micros.
-               new Firebase.Analytics.Parameter("valuemicros", adValue.Value),
-               // These values below won’t be used in ROASrecipe.
-               // But log for purposes of debugging and futurereference.
-               new Firebase.Analytics.Parameter("currency", adValue.CurrencyCode), new Firebase.Analytics.Parameter("precision", (int) adValue.Precision),
-               new Firebase.Analytics.Parameter("adunitid", id), new Firebase.Analytics.Parameter("network", "admob")
-               };
-            Firebase.Analytics.FirebaseAnalytics.LogEvent("paid_ad_impression", LTVParameters);
-
-            AdjustAdRevenue adRevenue = new AdjustAdRevenue(AdjustConfig.AdjustAdRevenueSourceAdMob);
-            adRevenue.setRevenue(adValue.Value / 1000000f, adValue.CurrencyCode);
-            Adjust.trackAdRevenue(adRevenue);
         }
     }
 }

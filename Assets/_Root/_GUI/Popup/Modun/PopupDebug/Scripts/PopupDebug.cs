@@ -1,3 +1,4 @@
+using Gamee.Hiuk.Data;
 using Gamee.Hiuk.Debug;
 using System;
 using TMPro;
@@ -17,26 +18,37 @@ namespace Gamee.Hiuk.Popup
         [Header("game")]
         [SerializeField] private TMP_InputField ifEnterCoin;
         [SerializeField] private TMP_InputField ifEnterLevel;
+        [SerializeField] Toggle tgUnlockAllPuzzle;
 
         private Action actionclose;
+        private Action actionUnlockAllPuzzle;
         private int coin;
         private int level;
 
-        public void Initialize(Action actionClose = null)
+        public void Initialize(Action actionClose, Action actionUnlockAllPuzzle)
         {
             this.actionclose = actionClose;
+            this.actionUnlockAllPuzzle = actionUnlockAllPuzzle;
 
             ifEnterCoin.contentType = TMP_InputField.ContentType.IntegerNumber;
             ifEnterLevel.contentType = TMP_InputField.ContentType.IntegerNumber;
 
+            OnUseDebug(tgUseDebug.isOn);
             tgUseDebug.onValueChanged.AddListener((isOn) => 
             {
                 OnUseDebug(isOn);
             });
+
+            GameDebug.SetRemoveReward(GameData.IsRemoveRewardAds);
+            GameDebug.SetRemoveInter(GameData.IsRemoveInterAds);
+            GameDebug.SetRemoveBanner(GameData.IsRemoveBannerAds);
+
+            tgUnlockAllPuzzle.isOn = false;
         }
 
         void OnUseDebug(bool isUse)
         {
+            GameDebug.IsDebug = isUse;
             groupDebug.gameObject.SetActive(isUse);
         }
         public void OkBabi()
@@ -55,6 +67,8 @@ namespace Gamee.Hiuk.Popup
                 {
                     GameDebug.TestLevel(level);
                 }
+
+                if (tgUnlockAllPuzzle.isOn) actionUnlockAllPuzzle?.Invoke();
             }
 
             Back();

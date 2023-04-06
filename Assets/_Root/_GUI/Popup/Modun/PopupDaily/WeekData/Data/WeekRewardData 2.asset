@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd893011d3d7ad459eaf63c6f0364be, type: 3}
+  m_Name: WeekRewardData 2
+  m_EditorClassIdentifier: 
+  rewards:
+  - day: 15
+    coin: 500
+    isRewardSkin: 0
+    pinSkinData: {fileID: 0}
+  - day: 16
+    coin: 1000
+    isRewardSkin: 0
+    pinSkinData: {fileID: 0}
+  - day: 17
+    coin: 1500
+    isRewardSkin: 0
+    pinSkinData: {fileID: 0}
+  - day: 18
+    coin: 2000
+    isRewardSkin: 0
+    pinSkinData: {fileID: 0}
+  - day: 19
+    coin: 2500
+    isRewardSkin: 0
+    pinSkinData: {fileID: 0}
+  - day: 20
+    coin: 3000
+    isRewardSkin: 0
+    pinSkinData: {fileID: 0}
+  - day: 21
+    coin: 3500
+    isRewardSkin: 1
+    pinSkinData: {fileID: 11400000, guid: 64a8754c824ccb74c89f5eaaf7925697, type: 2}

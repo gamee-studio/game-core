@@ -50,6 +50,7 @@ MonoBehaviour:
   admob: {fileID: 484581907573985407}
   applovin: {fileID: 484581907377903763}
   isHaveAppOpen: 1
+  isShowAppOpenInFirstTime: 0
 --- !u!1 &484581907377903761
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,9 +97,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bannerPos: 7
   sdkKey: -feJa9bEGOmZW95XxkyfhE2R_yHQ4poWZofsvPWhIw_es2dT16vUIDRoHKX63m6a9JD7wX1Q0PZ0Qng8EukpFT
-  bannerAdUnitId: 29ed4e4677c3520c
-  interAdUnitId: 55e8dfb6f836f372
-  rewardAdUnitId: 66c75fcf1bcf296d
+  bannerAdUnitId: d71789076ca27696
+  interAdUnitId: fc807d2b8fc3799d
+  rewardAdUnitId: 0db39f9197aa3540
   appOpenAdUnitId: 2458517ef67575c9
 --- !u!1 &484581907573985405
 GameObject:

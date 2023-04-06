@@ -1,3 +1,4 @@
+using Gamee.Hiuk.AppLink;
 using System;
 using TMPro;
 using UnityEngine;
@@ -20,6 +21,11 @@ namespace Gamee.Hiuk.Popup
             txtVersion.text = "Version: " + strVersionUpdate;
         }
 
+        public void Update()
+        {
+            ApplinkManager.Open();
+            Close();
+        }
         public void Back() 
         {
             actionclose?.Invoke(toggleNotShowAgain.isOn);

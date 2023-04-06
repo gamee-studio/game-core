@@ -1,0 +1,7 @@
+public enum EGamePlayState 
+{
+    GAMEPLAY_NONE,
+    GAMEPLAY_START,
+    GAMEPLAY_PLAYING,
+    GAMEPLAY_WAITING,
+}

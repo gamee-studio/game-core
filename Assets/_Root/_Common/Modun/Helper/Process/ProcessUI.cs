@@ -23,7 +23,7 @@ namespace Gamee.Hiuk.UI.Helper
         public float ValueCurrent => valueCurrent;
         public void Run(float valueUpdate, float valueMax, float time = 0f)
         {
-            var t = DOTween.To(x => valueCache = (int)x, valueCurrent, valueUpdate, time).SetEase(ease);
+            var t = DOTween.To(x => valueCache = x, valueCurrent, valueUpdate, time).SetEase(ease);
             valueCurrent = valueUpdate;
 
             t.OnComplete(() =>
@@ -53,6 +53,11 @@ namespace Gamee.Hiuk.UI.Helper
                         break;
                 }
             });
+        }
+        public void UpdateUI(float valueUpdate, float valueMax) 
+        {
+            valueCurrent = valueUpdate;
+            process.fillAmount = valueUpdate / valueMax;
         }
     }
     public enum EProcessType 

@@ -3,8 +3,8 @@ namespace Gamee.Hiuk.Level
 {
     public interface ILevel
     {
-        void Win();
-        void Lose();
+        void Win(Action actionCompleted = null);
+        void Lose(Action actionCompleted = null);
     }
 }
 

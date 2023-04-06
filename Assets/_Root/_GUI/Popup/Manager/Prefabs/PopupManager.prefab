@@ -55,6 +55,15 @@ MonoBehaviour:
   popupSettingPrefab: {fileID: 2071683429245162149, guid: 5d7acf7be1a62f6438945b061061234c, type: 3}
   popupUpdatePrefab: {fileID: 3392125259725620041, guid: fa1a20240cc120047bb74f7af8601340, type: 3}
   popupRatePrefab: {fileID: 4619152485703456413, guid: 34ae8a0cf4942774cad65993dfc26e67, type: 3}
+  popupSkinPrefab: {fileID: 8353562701305351943, guid: b346f5916d4a1964ea626541788f16ac, type: 3}
+  popupDailyPrefab: {fileID: 1263741669520038665, guid: bf90406f9e387ba44aecccf848c4312a, type: 3}
+  popupUnlockGitPrefab: {fileID: 4276426436603851342, guid: 34fae0d539337af4d9375cff48b9641e, type: 3}
+  popupUnlockSkinPrefab: {fileID: 2415714408589101329, guid: 5f4b1fee0effc2b448b0633c5c5febbd, type: 3}
+  popupGitCodePrefab: {fileID: 75133980044854382, guid: d0070267669c3c94aba3cfa64eacf108, type: 3}
+  popupGitBoxPrefab: {fileID: 4402612608073604232, guid: 7b20ece917e58ad4dba3fdb484442716, type: 3}
+  popupPuzzlePrefab: {fileID: 3720525640661854052, guid: 95c61251495978c4e84bd6578af58994, type: 3}
+  popupRoomPrefab: {fileID: 175784711904656631, guid: 63b607f7f66309d4facd5299e9bb56f1, type: 3}
+  popupRoomViewPrefab: {fileID: 7083808422522722533, guid: cf62988b66468444e9052e0317991912, type: 3}
 --- !u!1 &1985456415211628210
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,6 +317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 2691671692596342343}
+  timeNextPlayWait: 0.25
 --- !u!1 &7775019528944881780
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,7 +446,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 1697627845
+  m_SortingLayerID: -1508238397
   m_SortingOrder: 50
   m_TargetDisplay: 0
 --- !u!114 &8725146851824415586

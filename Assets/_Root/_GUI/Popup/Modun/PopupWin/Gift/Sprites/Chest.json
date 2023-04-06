@@ -1,0 +1,171 @@
+{
+"skeleton": {
+	"hash": "Gx9znFVlqIGENWeulYHHUfeQQZ8",
+	"spine": "3.8.79",
+	"x": -102.94,
+	"y": -26.37,
+	"width": 211,
+	"height": 159,
+	"images": "./images/",
+	"audio": "F:/GAMEE/Rescue_Hero2/Elements/Chest/Anim"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "bone", "parent": "root" },
+	{ "name": "Chest_Close", "parent": "bone", "x": -14.11, "y": 2.65 },
+	{ "name": "Group 217 copy 7", "parent": "bone", "x": 56.32, "y": 21.74 },
+	{ "name": "a2", "parent": "bone", "x": -62.63, "y": 11.78 },
+	{ "name": "Layer 37", "parent": "bone", "x": 75.66, "y": 68.32 },
+	{ "name": "Layer 78 copy", "parent": "bone", "x": -83.73, "y": 36.97 },
+	{ "name": "back_effect", "parent": "Chest_Close", "x": 14.15, "y": 47.72 }
+],
+"slots": [
+	{ "name": "Vector Smart Object", "bone": "bone", "attachment": "Vector Smart Object" },
+	{ "name": "a2", "bone": "a2" },
+	{ "name": "Group 217 copy 7", "bone": "Group 217 copy 7" },
+	{ "name": "Layer 37", "bone": "Layer 37" },
+	{ "name": "Layer 78 copy", "bone": "Layer 78 copy" },
+	{ "name": "Chest_Close", "bone": "Chest_Close", "attachment": "Chest_Close" },
+	{ "name": "bone", "bone": "Chest_Close", "attachment": "bone" },
+	{ "name": "back_effect", "bone": "back_effect" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"Chest_Close": {
+				"Chest_Close": { "x": 13.21, "y": 59.99, "width": 169, "height": 140 },
+				"Chest_Open": { "x": 23.63, "y": 64.85, "width": 160, "height": 153 }
+			},
+			"Group 217 copy 7": {
+				"Group 217 copy 7": { "x": -0.26, "y": 14.9, "width": 56, "height": 40 }
+			},
+			"Layer 37": {
+				"Layer 37": { "x": -0.1, "y": -0.69, "width": 65, "height": 68 }
+			},
+			"Layer 78 copy": {
+				"Layer 78 copy": { "x": 0.29, "y": -0.34, "width": 59, "height": 60 }
+			},
+			"Vector Smart Object": {
+				"Vector Smart Object": { "x": 2.56, "y": 37.13, "width": 211, "height": 127 }
+			},
+			"a2": {
+				"a2": { "x": -0.8, "y": 14.86, "width": 55, "height": 40 }
+			},
+			"back_effect": {
+				"back_effect": { "x": 3.03, "y": 18.67, "width": 69, "height": 47 }
+			},
+			"bone": {
+				"bone": {
+					"type": "clipping",
+					"end": "bone",
+					"vertexCount": 5,
+					"vertices": [ -21.52, 51.7, 38.32, 46.27, 51.42, 52.53, 60.56, 115.24, -24.25, 116.22 ],
+					"color": "ce3a3aff"
+				}
+			}
+		}
+	}
+],
+"animations": {
+	"Idle": {
+		"bones": {
+			"Chest_Close": {
+				"scale": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.3333, "y": 0.953, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6667 }
+				]
+			}
+		}
+	},
+	"Open": {
+		"slots": {
+			"Chest_Close": {
+				"attachment": [
+					{ "time": 0.5667, "name": "Chest_Open" }
+				]
+			},
+			"Group 217 copy 7": {
+				"attachment": [
+					{ "time": 0.5667, "name": "Group 217 copy 7" }
+				]
+			},
+			"Layer 37": {
+				"color": [
+					{ "time": 0.9667, "color": "ffffffff" },
+					{ "time": 1.1, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.7, "name": "Layer 37" }
+				]
+			},
+			"Layer 78 copy": {
+				"color": [
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 0.9333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.5333, "name": "Layer 78 copy" }
+				]
+			},
+			"a2": {
+				"attachment": [
+					{ "time": 0.5667, "name": "a2" }
+				]
+			},
+			"back_effect": {
+				"attachment": [
+					{ "time": 0.5667, "name": "back_effect" }
+				]
+			}
+		},
+		"bones": {
+			"Chest_Close": {
+				"scale": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.1, "y": 0.913, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.2, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.3, "y": 0.913, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.4, "curve": 0.088, "c2": 0.69, "c3": 0.582 },
+					{ "time": 0.5333, "y": 0.678, "curve": 0.068, "c2": 0.97, "c3": 0.75 },
+					{ "time": 0.7, "y": 1.12 },
+					{ "time": 0.8333, "y": 0.943, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1 }
+				]
+			},
+			"Layer 37": {
+				"rotate": [
+					{ "time": 0.7 },
+					{ "time": 1.1, "angle": -102.25 }
+				],
+				"scale": [
+					{ "x": -0.037, "y": -0.037, "curve": "stepped" },
+					{ "time": 0.7, "x": -0.037, "y": -0.037 },
+					{ "time": 0.9, "x": 1.083, "y": 1.083 },
+					{ "time": 1.1, "x": 0.633, "y": 0.633 }
+				]
+			},
+			"Layer 78 copy": {
+				"rotate": [
+					{ "time": 0.5333 },
+					{ "time": 0.9333, "angle": -70.49 }
+				],
+				"scale": [
+					{ "x": 0.071, "y": 0.071, "curve": "stepped" },
+					{ "time": 0.5333, "x": 0.071, "y": 0.071 },
+					{ "time": 0.7667, "x": 1.096, "y": 1.096 },
+					{ "time": 0.9333 }
+				]
+			},
+			"back_effect": {
+				"translate": [
+					{ "time": 0.6, "curve": 0.126, "c2": 0.82, "c3": 0.75 },
+					{ "time": 0.7, "y": 4.34, "curve": 0.25, "c3": 0.777, "c4": 0.62 },
+					{ "time": 0.7667 }
+				]
+			}
+		}
+	}
+}
+}

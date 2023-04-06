@@ -1,5 +1,6 @@
 using Gamee.Hiuk.Adapter;
 using Gamee.Hiuk.Ads;
+using Gamee.Hiuk.Common;
 using Gamee.Hiuk.Data;
 using Gamee.Hiuk.UI.Helper;
 using System;
@@ -14,11 +15,16 @@ namespace Gamee.Hiuk.Popup
         [SerializeField] int coinValue;
         [SerializeField] int watchVideoValue;
         [SerializeField] TextMeshProUGUI txtCoin;
+        [SerializeField] GameObject objCoinDisplay;
         [SerializeField] GameObject btnNextLevel;
         [SerializeField] GameObject btnWatchVideo;
+        [SerializeField] LuckySpin luckySpin;
         [Header("Process")]
         [SerializeField] ProcessUI processUI;
         [SerializeField] int processIndex;
+        [SerializeField] float processRunTime = 1f;
+        [SerializeField] GitWin gitWin;
+
         private Action actionBackToHome;
         private Action actionNextLevel;
         private Action<bool> actionProcessFull;
@@ -42,7 +48,14 @@ namespace Gamee.Hiuk.Popup
             coin = coinValue + coinBonus;
             txtCoin.text = coin.ToString();
 
+            gitWin.Init();
+            gitWin.Idle();
+
             ProcessRun();
+            luckySpin.Initialize();
+            luckySpin.ActionSelectItem = OnSellectItem;
+
+            btnNextLevel.DoDelay(2f);
         }
 
         public void NextLevel() 
@@ -53,18 +66,25 @@ namespace Gamee.Hiuk.Popup
         }
         public void WatchVideo()
         {
+            if (!AdsManager.IsInterAdsReady) return;
             if (isSellected) return;
             isSellected = true;
 
-            AdsManager.ShowReard((isWatched) =>
+            luckySpin.Pause((item) =>
             {
-                if (isWatched) 
+                luckySpin.ActionSelectItem -= OnSellectItem;
+                AdsManager.ShowReard((isWatched) =>
                 {
-                    AddCoin(coin * watchVideoValue);
-                }
-            }, ()=> 
-            {
-                DefautUI();
+                    if (isWatched)
+                    {
+                        AddCoin(coin * watchVideoValue);
+                    }
+                    luckySpin.ActionSelectItem = OnSellectItem;
+                }, () =>
+                {
+                    luckySpin.Reset();
+                    DefautUI();
+                });
             });
         }
         public void BackToHome() 
@@ -83,14 +103,23 @@ namespace Gamee.Hiuk.Popup
                 GameData.AddCoin(coin);
                 actionNextLevel?.Invoke();
                 Close();
-            });
+            }, txtCoin.gameObject, objCoinDisplay);
         }
         void ProcessRun() 
         {
-            processUI.Run(ProcessValueCurrent, processIndex);
+            isSellected = true;
+            processUI.UpdateUI(ProcessValueCurrent, processIndex);
             ProcessValueCurrent++;
-            processUI.Run(ProcessValueCurrent, processIndex, .5f);
+            processUI.Run(ProcessValueCurrent, processIndex, processRunTime);
+            if(ProcessValueCurrent == processIndex) 
+            {
+                gitWin.Open();
+            }
             processUI.ActionFull = OnProcessFull;
+            processUI.ActionCompleted = () =>
+            {
+                isSellected = false;
+            };
         }
         void OnProcessFull(bool isFull) 
         {
@@ -106,6 +135,11 @@ namespace Gamee.Hiuk.Popup
             isSellected = false;
             btnNextLevel.gameObject.SetActive(true);
             btnWatchVideo.gameObject.SetActive(true);
+        }
+        void OnSellectItem(int value) 
+        {
+            watchVideoValue = value;
+            txtCoin.text = string.Format("{0}", coin * watchVideoValue);
         }
     }
 }

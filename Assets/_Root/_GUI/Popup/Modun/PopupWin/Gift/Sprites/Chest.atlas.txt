@@ -1,0 +1,62 @@
+
+Chest.png
+size: 336,336
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Chest_Close
+  rotate: false
+  xy: 157, 38
+  size: 169, 140
+  orig: 169, 140
+  offset: 0, 0
+  index: -1
+Chest_Open
+  rotate: true
+  xy: 2, 44
+  size: 160, 153
+  orig: 160, 153
+  offset: 0, 0
+  index: -1
+Group 217 copy 7
+  rotate: false
+  xy: 277, 222
+  size: 56, 40
+  orig: 56, 40
+  offset: 0, 0
+  index: -1
+Layer 37
+  rotate: true
+  xy: 215, 268
+  size: 65, 68
+  orig: 65, 68
+  offset: 0, 0
+  index: -1
+Layer 78 copy
+  rotate: true
+  xy: 215, 207
+  size: 59, 60
+  orig: 59, 60
+  offset: 0, 0
+  index: -1
+Vector Smart Object
+  rotate: false
+  xy: 2, 206
+  size: 211, 127
+  orig: 211, 127
+  offset: 0, 0
+  index: -1
+a2
+  rotate: false
+  xy: 277, 180
+  size: 55, 40
+  orig: 55, 40
+  offset: 0, 0
+  index: -1
+back_effect
+  rotate: true
+  xy: 285, 264
+  size: 69, 47
+  orig: 69, 47
+  offset: 0, 0
+  index: -1

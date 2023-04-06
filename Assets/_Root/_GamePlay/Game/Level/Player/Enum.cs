@@ -10,5 +10,10 @@ namespace Gamee.Hiuk.Level.Player
         PLAYER_IDLE,
         PLAYER_WIN,
         PLAYER_LOSE,
+        PLAYER_RUN,
+        PLAYER_GIVE,
+        PLAYER_UNLOCK,
+        PLAYER_ATTACK,
+        PLAYER_GIVING,
     }
 }

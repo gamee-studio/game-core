@@ -5,10 +5,12 @@ namespace Gamee.Hiuk.Level.Player
 {
     public interface IPlayer
     {
-        void Init();
-        void Idle();
-        void Win();
-        void Lose();
+        public void Init();
+        public void Idle();
+        public void Lose();
+        public void Win();
+        public void Defaut();
+        public void UpdateSkin();
     }
 }
 
