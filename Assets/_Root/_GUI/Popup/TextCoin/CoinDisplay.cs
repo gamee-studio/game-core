@@ -15,12 +15,13 @@ public class CoinDisplay : MonoBehaviour
         coinCurrent = GameData.CoinCurrent;
         txtCoin.text = string.Format("{0}", coinCurrent);
         GameData.ActionCoinValueChange += OnChangeCoinValue;
+
     }
     private void OnDisable()
     {
         GameData.ActionCoinValueChange -= OnChangeCoinValue;
     }
-    void OnChangeCoinValue() 
+    void OnChangeCoinValue(int coin)
     {
         if (coinCurrent == GameData.CoinCurrent) return;
         int valueCache = 0;

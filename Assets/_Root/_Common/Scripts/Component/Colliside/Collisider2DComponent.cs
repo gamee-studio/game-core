@@ -14,7 +14,15 @@ namespace Gamee.Hiuk.Component
 
         Collider2D col2D;
         public Collider2D Col2D => col2D ??= this.GetComponent<Collider2D>();
-
+        public Vector2 ContactPoint 
+        {
+            get 
+            {
+                ContactPoint2D[] contacts = new ContactPoint2D[2];
+                Col2D.GetContacts(contacts);
+                return contacts[0].point;
+            }
+        }
         private void OnTriggerEnter2D(Collider2D collision)
         {
             ActionTriggerEnter2D?.Invoke(collision);

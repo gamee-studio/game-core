@@ -1,8 +1,10 @@
 namespace Gamee.Hiuk.Ads
 {
+    using com.adjust.sdk;
+    using Firebase.Analytics;
+    using Gamee.Hiuk.FirebseAnalytic;
     using System;
     using System.Collections;
-    using System.Collections.Generic;
     using UnityEngine;
     public class Applovin : MonoBehaviour, IAds
     {
@@ -49,6 +51,7 @@ namespace Gamee.Hiuk.Ads
         {
             LoadBannerAds();
             MaxSdkCallbacks.Banner.OnAdRevenuePaidEvent += OnAdRevenuePaidEvent;
+            MaxSdkCallbacks.Banner.OnAdRevenuePaidEvent += OnAdImpressionEvent;
             Debug.Log("[Max] banner init!");
         }
         public void LoadBannerAds()
@@ -62,12 +65,19 @@ namespace Gamee.Hiuk.Ads
         }
         public void HideBannerAds()
         {
+            if (!IsInitialized()) return;
             MaxSdk.HideBanner(bannerAdUnitId);
         }
         public void ShowBannerAds()
         {
+            if (!IsInitialized()) return;
             Debug.Log("[Max] banner show!");
             MaxSdk.ShowBanner(bannerAdUnitId);
+            FirebaseAnalytic.LogAdsBannerRequest();
+        }
+        void OnAdImpressionEvent(string adUnitId, MaxSdkBase.AdInfo adInfo) 
+        {
+            FirebaseAnalytic.LogAdsBannerImpression();
         }
         #endregion
 
@@ -91,6 +101,7 @@ namespace Gamee.Hiuk.Ads
         }
         public void LoadInterAds()
         {
+            FirebaseAnalytic.LogAdsInterRequest();
             MaxSdk.LoadInterstitial(interAdUnitId);
         }
         public void ShowInterAds()
@@ -99,6 +110,7 @@ namespace Gamee.Hiuk.Ads
             {
                 isCanShowAppOpen = false;
                 MaxSdk.ShowInterstitial(interAdUnitId);
+                FirebaseAnalytic.LogAdsInterImpression();
             }
         }
 
@@ -159,6 +171,7 @@ namespace Gamee.Hiuk.Ads
         }
         public void LoadRewardAds()
         {
+            FirebaseAnalytic.LogAdsRewardRequest();
             isWatched = false;
             MaxSdk.LoadRewardedAd(rewardAdUnitId);
         }
@@ -230,6 +243,7 @@ namespace Gamee.Hiuk.Ads
             // Rewarded ad was displayed and user should receive the reward
             Debug.Log("Rewarded ad received reward");
             isWatched = true;
+            FirebaseAnalytic.LogAdsRewardImpression();
         }
         IEnumerator DelayTime(float time = 0.5f, Action actionCompleted = null) 
         {
@@ -289,6 +303,26 @@ namespace Gamee.Hiuk.Ads
             Debug.Log("adinfo.Revenue: " + adInfo.Revenue);
             // Ad revenue paid. Use this callback to track user revenue.
             // send ad revenue info to Adjust
+            AdjustAdRevenue adRevenue = new AdjustAdRevenue(AdjustConfig.AdjustAdRevenueSourceAppLovinMAX);
+            adRevenue.setRevenue(adInfo.Revenue, "USD");
+            adRevenue.setAdRevenueNetwork(adInfo.NetworkName);
+            adRevenue.setAdRevenuePlacement(adInfo.Placement);
+            adRevenue.setAdRevenueUnit(adInfo.AdUnitIdentifier);
+            Adjust.trackAdRevenue(adRevenue);
+
+            // Log an event with ad value parameters
+            Parameter[] LTVParameters =
+            {
+                // Log ad value in micros.
+                new Parameter("value", revenue),
+                new Parameter("ad_platform", "AppLovin"),
+                new Parameter("ad_format", adInfo.AdFormat),
+                new Parameter("currency", "USD"),
+                new Parameter("ad_unit_name", adInfo.AdUnitIdentifier),
+                new Parameter("ad_source", adInfo.NetworkName)
+            };
+
+            FirebaseAnalytics.LogEvent("ad_impression", LTVParameters);
         }
         #endregion
     }

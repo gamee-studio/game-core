@@ -7,6 +7,7 @@ namespace Gamee.Hiuk.AppLink
 {
     public class ApplinkManager : Singleton<ApplinkManager>
     {
+        [SerializeField] string linkFB = "https://www.facebook.com/groups/heropin/";
         private string appId = "com.gamee.gamebase";
         private string url;
 
@@ -41,7 +42,10 @@ namespace Gamee.Hiuk.AppLink
         {
             Application.OpenURL(url);
         }
-
+        public void OpenFB() 
+        {
+            Application.OpenURL(linkFB);
+        }
         public void OpenApp(string appId)
         {
 #if UNITY_EDITOR
@@ -115,6 +119,7 @@ namespace Gamee.Hiuk.AppLink
         public static void Open() { Instance.OpenApp(); }
         public static void Open(string appId) { Instance.OpenApp(appId); }
         public static void Rate() { Instance.RateApp(); }
+        public static void OpenFaceBook() { Instance.OpenFB(); }
         #endregion
     }
 }

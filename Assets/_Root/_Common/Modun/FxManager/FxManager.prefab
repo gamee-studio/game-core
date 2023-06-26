@@ -93,6 +93,51 @@ MonoBehaviour:
     fxSound:
       audio: {fileID: 8300000, guid: 9d259ea09da263845b498c418cf1e0a4, type: 3}
       volume: 1
+  fxWood:
+    fx: {fileID: 6023877311267739965, guid: 014964154b1116b4ca4ef33f31593779, type: 3}
+    fxSound:
+      audio: {fileID: 8300000, guid: 83695a86159af804da815cb783c2c377, type: 3}
+      volume: 0.4
+  fxEvolve:
+    fx: {fileID: 913233921076748165, guid: 2d8e0bf32b9972742bd2e5885f412ca1, type: 3}
+    fxSound:
+      audio: {fileID: 0}
+      volume: 1
+  fxBonus:
+    fx: {fileID: 846945879863972434, guid: 93ee194da12d0274e8b70f3c84e2a05c, type: 3}
+    fxSound:
+      audio: {fileID: 0}
+      volume: 1
+  fxGiveFlower:
+    fx: {fileID: 6566281190323027696, guid: 54d3a3aa8bf233a4f9428c94bcf779ea, type: 3}
+    fxSound:
+      audio: {fileID: 0}
+      volume: 1
+  fxSmokeBlack:
+    fx: {fileID: 4657612595526694794, guid: 6c952940b7207e847a5e863eff82f4af, type: 3}
+    fxSound:
+      audio: {fileID: 0}
+      volume: 1
+  fxTargetActive:
+    fx: {fileID: 846945879863972434, guid: 93ee194da12d0274e8b70f3c84e2a05c, type: 3}
+    fxSound:
+      audio: {fileID: 0}
+      volume: 1
+  fxPlayerDrawComplete:
+    fx: {fileID: 3634879413066480298, guid: c2361932ac44d3448b9174875568ca3f, type: 3}
+    fxSound:
+      audio: {fileID: 8300000, guid: a9b0f065ef6a1da4e85454fc5b79746b, type: 3}
+      volume: 1
+  fxPlayerDrawCollision:
+    fx: {fileID: 2929852678002508494, guid: cf933be80baf71849a67b73a4409718a, type: 3}
+    fxSound:
+      audio: {fileID: 8300000, guid: 09f031cf97ed56141825c6886190b169, type: 3}
+      volume: 0.7
+  fxPlayerDrawPickKey:
+    fx: {fileID: 8168780821449800694, guid: 3c8a3c84d726ed14c811d2811c3215a4, type: 3}
+    fxSound:
+      audio: {fileID: 0}
+      volume: 1
   fxSmokeHummer: {fileID: 8733288894015595868, guid: 4cae7f2e63c689a418c625546c2f3af2, type: 3}
   hand: {fileID: 1915423235467013015, guid: 56a3a751ab3035c45bcfb661715dba50, type: 3}
   puzzle: {fileID: 6360314046516965819, guid: 172ffe7f0e54677469a70ca7c5cfef69, type: 3}

@@ -20,6 +20,7 @@ namespace Gamee.Hiuk.Component
         }
         public void PlaySound(Sound sound)
         {
+            if (!this.gameObject.activeInHierarchy) return;
             if (sound == null) return;
             if (sound.Audio == null) return;
 
@@ -38,9 +39,14 @@ namespace Gamee.Hiuk.Component
             if (!GameData.IsOnAudio) return;
             audioSource.PlayOneShot(sound.Audio, sound.Volume);
         }
-
+        public void Reset()
+        {
+            isLoop = false;
+            soundCurrent = null;
+        }
         public void Pause() { if(audioSource.isPlaying) audioSource.Pause(); }
         public void Resume() { audioSource.UnPause(); }
+        public void Stop() { audioSource.Stop(); }
         public void PlaySoundBackGround(Sound sound)
         {
             if (sound == null) return;
@@ -55,13 +61,12 @@ namespace Gamee.Hiuk.Component
         IEnumerator WaitPlaySoundTime() 
         {
             yield return waitTime;
-            isLoop = false;
-            soundCurrent = null;
+            Reset();
         }
         private void OnDisable()
         {
-            isLoop = false;
-            if(coroutine != null) StopCoroutine(coroutine);
+            Reset();
+            if (coroutine != null) StopCoroutine(coroutine);
         }
     }
 }

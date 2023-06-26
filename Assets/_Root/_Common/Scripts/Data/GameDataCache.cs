@@ -12,6 +12,7 @@ namespace Gamee.Hiuk.Data
         public static DateTime TimeAtInterShowWin { set; get; } = new DateTime();
         public static DateTime TimeAtInterShowLose { set; get; } = new DateTime();
         public static bool IsJustShowRewardAds { set; get; } = false;
+        public static bool IsPlayChallengeMode { set; get; } = false;
     }
 }
 

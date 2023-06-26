@@ -23,6 +23,7 @@ namespace Gamee.Hiuk.Ads
         private bool isFirstShowAppOpenCache;
         private bool isRewardShowed = false;
 
+        public Action ActionRewardAdsCompleted { set; get; }
         public IAds ConfigAds(bool isAdmob = false) 
         {
             IAds ad = isAdmob ? admob : applovin;
@@ -112,7 +113,11 @@ namespace Gamee.Hiuk.Ads
         }
         void OnRewardCloseAdsEvent(bool isWatched)
         {
-            if (isWatched) isRewardShowed = true;
+            if (isWatched)
+            {
+                isRewardShowed = true;
+                ActionRewardAdsCompleted?.Invoke();
+            }
             actionRewardAdsClose?.Invoke(isWatched);
         }
 
@@ -174,6 +179,10 @@ namespace Gamee.Hiuk.Ads
         public static void SetRemoveAppOpen(bool isRemove) { Instance.SetRemoveAppOpenAds(isRemove); }
         public static void SetRemoveBanner(bool isRemove) { Instance.SetRemoveBannerAds(isRemove); }
         public static void SetShowAppOpen(bool isShow) { Instance.SetShowAppOpenAds(isShow); }
+        public static Action ActionRewardCompleted
+        {
+            set => Instance.ActionRewardAdsCompleted = value; 
+        }
         #endregion
     }
 }

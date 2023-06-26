@@ -6,7 +6,7 @@ namespace Gamee.Hiuk.Data
     {
         private const string key = "com.gamee.gamebase";
         #region game
-        public static System.Action ActionCoinValueChange;
+        public static System.Action<int> ActionCoinValueChange;
         public static int LevelCurrent
         {
             get => PlayerPrefsAdapter.GetInt(key + "level_current", 1);
@@ -17,10 +17,10 @@ namespace Gamee.Hiuk.Data
             get => PlayerPrefsAdapter.GetInt(key + "coin_current", 0);
             set => PlayerPrefsAdapter.SetInt(key + "coin_current", value);
         }
-        public static void AddCoin(int coin) 
+        public static void AddCoin(int coin)
         {
             CoinCurrent += coin * X2CoinValue;
-            ActionCoinValueChange?.Invoke();
+            ActionCoinValueChange?.Invoke(coin);
         }
         public static string LevelNameCurrent => "level_" + LevelCurrent;
 
@@ -54,7 +54,7 @@ namespace Gamee.Hiuk.Data
             get => PlayerPrefsAdapter.GetBool(key + "is_showed_rate", false);
             set => PlayerPrefsAdapter.SetBool(key + "is_showed_rate", value);
         }
-        public static string IDPlayerSkinCurrent 
+        public static string IDPlayerSkinCurrent
         {
             get => PlayerPrefsAdapter.GetString(key + "id_player_skin_current", "");
             set => PlayerPrefsAdapter.SetString(key + "id_player_skin_current", value);
@@ -68,16 +68,6 @@ namespace Gamee.Hiuk.Data
         {
             get => PlayerPrefsAdapter.GetString(key + "id_pin_skin_current", "");
             set => PlayerPrefsAdapter.SetString(key + "id_pin_skin_current", value);
-        }
-        public static string PlayerPantSkinMix 
-        {
-            get => PlayerPrefsAdapter.GetString(key + "player_pant_skin_mix", "");
-            set => PlayerPrefsAdapter.SetString(key + "player_pant_skin_mix", value);
-        }
-        public static string PlayerShirtSkinMix
-        {
-            get => PlayerPrefsAdapter.GetString(key + "player_shirt_skin_mix", "");
-            set => PlayerPrefsAdapter.SetString(key + "player_shirt_skin_mix", value);
         }
         #endregion
         #region iap
@@ -101,14 +91,14 @@ namespace Gamee.Hiuk.Data
             get => PlayerPrefsAdapter.GetBool(key + "is_remove_banner_ads", false);
             set => PlayerPrefsAdapter.SetBool(key + "is_remove_banner_ads", value);
         }
-        public static int X2CoinValue 
+        public static int X2CoinValue
         {
             get => PlayerPrefsAdapter.GetInt(key + "x2_coin_value", 1);
             set => PlayerPrefsAdapter.SetInt(key + "x2_coin_value", value);
         }
         #endregion
         #region setting
-        public static bool IsOnAudio 
+        public static bool IsOnAudio
         {
             get => PlayerPrefsAdapter.GetBool(key + "is_on_audio", true);
             set => PlayerPrefsAdapter.SetBool(key + "is_on_audio", value);
@@ -124,40 +114,49 @@ namespace Gamee.Hiuk.Data
             set => PlayerPrefsAdapter.SetBool(key + "is_on_vibration", value);
         }
         #endregion
-        #region cutscene
-        public static bool IsShowedCutSceneLevel
+        #region rank
+        public static string CountryCode
         {
-            get => PlayerPrefsAdapter.GetBool(key + "is_showed_cutscene_level", false);
-            set => PlayerPrefsAdapter.SetBool(key + "is_showed_cutscene_level", value);
+            get => PlayerPrefsAdapter.GetString(key + "country_code");
+            set => PlayerPrefsAdapter.SetString(key + "country_code", value);
+        }
+        public static string UserName
+        {
+            get => PlayerPrefsAdapter.GetString(key + "user_name");
+            set => PlayerPrefsAdapter.SetString(key + "user_name", value);
+        }
+        public static int IndexCountryCurrent
+        {
+            get => PlayerPrefsAdapter.GetInt(key + "index_country_current");
+            set => PlayerPrefsAdapter.SetInt(key + "index_country_current", value);
+        }
+        public static string PlayerID
+        {
+            get => PlayerPrefsAdapter.GetString(key + "player_id");
+            set => PlayerPrefsAdapter.SetString(key + "player_id", value);
+        }
+        public static string customID
+        {
+            get => PlayerPrefsAdapter.GetString(key + "custom_id");
+            set => PlayerPrefsAdapter.SetString(key + "custom_id", value);
+        }
+        public static string CustomID
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(customID))
+                {
+                    customID = System.Guid.NewGuid().ToString() + " time: " + System.DateTime.Now;
+                }
+                return customID;
+            }
         }
         #endregion
-        #region decor
-        public static string IDRoomCurrent
+        #region language
+        public static string IDLanguageCurrent
         {
-            get => PlayerPrefsAdapter.GetString(key + "id_room_current");
-            set => PlayerPrefsAdapter.SetString(key + "id_room_current", value);
-        }
-        public static string IDRoomSellectCurrent
-        {
-            get => PlayerPrefsAdapter.GetString(key + "id_room_sellect_current");
-            set => PlayerPrefsAdapter.SetString(key + "id_room_sellect_current", value);
-        }
-        public static bool IsShowRoomInGame
-        {
-            get => PlayerPrefsAdapter.GetBool(key + "id_room_show_in_game");
-            set => PlayerPrefsAdapter.SetBool(key + "id_room_show_in_game", value);
-        }
-        #endregion
-        #region skin
-        public static bool IsFirstBuyHeroSkin
-        {
-            get => PlayerPrefsAdapter.GetBool(key + "is_first_buy_hero_skin", false);
-            set => PlayerPrefsAdapter.SetBool(key + "is_first_buy_hero_skin", value);
-        }
-        public static bool IsFirstBuyPrincessSkin
-        {
-            get => PlayerPrefsAdapter.GetBool(key + "is_first_buy_princess_skin", false);
-            set => PlayerPrefsAdapter.SetBool(key + "is_first_buy_princess_skin", value);
+            get => PlayerPrefsAdapter.GetString(key + "id_language_current", "");
+            set => PlayerPrefsAdapter.SetString(key + "id_language_current", value);
         }
         #endregion
     }

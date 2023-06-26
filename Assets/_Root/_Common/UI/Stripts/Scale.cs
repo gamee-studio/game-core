@@ -13,12 +13,17 @@ public class Scale : MonoBehaviour
     public void Awake()
     {
         scaleDefaut = transform.localScale;
-        if (isAuto) PlayScale();
+        if (isAuto) Play();
     }
 
-    public void PlayScale(bool isPlay = true)
+    public void Play()
     {
-        if (isPlay) transform.DOScale(scaleDefaut * scale, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(ease);
-        else transform.localScale = scaleDefaut;
+        transform.localScale = scaleDefaut;
+        transform.DOScale(scaleDefaut * scale, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(ease);
+    }
+    public void Default() 
+    {
+        this.transform.DOKill();
+        transform.localScale = scaleDefaut;
     }
 }

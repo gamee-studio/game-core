@@ -49,7 +49,7 @@ namespace Gamee.Hiuk.UI.Helper
                         text.text = string.Format(strFormat, (int)(valueCache / valueMax * 100));
                         break;
                     case EProcessType.PROCESS_COUNT:
-                        text.text = string.Format(strFormat, valueCache + "/" + valueMax);
+                        text.text = string.Format(strFormat, (int)valueCache + "/" + valueMax);
                         break;
                 }
             });

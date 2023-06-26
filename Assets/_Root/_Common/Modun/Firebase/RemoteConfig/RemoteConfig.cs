@@ -12,6 +12,7 @@ namespace Gamee.Hiuk.FirebaseRemoteConfig
         public static bool IsShowInterAdsBeforeWin = true;
 
         public static bool IsShowInterAdsLose = true;
+        public static bool IsShowInterAdsReplay = true;
         public static int InterAdShowCount = 3;
         public static int InterAdFirstShowCount = 3;
         public static int TimeInterAdShowWin = 25;
@@ -21,6 +22,12 @@ namespace Gamee.Hiuk.FirebaseRemoteConfig
         public static string DescritptionApp = "New Update";
 
         public static bool IsShowLevelDescription = true;
+        public static string LinkFB;
+
+        public static bool IsShowDailyMissionInGame = false;
+        public static bool IsShowDailyMissionInWin = false;
+
+        public static bool IsShowButtonFBInGitCode = false;
     }
 }
 

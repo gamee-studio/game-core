@@ -306,7 +306,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6971945833735931591, guid: 18954e1bded27ce40bca8281cb91c363, type: 3}
       propertyPath: m_text
-      value: 0%
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6971945833735931591, guid: 18954e1bded27ce40bca8281cb91c363, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 7d4e6023bb5207145ae0f575def0b207, type: 2}
+    - target: {fileID: 6971945833735931591, guid: 18954e1bded27ce40bca8281cb91c363, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 484508473293012227, guid: 7d4e6023bb5207145ae0f575def0b207, type: 2}
+    - target: {fileID: 7449450985459062211, guid: 18954e1bded27ce40bca8281cb91c363, type: 3}
+      propertyPath: mTerm
+      value: Common_TxtValue
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449450985459062211, guid: 18954e1bded27ce40bca8281cb91c363, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449450985459062211, guid: 18954e1bded27ce40bca8281cb91c363, type: 3}
+      propertyPath: mLocalizeTarget
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18954e1bded27ce40bca8281cb91c363, type: 3}

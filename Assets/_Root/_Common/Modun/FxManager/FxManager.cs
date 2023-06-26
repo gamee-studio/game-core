@@ -10,6 +10,7 @@ public class FxManager : Singleton<FxManager>
     [SerializeField, Range(0, 1f)] float timeNextPlayWait = 0.1f;
     [Header("Fx")]
 
+
     List<GameObject> listFx = new List<GameObject>();
     GameObject fxCurrent = null;
     bool isLoop = false;
@@ -62,14 +63,17 @@ public class FxManager : Singleton<FxManager>
     IEnumerator WaitPlaySoundTime()
     {
         yield return waitTime;
-        isLoop = false;
-        fxCurrent = null;
+        Reset();
     }
     private void OnDisable()
     {
+        Reset();
+        if (coroutine != null) StopCoroutine(coroutine);
+    }
+    private void Reset()
+    {
         isLoop = false;
         fxCurrent = null;
-        if (coroutine != null) StopCoroutine(coroutine);
     }
     IEnumerator IEReleaseFx(GameObject fx, float time = 2)
     {
@@ -94,6 +98,10 @@ public class FxManager : Singleton<FxManager>
     }
     #region static api
     public static GameObject Create(GameObject fx, Vector3 pos, bool release = true, float timeRelease = 2)
+    {
+        return Instance.CreateFx(fx, pos, release, timeRelease);
+    }
+    public static GameObject Create(FxItem fx, Vector3 pos, bool release = true, float timeRelease = 2)
     {
         return Instance.CreateFx(fx, pos, release, timeRelease);
     }

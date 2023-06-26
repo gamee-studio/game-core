@@ -51,6 +51,7 @@ public class ObjMoveUI : MonoBehaviour
     public void Defaut()
     {
         if (thisRectTransform == null) return;
+        thisRectTransform.DOKill();
         thisRectTransform.anchoredPosition = positionDefaut;
     }
     public void MoveBack()

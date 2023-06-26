@@ -68,6 +68,15 @@ namespace Gamee.Hiuk.Data.Skin
             }
             return listSkinGixBoxNotHas;
         }
+        public List<SkinData> GetAllSkinRandomNotHas()
+        {
+            var listSkinDataRandom = new List<SkinData>();
+            foreach (var skinData in listSkinData)
+            {
+                if (skinData.IsRandom && !skinData.IsHas) listSkinDataRandom.Add(skinData);
+            }
+            return listSkinDataRandom;
+        }
         #region static api
         public static SkinData GetSkinDefautData() { return Instance.GetSkinDefaut(); }
         public static List<SkinData> GetAllSkinData() { return Instance.GetAllSkin(); }
@@ -78,6 +87,7 @@ namespace Gamee.Hiuk.Data.Skin
         public static List<SkinData> GetAllSkinDataCoin() { return Instance.GetAllSkinCoin(); }
         public static List<SkinData> GetAllSkinDataGitBox() { return Instance.GetAllSkinGitBox(); }
         public static List<SkinData> GetAllSkinDataGitBoxNotHas() { return Instance.GetAllSkinGitBoxNotHas(); }
+        public static List<SkinData> GetAllSkinDataRandomNotHas() { return Instance.GetAllSkinRandomNotHas(); }
         public static void UpdateSkinCurrentData(SkinData skinData) { Instance.UpdateSkinCurrent(skinData); }
         #endregion
     }

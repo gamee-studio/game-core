@@ -18,6 +18,8 @@ namespace Gamee.Hiuk.Data.Skin
         [SerializeField] bool isRandom;
         [SerializeField] int coin = 0;
         [SerializeField] string code;
+        [SerializeField] bool isManyWatchVideo;
+        [SerializeField] int watchVideoCount = 2;
         [GUID, SerializeField] string id;
         [HideInInspector, SerializeField] bool isHas;
 
@@ -35,11 +37,20 @@ namespace Gamee.Hiuk.Data.Skin
         public bool IsGiftBox => isGitBox;
         public bool IsRandom => isRandom;
         public string Code => code;
+        public bool IsManyWatchVideo => isManyWatchVideo;
+        public int WatchVideoCount => watchVideoCount;
         public string ID => id;
+        public string TextManyWatchVideoCount => $"{WatchCount}/{watchVideoCount}";
+        public bool IsCanBySkin => WatchCount >= watchVideoCount;
         public bool IsHas
         {
             get => PlayerPrefsAdapter.GetBool(id + "is_has");
             set => PlayerPrefsAdapter.SetBool(id + "is_has", value);
+        }
+        public int WatchCount 
+        {
+            get => PlayerPrefsAdapter.GetInt(id + "watch_count");
+            set => PlayerPrefsAdapter.SetInt(id + "watch_count", value);
         }
     }
 }
