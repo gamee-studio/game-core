@@ -18,7 +18,6 @@ public abstract class GamePlayUI : MonoBehaviour
     public Action ActionSkipLevel;
     public Action ActionBackLevel;
     public Action<bool> ActionProcessFull;
-    public Action ActionUpdatePin;
 
     public virtual void Init()
     {
