@@ -23,7 +23,6 @@ namespace Gamee.Hiuk.Test
         get => false;
 #endif
         }
-
         public static GameObject levelPrefab;
 
         public static GameObject LevelAsset

@@ -5,7 +5,7 @@ using Gamee.Hiuk.Adapter;
 public static class GameTimeLocal
 {
     public static bool IsNewDay = false;
-
+    public static Action ActionNewDay;
     public static int Month
     {
         get => PlayerPrefsAdapter.GetInt("game_time_month", 1);
@@ -53,6 +53,7 @@ public static class GameTimeLocal
                 Month++;
                 RewardDay = 1;
             }
+            ActionNewDay?.Invoke();
         }
     }
 }

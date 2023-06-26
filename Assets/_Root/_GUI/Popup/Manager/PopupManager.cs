@@ -47,7 +47,7 @@ namespace Gamee.Hiuk.Popup
                 popup.Initialize(actionClose, actionUnlockAllPuzzle);
             }
         }
-        public void ShowPopupWin(Action actionBackToHome, Action actionNextLevel, Action<bool> actionProcessFull)
+        public void ShowPopupWin(Action actionBackToHome, Action actionNextLevel, Action<bool> actionProcessFull, int coinBonus)
         {
             if (popupWinHandler != null)
             {
@@ -65,7 +65,7 @@ namespace Gamee.Hiuk.Popup
                 // initialize
                 var popup = (PopupWin)popupWinHandler;
                 Popup.Show(popupWinHandler);
-                popup.Initialize(actionBackToHome, actionNextLevel, actionProcessFull);
+                popup.Initialize(actionBackToHome, actionNextLevel, actionProcessFull, coinBonus);
             }
         }
 

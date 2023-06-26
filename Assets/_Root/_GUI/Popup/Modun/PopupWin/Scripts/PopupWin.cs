@@ -2,8 +2,10 @@ using Gamee.Hiuk.Adapter;
 using Gamee.Hiuk.Ads;
 using Gamee.Hiuk.Common;
 using Gamee.Hiuk.Data;
+using Gamee.Hiuk.FirebaseRemoteConfig;
 using Gamee.Hiuk.UI.Helper;
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,13 +33,13 @@ namespace Gamee.Hiuk.Popup
         private int coin;
         private int coinBonus;
         private bool isSellected = false;
-
+        Coroutine coroutine;
         public int ProcessValueCurrent 
         {
             get => PlayerPrefsAdapter.GetInt("popup_win_process_value", 0);
             set => PlayerPrefsAdapter.SetInt("popup_win_process_value", value);
         }
-        public void Initialize(Action actionBackToHome, Action actionNextLevel, Action<bool> actionProcessFull)
+        public void Initialize(Action actionBackToHome, Action actionNextLevel, Action<bool> actionProcessFull, int coinBonus = 0)
         {
             this.actionBackToHome = actionBackToHome;
             this.actionNextLevel = actionNextLevel;
@@ -45,6 +47,7 @@ namespace Gamee.Hiuk.Popup
 
             DefautUI();
 
+            this.coinBonus = coinBonus;
             coin = coinValue + coinBonus;
             txtCoin.text = coin.ToString();
 
@@ -62,6 +65,7 @@ namespace Gamee.Hiuk.Popup
         {
             if (isSellected) return;
             isSellected = true;
+            coroutine = StartCoroutine(WaitSellectButtonTime());
             AddCoin(coin);
         }
         public void WatchVideo()
@@ -69,6 +73,7 @@ namespace Gamee.Hiuk.Popup
             if (!AdsManager.IsInterAdsReady) return;
             if (isSellected) return;
             isSellected = true;
+            coroutine = StartCoroutine(WaitSellectButtonTime());
 
             luckySpin.Pause((item) =>
             {
@@ -79,6 +84,8 @@ namespace Gamee.Hiuk.Popup
                     {
                         AddCoin(coin * watchVideoValue);
                     }
+                    else DefautUI();
+
                     luckySpin.ActionSelectItem = OnSellectItem;
                 }, () =>
                 {
@@ -140,6 +147,16 @@ namespace Gamee.Hiuk.Popup
         {
             watchVideoValue = value;
             txtCoin.text = string.Format("{0}", coin * watchVideoValue);
+        }
+        IEnumerator WaitSellectButtonTime()
+        {
+            yield return new WaitForSeconds(.5f);
+            isSellected = false;
+            luckySpin.Reset();
+        }
+        private void OnDisable()
+        {
+            if (coroutine != null) StopCoroutine(coroutine);
         }
     }
 }

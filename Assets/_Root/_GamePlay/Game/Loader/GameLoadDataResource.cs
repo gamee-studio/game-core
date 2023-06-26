@@ -127,6 +127,11 @@ namespace Gamee.Hiuk.Game.Loader
                 {
                     type = ELevelLoadType.LEVEL_NORMAL;
                     level++;
+                    if (level >= 5)
+                    {
+                        if (level % 5 == 0 && level >= GameConfig.LevelStartHavePuzzleCount) type = ELevelLoadType.LEVEL_PUZZLE;
+                        if (level % 5 == 3 || level % 5 == 4) type = ELevelLoadType.LEVEL_GP2;
+                    }
                     switch (type)
                     {
                         case ELevelLoadType.LEVEL_NORMAL:
@@ -136,7 +141,7 @@ namespace Gamee.Hiuk.Game.Loader
                                 if(isLevelPuzzleLoop && isLevelGP2Loop) 
                                 {
                                     isLevelNormalLoop = true;
-                                    listLevelInfo.Add(new LevelInfo(level, levelNormalCount, string.Format(levelNormal.PathLevel, levelNormalCount), levelNormal.Type, levelNormal.Index));
+                                    listLevelInfo.Add(new LevelInfo(level, levelNormalCount, string.Format(levelNormal.PathLevel, levelNormalCount), levelNormal.Type, levelNormalCount - 1));
                                     break;
                                 }
                             }
@@ -146,8 +151,7 @@ namespace Gamee.Hiuk.Game.Loader
                                 if (isUpdateCompleted) break;
                                 levelNormalCount = 1;
                             }
-                            listLevelInfo.Add(new LevelInfo(level, levelNormalCount, string.Format(levelNormal.PathLevel, levelNormalCount), levelNormal.Type, levelNormal.Index));
-                            levelNormal.Uplevel();
+                            listLevelInfo.Add(new LevelInfo(level, levelNormalCount, string.Format(levelNormal.PathLevel, levelNormalCount), levelNormal.Type, levelNormalCount -1));
                             break;
                         case ELevelLoadType.LEVEL_PUZZLE:
                             levelPuzzleCount++;
@@ -156,7 +160,7 @@ namespace Gamee.Hiuk.Game.Loader
                                 if (isLevelNormalLoop && isLevelGP2Loop)
                                 {
                                     isLevelPuzzleLoop = true;
-                                    listLevelInfo.Add(new LevelInfo(level, levelPuzzleCount, string.Format(levelPuzzle.PathLevel, levelPuzzleCount), levelPuzzle.Type, levelPuzzle.Index));
+                                    listLevelInfo.Add(new LevelInfo(level, levelPuzzleCount, string.Format(levelPuzzle.PathLevel, levelPuzzleCount), levelPuzzle.Type, levelPuzzleCount - 1));
                                     break;
                                 }
                             }
@@ -166,8 +170,7 @@ namespace Gamee.Hiuk.Game.Loader
                                 if (isUpdateCompleted) break;
                                 levelPuzzleCount = 1;
                             }
-                            listLevelInfo.Add(new LevelInfo(level, levelPuzzleCount, string.Format(levelPuzzle.PathLevel, levelPuzzleCount), levelPuzzle.Type, levelPuzzle.Index));
-                            levelPuzzle.Uplevel();
+                            listLevelInfo.Add(new LevelInfo(level, levelPuzzleCount, string.Format(levelPuzzle.PathLevel, levelPuzzleCount), levelPuzzle.Type, levelPuzzleCount -1));
                             break;
                         case ELevelLoadType.LEVEL_GP2:
                             levelGP2Count++;
@@ -176,7 +179,7 @@ namespace Gamee.Hiuk.Game.Loader
                                 if (isLevelNormalLoop && isLevelNormalLoop)
                                 {
                                     isLevelGP2Loop = true;
-                                    listLevelInfo.Add(new LevelInfo(level, levelGP2Count, string.Format(levelGP2.PathLevel, levelGP2Count), levelGP2.Type, levelGP2.Index));
+                                    listLevelInfo.Add(new LevelInfo(level, levelGP2Count, string.Format(levelGP2.PathLevel, levelGP2Count), levelGP2.Type, levelGP2Count - 1));
                                     break;
                                 }
                             }
@@ -186,8 +189,7 @@ namespace Gamee.Hiuk.Game.Loader
                                 if (isUpdateCompleted) break;
                                 levelGP2Count = 1;
                             }
-                            listLevelInfo.Add(new LevelInfo(level, levelGP2Count, string.Format(levelGP2.PathLevel, levelGP2Count), levelGP2.Type, levelGP2.Index));
-                            levelGP2.Uplevel();
+                            listLevelInfo.Add(new LevelInfo(level, levelGP2Count, string.Format(levelGP2.PathLevel, levelGP2Count), levelGP2.Type, levelGP2Count - 1));
                             break;
                     }
 

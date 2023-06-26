@@ -183,9 +183,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5261250429355855820}
-  - component: {fileID: 5261250429355855811}
+  - component: {fileID: 2714263411962407738}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: GameManagerNormal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,7 +209,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5261250429355855811
+--- !u!114 &2714263411962407738
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -218,17 +218,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 5261250429355855821}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 296ff21eb0dc0274085e696fb4b85c34, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b494084f341f3448bd996a8271792d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
   levelPos: {fileID: 8067103862749443019}
   audioGame: {fileID: 3908689565660898569}
   soundWin:
-    audio: {fileID: 8300000, guid: 8f6316302db04ed419f227dd50efa336, type: 3}
+    audio: {fileID: 0}
     volume: 1
   soundLose:
-    audio: {fileID: 8300000, guid: cbb0ba28f7dec024c9d5fe34f13e8596, type: 3}
+    audio: {fileID: 0}
     volume: 1
 --- !u!1001 &7957935026404298476
 PrefabInstance:

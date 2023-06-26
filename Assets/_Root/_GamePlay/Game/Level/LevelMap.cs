@@ -10,25 +10,38 @@ namespace Gamee.Hiuk.Level
         [SerializeField] protected ELevelState state;
         public Action ActionWin;
         public Action ActionLose;
+        public Action ActionWatting;
+        public Action ActionStartControl;
 
         protected Coroutine coroutineLevelWin;
         protected Coroutine coroutineLevelLose;
 
-        protected  PlayerController player;
+        protected PlayerController player;
         protected LevelLoadData levelData;
+
+        protected int coinBonus = 0;
         public PlayerController Player => player;
         public LevelLoadData LevelData => levelData;
-        public virtual void Init() 
+        public int CoinBonus => coinBonus;
+        public virtual float TimeDelayLose => levelData.TimeDelayLose;
+        public virtual float TimeDelayWin => levelData.TimeDelayWin;
+        public virtual void Init()
         {
             player = this.GetComponentInChildren<PlayerController>();
             levelData = GameLoader.levelLoadData;
+            coinBonus = 0;
+        }
+        public virtual void Play()
+        {
+            ActionStartControl?.Invoke();
         }
         public virtual void Lose(Action actionCompleted = null)
         {
-            if (state == ELevelState.LEVEL_WIN) return;
+            if (state == ELevelState.LEVEL_WIN || state == ELevelState.LEVEL_LOSING) return;
+            ActionWatting?.Invoke();
             state = ELevelState.LEVEL_LOSING;
             if(coroutineLevelWin != null) StopCoroutine(coroutineLevelWin);
-            coroutineLevelLose = StartCoroutine(DelayTime(levelData.TimeDelayLose, () =>
+            coroutineLevelLose = StartCoroutine(DelayTime(TimeDelayLose, () =>
             {
                 state = ELevelState.LEVEL_LOSE;
                 ActionLose?.Invoke();
@@ -38,9 +51,10 @@ namespace Gamee.Hiuk.Level
 
         public virtual void Win(Action actionCompleted = null)
         {
-            if (state == ELevelState.LEVEL_LOSING) return;
+            if (state == ELevelState.LEVEL_LOSING || state == ELevelState.LEVEL_LOSE) return;
+            ActionWatting?.Invoke();
             state = ELevelState.LEVEL_WINNING;
-            coroutineLevelWin = StartCoroutine(DelayTime(levelData.TimeDelayWin, () =>
+            coroutineLevelWin = StartCoroutine(DelayTime(TimeDelayWin, () =>
             {
                 state = ELevelState.LEVEL_WIN;
                 if (coroutineLevelLose != null) StopCoroutine(coroutineLevelLose);

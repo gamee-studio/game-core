@@ -1,5 +1,6 @@
 namespace Gamee.Hiuk.Game.Input
 {
+    using System;
     using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.EventSystems;
@@ -10,11 +11,15 @@ namespace Gamee.Hiuk.Game.Input
         [SerializeField] private GameObject trailPrefab;
         [SerializeField] private LayerMask layerInput;
         [SerializeField] private float distane = 10f;
+        [SerializeField] private bool isMultiTouch = false;
         bool isTouched = false;
         bool isRun = false;
-        ITouch touch = null;
+        ITouch touchCurrent = null;
         GameObject trail;
         public Vector2 PosMouseOnScreen => cam == null ? Vector2.zero : cam.ScreenToWorldPoint(Input.mousePosition);
+        public Action<RaycastHit2D, Vector2> ActionTouchStart;
+        public Action<RaycastHit2D, Vector2> ActionTouchMove;
+        public Action<RaycastHit2D, Vector2> ActionTouchEnd;
 
         public void Awake()
         {
@@ -30,9 +35,11 @@ namespace Gamee.Hiuk.Game.Input
         public void Run(bool isRun)
         {
             this.isRun = isRun;
+            isTouched = false;
         }
         public void Defaut()
         {
+            Input.multiTouchEnabled = isMultiTouch;
             isRun = true; 
             isTouched = false;
             trail.gameObject.SetActive(false);
@@ -47,27 +54,45 @@ namespace Gamee.Hiuk.Game.Input
                 if (IsPointerOverUIObject()) return;
                 if (isTouched) return;
                 isTouched = true;
+                RaycastHit2D hit = Physics2D.Raycast(PosMouseOnScreen, Vector2.zero, distane, layerInput);
+                ActionTouchStart?.Invoke(hit, PosMouseOnScreen);
             }
             if (Input.GetMouseButtonUp(0))
             {
                 isTouched = false;
-                touch = null;
+                if(touchCurrent != null) 
+                {
+                    touchCurrent.TouchEnded(PosMouseOnScreen);
+                    touchCurrent = null;
+                }
                 trail.gameObject.SetActive(false);
+
+                RaycastHit2D hit = Physics2D.Raycast(PosMouseOnScreen, Vector2.zero, distane, layerInput);
+                ActionTouchEnd?.Invoke(hit, PosMouseOnScreen);
             }
 
             if (isTouched)
             {
-                Vector2 ray = PosMouseOnScreen;
-                trail.transform.position = ray;
+                trail.transform.position = PosMouseOnScreen;
                 trail.gameObject.SetActive(true);
 
-                RaycastHit2D hit = Physics2D.Raycast(ray, Vector2.zero, distane, layerInput);
+                RaycastHit2D hit = Physics2D.Raycast(PosMouseOnScreen, Vector2.zero, distane, layerInput);
+
+                if (touchCurrent != null)
+                {
+                    touchCurrent.TouchMoved(PosMouseOnScreen);
+                }
+
                 if (hit.collider != null)
                 {
-                    touch = hit.collider.gameObject.GetComponentInParent<ITouch>();
-                    if (touch == null) return;
-                    touch.Touch(PosMouseOnScreen);
+                    var touch = hit.collider.gameObject.GetComponentInParent<ITouch>();
+                    if (touch != null) 
+                    {
+                        touch.TouchBegan(PosMouseOnScreen);
+                        touchCurrent = touch;
+                    }
                 }
+                ActionTouchMove?.Invoke(hit, PosMouseOnScreen);
             }
         }
 

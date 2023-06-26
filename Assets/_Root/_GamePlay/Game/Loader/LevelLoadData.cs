@@ -10,7 +10,7 @@ namespace Gamee.Hiuk.Game.Loader
         [SerializeField] ELevelLoadType type;
         [SerializeField] string pathLevel;
         [SerializeField] string levelName;
-        [SerializeField] int levelMax = 100;
+        [SerializeField] internal int levelMax = 100;
         [SerializeField] int levelLoopStart = 1;
         [SerializeField, Range(0, 5)] float timeDelayWin = 2;
         [SerializeField, Range(0, 5)] float timeDelayLose = 1;
@@ -23,7 +23,7 @@ namespace Gamee.Hiuk.Game.Loader
         public int LevelIndex => listLevel[Index];
         public float TimeDelayWin => timeDelayWin;
         public float TimeDelayLose => timeDelayLose;
-        public int LevelMax => levelMax - LevelStartLoop + 1;
+        public int LevelMax => levelMax;
         int LevelStartLoop => IsFirstLooped ? (levelLoopStart >= 1 ? levelLoopStart : 1) : 1;
         public float CameraRoomSize => cameraRoomSize;
 

@@ -1,4 +1,5 @@
 #if UNITY_EDITOR
+using Gamee.Hiuk.Data;
 using Gamee.Hiuk.Test;
 using UnityEditor;
 using UnityEditor.SceneManagement;
