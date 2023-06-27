@@ -31,24 +31,11 @@ namespace Gamee.Hiuk.Game.Loader
         public static void UpdateLevelLoad(int level) 
         {
             var type = ELevelLoadType.LEVEL_NORMAL;
-
-            if (level >= 5)
-            {
-                if (level % 5 == 0 && level >= GameConfig.LevelStartHavePuzzleCount) type = ELevelLoadType.LEVEL_PUZZLE;
-                if (level % 5 == 3 || level % 5 == 4) type = ELevelLoadType.LEVEL_GP2;
-            }
-
             levelLoadData = GameLoadDataResource.GetLevelDataCurrent(type);
         }
         public static async UniTask<GameObject> LoadLevel(int level)
         {
             var type = ELevelLoadType.LEVEL_NORMAL;
-
-            if (level >= 5) 
-            {
-                if (level % 5 == 0 && level >= GameConfig.LevelStartHavePuzzleCount) type = ELevelLoadType.LEVEL_PUZZLE;
-                if (level % 5 == 3 || level % 5 == 4) type = ELevelLoadType.LEVEL_GP2;
-            }
 
             levelLoadData = GameLoadDataResource.GetLevelDataCurrent(type);
             return await GetLevel(levelLoadData.PathLevel, levelLoadData.LevelIndex);

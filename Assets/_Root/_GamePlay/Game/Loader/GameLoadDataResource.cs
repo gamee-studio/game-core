@@ -82,21 +82,15 @@ namespace Gamee.Hiuk.Game.Loader
         private GameLoadDataResource gameLoadResource;
         private List<LevelInfo> listLevelInfo = new List<LevelInfo>();
         private LevelLoadData levelNormal;
-        private LevelLoadData levelPuzzle;
-        private LevelLoadData levelGP2;
 
         private bool isLevelNormalLoop = false;
-        private bool isLevelPuzzleLoop = false;
-        private bool isLevelGP2Loop = false;
-        private bool isUpdateCompleted => isLevelNormalLoop && isLevelPuzzleLoop && isLevelGP2Loop;
+        private bool isUpdateCompleted => isLevelNormalLoop;
         protected void OnEnable()
         {
             gameLoadResource = (GameLoadDataResource)target;
             listLevelInfo = gameLoadResource.ListLevelInfo;
 
             levelNormal = gameLoadResource.GetLevelData(ELevelLoadType.LEVEL_NORMAL);
-            levelPuzzle = gameLoadResource.GetLevelData(ELevelLoadType.LEVEL_PUZZLE);
-            levelGP2 = gameLoadResource.GetLevelData(ELevelLoadType.LEVEL_GP2);
         }
 
         public override void OnInspectorGUI()
@@ -109,17 +103,10 @@ namespace Gamee.Hiuk.Game.Loader
                 listLevelInfo.Clear();
 
                 levelNormal.Index = 0;
-                levelPuzzle.Index = 0;
-                levelGP2.Index = 0;
                 
                 isLevelNormalLoop = false;
-                isLevelPuzzleLoop = false;
-                isLevelGP2Loop = false;
-
                 int level = 0;
                 int levelNormalCount = 0; 
-                int levelPuzzleCount = 0; 
-                int levelGP2Count = 0;
 
                 ELevelLoadType type = ELevelLoadType.LEVEL_NORMAL;
 
@@ -127,24 +114,10 @@ namespace Gamee.Hiuk.Game.Loader
                 {
                     type = ELevelLoadType.LEVEL_NORMAL;
                     level++;
-                    if (level >= 5)
-                    {
-                        if (level % 5 == 0 && level >= GameConfig.LevelStartHavePuzzleCount) type = ELevelLoadType.LEVEL_PUZZLE;
-                        if (level % 5 == 3 || level % 5 == 4) type = ELevelLoadType.LEVEL_GP2;
-                    }
                     switch (type)
                     {
                         case ELevelLoadType.LEVEL_NORMAL:
                             levelNormalCount++;
-                            if(levelNormalCount == levelNormal.LevelMax) 
-                            {
-                                if(isLevelPuzzleLoop && isLevelGP2Loop) 
-                                {
-                                    isLevelNormalLoop = true;
-                                    listLevelInfo.Add(new LevelInfo(level, levelNormalCount, string.Format(levelNormal.PathLevel, levelNormalCount), levelNormal.Type, levelNormalCount - 1));
-                                    break;
-                                }
-                            }
                             if (levelNormalCount > levelNormal.LevelMax) 
                             {
                                 isLevelNormalLoop = true;
@@ -153,51 +126,11 @@ namespace Gamee.Hiuk.Game.Loader
                             }
                             listLevelInfo.Add(new LevelInfo(level, levelNormalCount, string.Format(levelNormal.PathLevel, levelNormalCount), levelNormal.Type, levelNormalCount -1));
                             break;
-                        case ELevelLoadType.LEVEL_PUZZLE:
-                            levelPuzzleCount++;
-                            if (levelPuzzleCount == levelPuzzle.LevelMax)
-                            {
-                                if (isLevelNormalLoop && isLevelGP2Loop)
-                                {
-                                    isLevelPuzzleLoop = true;
-                                    listLevelInfo.Add(new LevelInfo(level, levelPuzzleCount, string.Format(levelPuzzle.PathLevel, levelPuzzleCount), levelPuzzle.Type, levelPuzzleCount - 1));
-                                    break;
-                                }
-                            }
-                            if (levelPuzzleCount > levelPuzzle.LevelMax)
-                            {
-                                isLevelPuzzleLoop = true;
-                                if (isUpdateCompleted) break;
-                                levelPuzzleCount = 1;
-                            }
-                            listLevelInfo.Add(new LevelInfo(level, levelPuzzleCount, string.Format(levelPuzzle.PathLevel, levelPuzzleCount), levelPuzzle.Type, levelPuzzleCount -1));
-                            break;
-                        case ELevelLoadType.LEVEL_GP2:
-                            levelGP2Count++;
-                            if (levelGP2Count == levelGP2.LevelMax)
-                            {
-                                if (isLevelNormalLoop && isLevelNormalLoop)
-                                {
-                                    isLevelGP2Loop = true;
-                                    listLevelInfo.Add(new LevelInfo(level, levelGP2Count, string.Format(levelGP2.PathLevel, levelGP2Count), levelGP2.Type, levelGP2Count - 1));
-                                    break;
-                                }
-                            }
-                            if (levelGP2Count > levelGP2.LevelMax)
-                            {
-                                isLevelGP2Loop = true;
-                                if (isUpdateCompleted) break;
-                                levelGP2Count = 1;
-                            }
-                            listLevelInfo.Add(new LevelInfo(level, levelGP2Count, string.Format(levelGP2.PathLevel, levelGP2Count), levelGP2.Type, levelGP2Count - 1));
-                            break;
                     }
 
                     if (level > 1000) 
                     {
                         isLevelNormalLoop = true;
-                        isLevelPuzzleLoop = true;
-                        isLevelGP2Loop = true;
                         break;
                     }
                 }
